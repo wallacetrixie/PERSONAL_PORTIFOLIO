@@ -1,11 +1,22 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Download, Mail, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
 import { PERSONAL_INFO } from '../../constants';
 import { useTypingEffect } from '../../hooks/useTypingEffect';
 import portraitImage from '../../assets/images/Potrait.jpg';
 
+// Optimized particles - generated once outside component to prevent re-renders
+const PARTICLES = Array.from({ length: 12 }, (_, i) => ({
+  id: i,
+  left: Math.random() * 100,
+  top: Math.random() * 100,
+  delay: Math.random() * 2,
+  duration: 3 + Math.random() * 2,
+}));
+
 export const Hero = () => {
   const prefersReducedMotion = useReducedMotion();
+  const [imageLoaded, setImageLoaded] = useState(false);
   
   // Typing effect for the name
   const firstName = PERSONAL_INFO.name.split(' ')[0];
@@ -105,24 +116,24 @@ export const Hero = () => {
           transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
         />
 
-        {/* Floating Particles */}
+        {/* Floating Particles - Optimized */}
         {!prefersReducedMotion &&
-          [...Array(20)].map((_, i) => (
+          PARTICLES.map((particle) => (
             <motion.div
-              key={i}
+              key={particle.id}
               className="absolute w-1 h-1 bg-primary-400/40 rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
               }}
               animate={{
                 y: [0, -30, 0],
                 opacity: [0, 1, 0],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: particle.duration,
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: particle.delay,
                 ease: 'easeInOut',
               }}
             />
@@ -205,18 +216,18 @@ export const Hero = () => {
 
             {/* Description */}
             <motion.p
-              className="text-base md:text-lg text-gray-400 max-w-xl mx-auto lg:mx-0"
+              className="text-base md:text-lg text-gray-300 max-w-xl mx-auto lg:mx-0 leading-relaxed"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.4 }}
             >
               {PERSONAL_INFO.bio} Building innovative solutions at{' '}
-              <span className="text-primary-400 font-semibold">{PERSONAL_INFO.company}</span>.
+              <span className="text-primary-300 font-semibold">{PERSONAL_INFO.company}</span>.
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
-              className="flex flex-wrap gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.5 }}
@@ -224,12 +235,13 @@ export const Hero = () => {
               {/* Primary Button */}
               <motion.a
                 href="#projects"
-                className="group relative px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg overflow-hidden shadow-lg shadow-primary-500/50 hover:shadow-xl hover:shadow-primary-500/70 transition-shadow"
+                aria-label="View my portfolio projects"
+                className="group relative px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg overflow-hidden shadow-lg shadow-primary-500/50 hover:shadow-xl hover:shadow-primary-500/70 transition-all duration-300"
                 whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
                 whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  View Projects
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  View My Work
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <motion.div
@@ -243,25 +255,53 @@ export const Hero = () => {
               {/* Secondary Button */}
               <motion.a
                 href="#contact"
-                className="group px-8 py-4 bg-transparent border-2 border-primary-500 text-primary-400 font-semibold rounded-lg hover:bg-primary-500/10 transition-colors flex items-center gap-2"
+                aria-label="Contact me to discuss your project"
+                className="group px-8 py-4 bg-white/5 backdrop-blur-sm border-2 border-primary-500/50 text-primary-400 font-semibold rounded-lg hover:bg-primary-500/10 hover:border-primary-500 transition-all duration-300 flex items-center justify-center gap-2"
                 whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
                 whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
               >
                 <Mail className="w-5 h-5" />
-                Contact Me
+                Let's Talk
               </motion.a>
+            </motion.div>
 
-              {/* Download CV Button */}
-              <motion.a
-                href="/cv.pdf"
+            {/* Download CV Link - Subtle Text Link */}
+            <motion.div
+              className="flex items-center gap-4 text-sm justify-center lg:justify-start"
+              initial={prefersReducedMotion ? {} : { opacity: 0 }}
+              animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <a
+                href="/resume.pdf"
                 download
-                className="group px-8 py-4 bg-gray-800 border-2 border-gray-700 text-gray-300 font-semibold rounded-lg hover:bg-gray-700 hover:border-gray-600 transition-colors flex items-center gap-2"
-                whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
-                whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
+                aria-label="Download my resume as PDF"
+                className="text-gray-300 hover:text-primary-400 transition-colors flex items-center gap-2 group"
               >
-                <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
-                Download CV
-              </motion.a>
+                <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+                Download Resume
+              </a>
+            </motion.div>
+
+            {/* Social Proof Stats */}
+            <motion.div
+              className="flex flex-wrap gap-6 pt-6 border-t border-gray-800 justify-center lg:justify-start"
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+              animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.7 }}
+            >
+              <div className="flex flex-col items-center sm:items-start">
+                <div className="text-2xl md:text-3xl font-bold text-primary-400">50+</div>
+                <div className="text-xs md:text-sm text-gray-300">Projects Completed</div>
+              </div>
+              <div className="flex flex-col items-center sm:items-start">
+                <div className="text-2xl md:text-3xl font-bold text-primary-400">5+</div>
+                <div className="text-xs md:text-sm text-gray-300">Years Experience</div>
+              </div>
+              <div className="flex flex-col items-center sm:items-start">
+                <div className="text-2xl md:text-3xl font-bold text-primary-400">30+</div>
+                <div className="text-xs md:text-sm text-gray-300">Happy Clients</div>
+              </div>
             </motion.div>
 
             {/* Availability Badge */}
@@ -269,9 +309,13 @@ export const Hero = () => {
               className="flex items-center gap-3 justify-center lg:justify-start"
               initial={prefersReducedMotion ? {} : { opacity: 0 }}
               animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.8 }}
             >
-              <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full">
+              <a
+                href="#contact"
+                aria-label="I am currently available for freelance work - click to contact"
+                className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full hover:bg-green-500/20 transition-colors group"
+              >
                 <motion.div
                   className="w-2 h-2 bg-green-400 rounded-full"
                   animate={
@@ -285,7 +329,7 @@ export const Hero = () => {
                   transition={{ duration: 2, repeat: Infinity }}
                 />
                 <span className="text-green-400 text-sm font-medium">{PERSONAL_INFO.availability}</span>
-              </div>
+              </a>
             </motion.div>
           </motion.div>
 
@@ -299,7 +343,7 @@ export const Hero = () => {
             {/* Decorative Rings */}
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
-                className="w-[280px] h-[280px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] rounded-full border-2 border-primary-500/30"
+                className="w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] rounded-full border-2 border-primary-500/30"
                 animate={
                   prefersReducedMotion
                     ? {}
@@ -311,7 +355,7 @@ export const Hero = () => {
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
               />
               <motion.div
-                className="absolute w-[250px] h-[250px] md:w-[320px] md:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border-2 border-purple-500/30"
+                className="absolute w-[190px] h-[190px] sm:w-[250px] sm:h-[250px] md:w-[320px] md:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border-2 border-purple-500/30"
                 animate={
                   prefersReducedMotion
                     ? {}
@@ -326,7 +370,7 @@ export const Hero = () => {
 
             {/* Portrait Image with Floating Animation */}
             <motion.div
-              className="relative z-10"
+              className="relative"
               animate={
                 prefersReducedMotion
                   ? undefined
@@ -344,16 +388,27 @@ export const Hero = () => {
                     }
               }
             >
-              <div className="relative w-[250px] h-[250px] md:w-[320px] md:h-[320px] lg:w-[400px] lg:h-[400px]">
+              <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[320px] md:h-[320px] lg:w-[400px] lg:h-[400px]">
                 {/* Gradient Border */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500 rounded-full blur-xl opacity-50" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500 rounded-full blur-xl opacity-50 md:opacity-70" />
                 
                 {/* Image Container */}
-                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-gray-800 shadow-2xl shadow-primary-500/30">
+                <div className="relative w-full h-full rounded-full overflow-hidden border-2 md:border-4 border-gray-800 shadow-2xl shadow-primary-500/30">
+                  {/* Loading Skeleton */}
+                  {!imageLoaded && (
+                    <div className="absolute inset-0 bg-gray-800 animate-pulse rounded-full flex items-center justify-center">
+                      <div className="text-gray-600 text-sm">Loading...</div>
+                    </div>
+                  )}
+                  
                   <img
                     src={portraitImage}
                     alt={`${PERSONAL_INFO.name} - Professional Portrait`}
-                    className="w-full h-full object-cover object-center scale-110"
+                    className={`w-full h-full object-cover object-center transition-opacity duration-500 ${
+                      imageLoaded ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    onLoad={() => setImageLoaded(true)}
+                    loading="eager"
                   />
                   
                   {/* Overlay Gradient */}
@@ -380,11 +435,11 @@ export const Hero = () => {
       {/* Scroll Prompt */}
       <motion.button
         onClick={scrollToNextSection}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400 hover:text-primary-400 transition-colors group cursor-pointer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-300 hover:text-primary-400 transition-colors group cursor-pointer"
         initial={prefersReducedMotion ? {} : { opacity: 0, y: -20 }}
         animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
-        aria-label="Scroll to next section"
+        aria-label="Scroll down to next section"
       >
         <span className="text-sm font-medium">Scroll Down</span>
         <motion.div

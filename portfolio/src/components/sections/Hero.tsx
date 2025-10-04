@@ -1,10 +1,29 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Download, Mail, ArrowRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../../constants';
+import { useTypingEffect } from '../../hooks/useTypingEffect';
 import portraitImage from '../../assets/images/Potrait.jpg';
 
 export const Hero = () => {
   const prefersReducedMotion = useReducedMotion();
+  
+  // Typing effect for the name
+  const firstName = PERSONAL_INFO.name.split(' ')[0];
+  const lastName = PERSONAL_INFO.name.split(' ')[1];
+  const fullName = `${firstName} ${lastName}`;
+  
+  const { displayedText: typedName, isComplete } = useTypingEffect({
+    text: fullName,
+    speed: 100,
+    delay: 500,
+  });
+
+  // Typing effect for the tagline (starts after name is complete)
+  const { displayedText: typedTagline, isComplete: isTaglineComplete } = useTypingEffect({
+    text: PERSONAL_INFO.title,
+    speed: 50,
+    delay: isComplete ? 300 : 999999, // Only start after name is complete
+  });
 
   // Smooth scroll to next section
   const scrollToNextSection = () => {
@@ -132,34 +151,63 @@ export const Hero = () => {
               </span>
             </motion.div>
 
-            {/* Headline */}
+            {/* Headline with Typing Effect */}
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight min-h-[1.2em]"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="text-white">{PERSONAL_INFO.name.split(' ')[0]} </span>
-              <span className="bg-gradient-to-r from-primary-400 via-primary-500 to-purple-500 text-transparent bg-clip-text">
-                {PERSONAL_INFO.name.split(' ')[1]}
-              </span>
+              {typedName.split(' ').map((word, index) => {
+                if (index === 0) {
+                  return (
+                    <span key={index} className="text-white">
+                      {word}{' '}
+                    </span>
+                  );
+                }
+                return (
+                  <span
+                    key={index}
+                    className="bg-gradient-to-r from-primary-400 via-primary-500 to-purple-500 text-transparent bg-clip-text"
+                  >
+                    {word}
+                  </span>
+                );
+              })}
+              {/* Blinking Cursor */}
+              {!isComplete && (
+                <motion.span
+                  className="inline-block w-1 h-[0.9em] bg-primary-500 ml-1"
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
+                />
+              )}
             </motion.h1>
 
-            {/* Tagline */}
+            {/* Tagline with Typing Effect */}
             <motion.p
-              className="text-xl md:text-2xl lg:text-3xl text-gray-300 font-medium"
+              className="text-xl md:text-2xl lg:text-3xl text-gray-300 font-medium min-h-[1.5em]"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              {PERSONAL_INFO.title}
+              {typedTagline}
+              {/* Blinking Cursor for Tagline */}
+              {isComplete && !isTaglineComplete && (
+                <motion.span
+                  className="inline-block w-0.5 h-[0.9em] bg-primary-400 ml-1"
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
+                />
+              )}
             </motion.p>
 
             {/* Description */}
             <motion.p
               className="text-base md:text-lg text-gray-400 max-w-xl mx-auto lg:mx-0"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-              animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+              animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.4 }}
             >
               {PERSONAL_INFO.bio} Building innovative solutions at{' '}
@@ -170,7 +218,7 @@ export const Hero = () => {
             <motion.div
               className="flex flex-wrap gap-4 justify-center lg:justify-start"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-              animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+              animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.5 }}
             >
               {/* Primary Button */}
@@ -220,7 +268,7 @@ export const Hero = () => {
             <motion.div
               className="flex items-center gap-3 justify-center lg:justify-start"
               initial={prefersReducedMotion ? {} : { opacity: 0 }}
-              animate={prefersReducedMotion ? {} : { opacity: 1 }}
+              animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1 } : { opacity: 0 }}
               transition={{ delay: 0.6 }}
             >
               <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full">

@@ -5,10 +5,11 @@ export const NAV_LINKS: NavLink[] = [
   { id: '1', label: 'Home', path: '/' },
   { id: '2', label: 'About', path: '/about' },
   { id: '3', label: 'Projects', path: '/projects' },
-  { id: '4', label: 'Contact', path: '/contact' },
+  { id: '4', label: 'Skills', path: '/skills' },
+  { id: '5', label: 'Contact', path: '/contact' },
 ];
 
-// Social media links - Update with your actual URLs
+
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     id: '1',
@@ -19,7 +20,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     id: '2',
     platform: 'linkedin',
-    url: 'https://linkedin.com/in/yourprofile',
+    url: 'https://linkedin.com/in/wallacewambulwa',
     icon: 'Linkedin',
   },
   {
@@ -42,8 +43,8 @@ export const PERSONAL_INFO = {
   title: 'Software Developer & Founder',
   company: 'E-sail Tech Company',
   bio: 'A passionate software developer specializing in building exceptional digital experiences.',
-  email: 'your.email@example.com',
-  location: 'Your Location',
+  email: 'wallacewambulwa@gmail.com',
+  location: 'Nairobi,Kenya karen',
   availability: 'Available for freelance work',
 };
 

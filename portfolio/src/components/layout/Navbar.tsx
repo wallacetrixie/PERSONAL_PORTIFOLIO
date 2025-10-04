@@ -5,11 +5,13 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { NAV_LINKS } from '../../constants';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
+import { useScrollProgress } from '../../hooks/useScrollProgress';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, toggleTheme] = useDarkMode();
   const scrollPosition = useScrollPosition();
+  const scrollProgress = useScrollProgress();
   const location = useLocation();
 
   // Scroll threshold for navbar transformation
@@ -268,6 +270,15 @@ export const Navbar = () => {
             </div>
           </div>
         </nav>
+
+        {/* Scroll Progress Indicator */}
+        <motion.div
+          className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500 origin-left"
+          style={{ width: `${scrollProgress}%` }}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.1, ease: 'linear' }}
+        />
       </motion.header>
 
       {/* Mobile Menu Overlay */}

@@ -1,0 +1,573 @@
+/* ============================================
+   CSS VARIABLES FOR COLORS
+   ============================================ */
+:root {
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --green-400: #34d399;
+  --green-500: #10b981;
+  --orange-400: #fb923c;
+  --orange-500: #f97316;
+  --pink-400: #f9a8d4;
+  --pink-500: #ec4899;
+}
+
+/* ============================================
+   BACKGROUND PATTERNS
+   ============================================ */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ============================================
+   FUTURISTIC SKILL CARD DESIGN
+   ============================================ */
+.skill-card-futuristic {
+  position: relative;
+  width: 380px;
+  min-height: 420px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.95) 0%,
+    rgba(30, 41, 59, 0.92) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 24px;
+  padding: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Glassmorphic overlay */
+.skill-card-futuristic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  border-radius: 24px;
+}
+
+.skill-card-futuristic:hover::before {
+  opacity: 1;
+}
+
+.skill-card-futuristic:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   CARD CONTENT
+   ============================================ */
+.skill-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.skill-card-title-futuristic {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.skill-card-tagline-futuristic {
+  font-size: 13px;
+  color: rgba(203, 213, 225, 0.85);
+  line-height: 1.5;
+  font-weight: 400;
+  margin-bottom: 24px;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================
+   TECH ICONS
+   ============================================ */
+.tech-icons {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.tech-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.tech-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   TECHNOLOGIES LIST
+   ============================================ */
+.technologies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.tech-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   SOFT SKILLS BUTTONS
+   ============================================ */
+.soft-skill-button {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.9) 0%,
+    rgba(30, 41, 59, 0.85) 100%
+  );
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  padding: 14px 28px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  max-width: fit-content;
+}
+
+.soft-skill-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.15),
+    rgba(168, 85, 247, 0.15)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 50px;
+}
+
+.soft-skill-button:hover::before {
+  opacity: 1;
+}
+
+.soft-skill-button:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  padding: 18px 32px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(34, 211, 238, 0.2),
+    0 0 60px rgba(168, 85, 247, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.soft-skill-content {
+  position: relative;
+  z-index: 2;
+}
+
+.soft-skill-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  display: block;
+  white-space: nowrap;
+}
+
+.soft-skill-desc {
+  font-size: 12px;
+  color: rgba(203, 213, 225, 0.85);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  overflow: hidden;
+  white-space: normal;
+  text-align: center;
+}
+
+/* Remove old soft skill card styles */
+.soft-skill-card,
+.soft-skill-icon-wrapper,
+.soft-skill-icon,
+.soft-skill-name,
+.soft-skill-description {
+  display: none;
+}
+
+/* ============================================
+   CARD GLOW EFFECT - ENHANCED
+   ============================================ */
+.card-glow-futuristic {
+  position: absolute;
+  inset: -3px;
+  border-radius: 24px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+  filter: blur(25px);
+}
+
+.skill-card-futuristic:hover .card-glow-futuristic {
+  opacity: 0.7;
+}
+
+/* Color-specific glows */
+.skill-card-cyan {
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.skill-card-cyan:hover {
+  border-color: rgba(6, 182, 212, 0.6);
+}
+
+.skill-card-cyan .card-glow-futuristic {
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.6),
+    rgba(34, 211, 238, 0.6)
+  );
+}
+
+.skill-card-purple {
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.skill-card-purple:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+}
+
+.skill-card-purple .card-glow-futuristic {
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.6),
+    rgba(192, 132, 252, 0.6)
+  );
+}
+
+.skill-card-blue {
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.skill-card-blue:hover {
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.skill-card-blue .card-glow-futuristic {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.6),
+    rgba(96, 165, 250, 0.6)
+  );
+}
+
+.skill-card-green {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.skill-card-green:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+}
+
+.skill-card-green .card-glow-futuristic {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.6),
+    rgba(52, 211, 153, 0.6)
+  );
+}
+
+.skill-card-orange {
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.skill-card-orange:hover {
+  border-color: rgba(249, 115, 22, 0.6);
+}
+
+.skill-card-orange .card-glow-futuristic {
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.6),
+    rgba(251, 146, 60, 0.6)
+  );
+}
+
+.skill-card-pink {
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.skill-card-pink:hover {
+  border-color: rgba(236, 72, 153, 0.6);
+}
+
+.skill-card-pink .card-glow-futuristic {
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.6),
+    rgba(249, 168, 212, 0.6)
+  );
+}
+
+/* ============================================
+   FLOATING SOFT SKILL BUBBLES
+   ============================================ */
+.soft-skill-bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.15),
+    rgba(168, 85, 247, 0.15)
+  );
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  cursor: default;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(6, 182, 212, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+
+.soft-skill-bubble:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.25),
+    rgba(168, 85, 247, 0.25)
+  );
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(6, 182, 212, 0.3),
+    0 0 80px rgba(168, 85, 247, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+  .skill-card-futuristic {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .skill-card-title-futuristic {
+    font-size: 22px;
+  }
+
+  .skill-card-tagline-futuristic {
+    font-size: 12px;
+  }
+
+  .tech-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill-card-futuristic {
+    padding: 24px;
+    min-height: 240px;
+  }
+
+  .skill-card-title-futuristic {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .skill-card-tagline-futuristic {
+    font-size: 11px;
+    margin-bottom: 18px;
+  }
+
+  .tech-icons {
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .tech-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .skill-card-futuristic {
+    padding: 20px;
+    min-height: 220px;
+  }
+
+  .skill-card-title-futuristic {
+    font-size: 18px;
+  }
+
+  .tech-icons {
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .tech-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+.skill-card-futuristic,
+.tech-icon,
+.soft-skill-bubble {
+  will-change: transform;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   3D CARD EFFECTS
+   ============================================ */
+.skill-card-futuristic {
+  transform-origin: center center;
+}
+
+@media (min-width: 1024px) {
+  .skill-card-futuristic:hover {
+    transform: translateY(-10px) translateZ(50px);
+  }
+}
+
+/* Soft Skills Responsive */
+@media (max-width: 1024px) {
+  .soft-skill-button {
+    padding: 12px 24px;
+  }
+
+  .soft-skill-button:hover {
+    padding: 16px 28px;
+  }
+
+  .soft-skill-title {
+    font-size: 14px;
+  }
+
+  .soft-skill-desc {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .soft-skill-button {
+    padding: 10px 20px;
+  }
+
+  .soft-skill-button:hover {
+    padding: 14px 24px;
+  }
+
+  .soft-skill-title {
+    font-size: 13px;
+  }
+
+  .soft-skill-desc {
+    font-size: 10px;
+  }
+}

@@ -100,8 +100,8 @@ export const Navbar = () => {
         animate="animate"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-white/90 dark:bg-gray-900/95 backdrop-blur-xl shadow-lg py-3'
-            : 'bg-transparent backdrop-blur-md py-5'
+            ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-light-card dark:shadow-lg py-3'
+            : 'bg-white/70 dark:bg-transparent backdrop-blur-md py-5 shadow-soft dark:shadow-none'
         }`}
       >
         <nav className="container mx-auto px-4 lg:px-8" role="navigation" aria-label="Main navigation">
@@ -120,7 +120,7 @@ export const Navbar = () => {
               >
                 {/* Decorative orbiting accent */}
                 <motion.div
-                  className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"
+                  className="absolute -inset-2 bg-gradient-to-r from-light-accent1 to-blue-500 dark:from-cyan-500 dark:to-blue-500 rounded-full opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"
                   animate={{
                     rotate: 360,
                   }}
@@ -132,10 +132,10 @@ export const Navbar = () => {
                 />
                 
                 <div className="relative text-2xl lg:text-3xl font-bold font-poppins">
-                  <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-light-accent1 via-blue-500 to-emerald-500 dark:from-cyan-500 dark:via-blue-500 dark:to-emerald-500 bg-clip-text text-transparent">
                     Wallace
                   </span>
-                  <span className="text-gray-900 dark:text-white ml-1">
+                  <span className="text-light-text dark:text-white ml-1">
                     Wambulwa
                   </span>
                 </div>
@@ -160,8 +160,8 @@ export const Navbar = () => {
                       <span
                         className={`font-medium text-base transition-colors duration-300 ${
                           isActive
-                            ? 'text-cyan-500 dark:text-cyan-400'
-                            : 'text-gray-700 dark:text-gray-300 group-hover:text-cyan-500 dark:group-hover:text-cyan-400'
+                            ? 'text-light-accent1 dark:text-cyan-400'
+                            : 'text-light-text-secondary dark:text-gray-300 group-hover:text-light-accent1 dark:group-hover:text-cyan-400'
                         }`}
                       >
                         {link.label}
@@ -169,7 +169,7 @@ export const Navbar = () => {
                       
                       {/* Animated underline */}
                       <motion.div
-                        className={`absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full ${
+                        className={`absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-light-accent1 to-blue-600 dark:from-cyan-500 dark:to-blue-500 rounded-full ${
                           isActive ? 'scale-x-100' : 'scale-x-0'
                         }`}
                         initial={{ scaleX: 0 }}
@@ -190,7 +190,7 @@ export const Navbar = () => {
                 whileHover={{ scale: 1.1, rotate: 180 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleTheme}
-                className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-300"
+                className="p-2 rounded-full bg-light-bg-secondary dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 shadow-soft dark:shadow-none"
                 aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
               >
                 <AnimatePresence mode="wait">
@@ -202,7 +202,7 @@ export const Navbar = () => {
                       exit={{ rotate: 90, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <Moon className="w-5 h-5 text-gray-800" />
+                      <Moon className="w-5 h-5 text-light-text" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -225,11 +225,11 @@ export const Navbar = () => {
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleTheme}
-                className="p-2 rounded-full bg-gray-200 dark:bg-gray-800"
+                className="p-2 rounded-full bg-light-bg-secondary dark:bg-gray-800 shadow-soft dark:shadow-none"
                 aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
               >
                 {theme === 'light' ? (
-                  <Moon className="w-5 h-5 text-gray-800" />
+                  <Moon className="w-5 h-5 text-light-text" />
                 ) : (
                   <Sun className="w-5 h-5 text-yellow-400" />
                 )}
@@ -239,7 +239,7 @@ export const Navbar = () => {
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+                className="p-2 rounded-lg bg-light-bg-secondary dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors shadow-soft dark:shadow-none"
                 aria-label="Toggle mobile menu"
                 aria-expanded={isMenuOpen}
               >
@@ -252,7 +252,7 @@ export const Navbar = () => {
                       exit={{ rotate: 90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <X className="w-6 h-6 text-gray-800 dark:text-gray-200" />
+                      <X className="w-6 h-6 text-light-text dark:text-gray-200" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -262,7 +262,7 @@ export const Navbar = () => {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Menu className="w-6 h-6 text-gray-800 dark:text-gray-200" />
+                      <Menu className="w-6 h-6 text-light-text dark:text-gray-200" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -273,7 +273,7 @@ export const Navbar = () => {
 
         {/* Scroll Progress Indicator */}
         <motion.div
-          className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500 origin-left"
+          className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-light-accent1 via-blue-600 to-emerald-500 dark:from-cyan-500 dark:via-blue-500 dark:to-emerald-500 origin-left"
           style={{ width: `${scrollProgress}%` }}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -302,7 +302,7 @@ export const Navbar = () => {
               initial="closed"
               animate="open"
               exit="closed"
-              className="fixed top-0 right-0 bottom-0 w-full sm:w-80 bg-white dark:bg-gray-900 z-50 lg:hidden shadow-2xl overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-full sm:w-80 bg-light-card dark:bg-gray-900 z-50 lg:hidden shadow-2xl overflow-y-auto"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"
@@ -310,15 +310,15 @@ export const Navbar = () => {
               <div className="flex flex-col h-full">
                 
                 {/* Menu Header */}
-                <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800">
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Menu</h2>
+                <div className="flex items-center justify-between p-6 border-b border-light-border dark:border-gray-800">
+                  <h2 className="text-xl font-bold text-light-text dark:text-white">Menu</h2>
                   <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsMenuOpen(false)}
-                    className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    className="p-2 rounded-lg hover:bg-light-bg-secondary dark:hover:bg-gray-800 transition-colors"
                     aria-label="Close menu"
                   >
-                    <X className="w-6 h-6 text-gray-800 dark:text-gray-200" />
+                    <X className="w-6 h-6 text-light-text dark:text-gray-200" />
                   </motion.button>
                 </div>
 
@@ -341,8 +341,8 @@ export const Navbar = () => {
                             onClick={() => setIsMenuOpen(false)}
                             className={`block px-4 py-4 rounded-lg font-medium text-lg transition-all duration-300 ${
                               isActive
-                                ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg'
-                                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                                ? 'bg-gradient-to-r from-light-accent1 to-blue-600 dark:from-cyan-500 dark:to-blue-500 text-white shadow-soft-shadow-light dark:shadow-lg'
+                                : 'text-light-text dark:text-gray-300 hover:bg-light-bg-secondary dark:hover:bg-gray-800'
                             }`}
                           >
                             <motion.div
@@ -364,9 +364,9 @@ export const Navbar = () => {
                   variants={mobileMenuItemVariants}
                   initial="closed"
                   animate="open"
-                  className="p-6 border-t border-gray-200 dark:border-gray-800"
+                  className="p-6 border-t border-light-border dark:border-gray-800"
                 >
-                  <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+                  <h3 className="text-sm font-semibold text-light-text-secondary dark:text-gray-400 uppercase tracking-wider mb-4">
                     Connect
                   </h3>
                   <div className="flex items-center space-x-4">
@@ -374,7 +374,7 @@ export const Navbar = () => {
                       href="https://github.com/wallacetrixie"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-cyan-500 dark:hover:bg-cyan-500 hover:text-white transition-all duration-300"
+                      className="p-3 rounded-full bg-light-bg-secondary dark:bg-gray-800 hover:bg-light-accent1 dark:hover:bg-cyan-500 hover:text-white transition-all duration-300 shadow-soft dark:shadow-none"
                       aria-label="GitHub profile"
                     >
                       <Github className="w-5 h-5" />
@@ -383,14 +383,14 @@ export const Navbar = () => {
                       href="https://linkedin.com/in/yourprofile"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-cyan-500 dark:hover:bg-cyan-500 hover:text-white transition-all duration-300"
+                      className="p-3 rounded-full bg-light-bg-secondary dark:bg-gray-800 hover:bg-light-accent1 dark:hover:bg-cyan-500 hover:text-white transition-all duration-300 shadow-soft dark:shadow-none"
                       aria-label="LinkedIn profile"
                     >
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a
                       href="mailto:your.email@example.com"
-                      className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-cyan-500 dark:hover:bg-cyan-500 hover:text-white transition-all duration-300"
+                      className="p-3 rounded-full bg-light-bg-secondary dark:bg-gray-800 hover:bg-light-accent1 dark:hover:bg-cyan-500 hover:text-white transition-all duration-300 shadow-soft dark:shadow-none"
                       aria-label="Send email"
                     >
                       <Mail className="w-5 h-5" />

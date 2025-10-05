@@ -45,30 +45,30 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-light-bg via-white to-light-bg-secondary dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Gradient Orbs */}
         <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl"
+          className="absolute top-20 left-10 w-72 h-72 bg-light-accent1/10 dark:bg-primary-500/20 rounded-full blur-3xl"
           animate={
             prefersReducedMotion
               ? {}
               : {
                   scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.5, 0.3],
+                  opacity: [0.2, 0.4, 0.2],
                 }
           }
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-light-accent2/10 dark:bg-purple-500/20 rounded-full blur-3xl"
           animate={
             prefersReducedMotion
               ? {}
               : {
                   scale: [1, 1.3, 1],
-                  opacity: [0.2, 0.4, 0.2],
+                  opacity: [0.15, 0.3, 0.15],
                 }
           }
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
@@ -76,14 +76,14 @@ export const Hero = () => {
 
         {/* Spiral SVG */}
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-5"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-5 dark:opacity-5"
           animate={prefersReducedMotion ? {} : { rotate: 360 }}
           transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
         >
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <path
               fill="currentColor"
-              className="text-primary-500"
+              className="text-light-accent1 dark:text-primary-500"
               d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.8C64.8,56.4,53.8,69,40.2,76.2C26.6,83.4,13.3,85.2,-0.9,86.7C-15.1,88.2,-30.2,89.4,-43.8,82.9C-57.4,76.4,-69.5,62.2,-77.8,46.2C-86.1,30.2,-90.6,12.4,-89.7,-5.1C-88.8,-22.6,-82.5,-39.8,-72.6,-54.3C-62.7,-68.8,-49.2,-80.6,-34.3,-87.3C-19.4,-94,-9.7,-95.6,2.4,-99.3C14.5,-103,30.6,-83.6,44.7,-76.4Z"
               transform="translate(100 100)"
             />
@@ -92,7 +92,7 @@ export const Hero = () => {
 
         {/* Abstract Shapes */}
         <motion.div
-          className="absolute top-1/4 right-1/4 w-32 h-32 border-2 border-primary-500/30 rounded-full"
+          className="absolute top-1/4 right-1/4 w-32 h-32 border-2 border-light-accent1/20 dark:border-primary-500/30 rounded-full"
           animate={
             prefersReducedMotion
               ? {}
@@ -104,7 +104,7 @@ export const Hero = () => {
           transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
         />
         <motion.div
-          className="absolute bottom-1/3 left-1/4 w-24 h-24 border-2 border-purple-500/30"
+          className="absolute bottom-1/3 left-1/4 w-24 h-24 border-2 border-light-accent2/20 dark:border-purple-500/30"
           animate={
             prefersReducedMotion
               ? {}
@@ -121,7 +121,7 @@ export const Hero = () => {
           PARTICLES.map((particle) => (
             <motion.div
               key={particle.id}
-              className="absolute w-1 h-1 bg-primary-400/40 rounded-full"
+              className="absolute w-1 h-1 bg-light-accent1/30 dark:bg-primary-400/40 rounded-full"
               style={{
                 left: `${particle.left}%`,
                 top: `${particle.top}%`,
@@ -157,7 +157,7 @@ export const Hero = () => {
               animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <span className="text-primary-400 font-medium text-lg md:text-xl flex items-center gap-2 justify-center lg:justify-start">
+              <span className="text-light-accent1 dark:text-primary-400 font-medium text-lg md:text-xl flex items-center gap-2 justify-center lg:justify-start">
                 <span className="text-2xl">👋</span> Hello, I'm
               </span>
             </motion.div>
@@ -172,7 +172,7 @@ export const Hero = () => {
               {typedName.split(' ').map((word, index) => {
                 if (index === 0) {
                   return (
-                    <span key={index} className="text-white">
+                    <span key={index} className="text-light-text dark:text-white">
                       {word}{' '}
                     </span>
                   );
@@ -180,7 +180,7 @@ export const Hero = () => {
                 return (
                   <span
                     key={index}
-                    className="bg-gradient-to-r from-primary-400 via-primary-500 to-purple-500 text-transparent bg-clip-text"
+                    className="bg-gradient-to-r from-light-accent1 via-blue-600 to-light-accent2 dark:from-primary-400 dark:via-primary-500 dark:to-purple-500 text-transparent bg-clip-text"
                   >
                     {word}
                   </span>
@@ -189,7 +189,7 @@ export const Hero = () => {
               {/* Blinking Cursor */}
               {!isComplete && (
                 <motion.span
-                  className="inline-block w-1 h-[0.9em] bg-primary-500 ml-1"
+                  className="inline-block w-1 h-[0.9em] bg-light-accent1 dark:bg-primary-500 ml-1"
                   animate={{ opacity: [1, 0] }}
                   transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
                 />
@@ -198,7 +198,7 @@ export const Hero = () => {
 
             {/* Tagline with Typing Effect */}
             <motion.p
-              className="text-xl md:text-2xl lg:text-3xl text-gray-300 font-medium min-h-[1.5em]"
+              className="text-xl md:text-2xl lg:text-3xl text-light-text-secondary dark:text-gray-300 font-medium min-h-[1.5em]"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -207,7 +207,7 @@ export const Hero = () => {
               {/* Blinking Cursor for Tagline */}
               {isComplete && !isTaglineComplete && (
                 <motion.span
-                  className="inline-block w-0.5 h-[0.9em] bg-primary-400 ml-1"
+                  className="inline-block w-0.5 h-[0.9em] bg-light-accent1 dark:bg-primary-400 ml-1"
                   animate={{ opacity: [1, 0] }}
                   transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
                 />
@@ -216,13 +216,13 @@ export const Hero = () => {
 
             {/* Description */}
             <motion.p
-              className="text-base md:text-lg text-gray-300 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+              className="text-base md:text-lg text-light-text-secondary dark:text-gray-300 max-w-xl mx-auto lg:mx-0 leading-relaxed"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.4 }}
             >
               {PERSONAL_INFO.bio} Building innovative solutions at{' '}
-              <span className="text-primary-300 font-semibold">{PERSONAL_INFO.company}</span>.
+              <span className="text-light-accent1 dark:text-primary-300 font-semibold">{PERSONAL_INFO.company}</span>.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -236,7 +236,7 @@ export const Hero = () => {
               <motion.a
                 href="#projects"
                 aria-label="View my portfolio projects"
-                className="group relative px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg overflow-hidden shadow-lg shadow-primary-500/50 hover:shadow-xl hover:shadow-primary-500/70 transition-all duration-300"
+                className="group relative px-8 py-4 bg-gradient-to-r from-light-accent1 to-blue-600 dark:from-primary-500 dark:to-primary-600 text-white font-semibold rounded-lg overflow-hidden shadow-soft-shadow-light dark:shadow-lg dark:shadow-primary-500/50 hover:shadow-soft-shadow-hover-light dark:hover:shadow-xl dark:hover:shadow-primary-500/70 transition-all duration-300"
                 whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
                 whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
               >
@@ -245,7 +245,7 @@ export const Hero = () => {
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary-600 to-purple-600"
+                  className="absolute inset-0 bg-gradient-to-r from-blue-600 to-light-accent2 dark:from-primary-600 dark:to-purple-600"
                   initial={{ x: '100%' }}
                   whileHover={{ x: 0 }}
                   transition={{ duration: 0.3 }}
@@ -256,7 +256,7 @@ export const Hero = () => {
               <motion.a
                 href="#contact"
                 aria-label="Contact me to discuss your project"
-                className="group px-8 py-4 bg-white/5 backdrop-blur-sm border-2 border-primary-500/50 text-primary-400 font-semibold rounded-lg hover:bg-primary-500/10 hover:border-primary-500 transition-all duration-300 flex items-center justify-center gap-2"
+                className="group px-8 py-4 bg-white dark:bg-white/5 backdrop-blur-sm border-2 border-light-accent1/50 dark:border-primary-500/50 text-light-accent1 dark:text-primary-400 font-semibold rounded-lg hover:bg-light-bg-secondary dark:hover:bg-primary-500/10 hover:border-light-accent1 dark:hover:border-primary-500 transition-all duration-300 flex items-center justify-center gap-2 shadow-soft dark:shadow-none"
                 whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
                 whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
               >
@@ -276,7 +276,7 @@ export const Hero = () => {
                 href="/resume.pdf"
                 download
                 aria-label="Download my resume as PDF"
-                className="text-gray-300 hover:text-primary-400 transition-colors flex items-center gap-2 group"
+                className="text-light-text-secondary dark:text-gray-300 hover:text-light-accent1 dark:hover:text-primary-400 transition-colors flex items-center gap-2 group"
               >
                 <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
                 Download Resume
@@ -285,22 +285,22 @@ export const Hero = () => {
 
             {/* Social Proof Stats */}
             <motion.div
-              className="flex flex-wrap gap-6 pt-6 border-t border-gray-800 justify-center lg:justify-start"
+              className="flex flex-wrap gap-6 pt-6 border-t border-light-border dark:border-gray-800 justify-center lg:justify-start"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.7 }}
             >
               <div className="flex flex-col items-center sm:items-start">
-                <div className="text-2xl md:text-3xl font-bold text-primary-400">50+</div>
-                <div className="text-xs md:text-sm text-gray-300">Projects Completed</div>
+                <div className="text-2xl md:text-3xl font-bold text-light-accent1 dark:text-primary-400">50+</div>
+                <div className="text-xs md:text-sm text-light-text-secondary dark:text-gray-300">Projects Completed</div>
               </div>
               <div className="flex flex-col items-center sm:items-start">
-                <div className="text-2xl md:text-3xl font-bold text-primary-400">5+</div>
-                <div className="text-xs md:text-sm text-gray-300">Years Experience</div>
+                <div className="text-2xl md:text-3xl font-bold text-light-accent1 dark:text-primary-400">5+</div>
+                <div className="text-xs md:text-sm text-light-text-secondary dark:text-gray-300">Years Experience</div>
               </div>
               <div className="flex flex-col items-center sm:items-start">
-                <div className="text-2xl md:text-3xl font-bold text-primary-400">30+</div>
-                <div className="text-xs md:text-sm text-gray-300">Happy Clients</div>
+                <div className="text-2xl md:text-3xl font-bold text-light-accent1 dark:text-primary-400">30+</div>
+                <div className="text-xs md:text-sm text-light-text-secondary dark:text-gray-300">Happy Clients</div>
               </div>
             </motion.div>
 
@@ -343,7 +343,7 @@ export const Hero = () => {
             {/* Decorative Rings */}
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
-                className="w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] rounded-full border-2 border-primary-500/30"
+                className="w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] rounded-full border-2 border-light-accent1/20 dark:border-primary-500/30"
                 animate={
                   prefersReducedMotion
                     ? {}
@@ -355,7 +355,7 @@ export const Hero = () => {
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
               />
               <motion.div
-                className="absolute w-[190px] h-[190px] sm:w-[250px] sm:h-[250px] md:w-[320px] md:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border-2 border-purple-500/30"
+                className="absolute w-[190px] h-[190px] sm:w-[250px] sm:h-[250px] md:w-[320px] md:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border-2 border-light-accent2/20 dark:border-purple-500/30"
                 animate={
                   prefersReducedMotion
                     ? {}
@@ -390,14 +390,14 @@ export const Hero = () => {
             >
               <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[320px] md:h-[320px] lg:w-[400px] lg:h-[400px]">
                 {/* Gradient Border */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500 rounded-full blur-xl opacity-50 md:opacity-70" />
+                <div className="absolute inset-0 bg-gradient-to-br from-light-accent1 via-light-accent2 to-pink-500 dark:from-primary-500 dark:via-purple-500 dark:to-pink-500 rounded-full blur-xl opacity-30 md:opacity-50" />
                 
                 {/* Image Container */}
-                <div className="relative w-full h-full rounded-full overflow-hidden border-2 md:border-4 border-gray-800 shadow-2xl shadow-primary-500/30">
+                <div className="relative w-full h-full rounded-full overflow-hidden border-2 md:border-4 border-light-bg-secondary dark:border-gray-800 shadow-2xl shadow-light-accent1/20 dark:shadow-primary-500/30">
                   {/* Loading Skeleton */}
                   {!imageLoaded && (
-                    <div className="absolute inset-0 bg-gray-800 animate-pulse rounded-full flex items-center justify-center">
-                      <div className="text-gray-600 text-sm">Loading...</div>
+                    <div className="absolute inset-0 bg-light-bg-secondary dark:bg-gray-800 animate-pulse rounded-full flex items-center justify-center">
+                      <div className="text-light-text-secondary dark:text-gray-600 text-sm">Loading...</div>
                     </div>
                   )}
                   

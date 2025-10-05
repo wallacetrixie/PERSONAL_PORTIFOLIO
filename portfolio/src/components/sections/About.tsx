@@ -3,14 +3,12 @@ import type { Variants } from 'framer-motion';
 import { useRef, useState, useMemo, memo } from 'react';
 import { Code2, Palette, Server, Zap, Award, Users } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import portraitImage from '../../assets/images/Potrait.jpg';
+import portraitImage from '../../assets/images/worksetup.png';
 import { ABOUT_INFO } from '../../constants';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { useCountUp } from '../../hooks/useCountUp';
 
-// ============================================================================
-// CONSTANTS - Extracted magic numbers
-// ============================================================================
+
 const ANIMATION_CONFIG = {
   countUpDuration: 2000,
   observerThreshold: 0.2,
@@ -43,11 +41,7 @@ const SKILLS: Skill[] = [
   { icon: Users, label: 'Collaboration', color: 'text-indigo-600 dark:text-indigo-400' },
 ];
 
-// ============================================================================
-// MEMOIZED COMPONENTS
-// ============================================================================
 
-// Gradient Orb Component - Reusable decoration
 interface GradientOrbProps {
   className: string;
   animationDuration: number;
@@ -83,9 +77,9 @@ interface MetricCardProps {
 
 const MetricCard = memo(({ value, suffix, label, color, isInView, hasBorder = 'none' }: MetricCardProps) => {
   const borderClasses = {
-    left: 'border-l border-gray-200 dark:border-gray-700',
-    right: 'border-r border-gray-200 dark:border-gray-700',
-    both: 'border-x border-gray-200 dark:border-gray-700',
+    left: 'border-l border-light-border dark:border-gray-700',
+    right: 'border-r border-light-border dark:border-gray-700',
+    both: 'border-x border-light-border dark:border-gray-700',
     none: '',
   };
 
@@ -99,7 +93,7 @@ const MetricCard = memo(({ value, suffix, label, color, isInView, hasBorder = 'n
       >
         {value}{suffix}
       </motion.div>
-      <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+      <div className="text-sm text-light-text-secondary dark:text-gray-400 font-medium">
         {label}
       </div>
     </div>
@@ -202,21 +196,21 @@ export const About = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="relative min-h-screen py-20 lg:py-32 overflow-hidden bg-white dark:bg-gray-900"
+      className="relative min-h-screen py-20 lg:py-32 overflow-hidden bg-light-bg dark:bg-gray-900"
       aria-labelledby="about-heading"
     >
       {/* Background Decorative Elements - Optimized */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         {/* Single optimized gradient orb */}
         <GradientOrb
-          className="absolute -top-40 -right-40 w-96 h-96 bg-primary-500/10 dark:bg-primary-500/20 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-96 h-96 bg-light-accent1/5 dark:bg-primary-500/20 rounded-full blur-3xl"
           animationDuration={10}
           prefersReducedMotion={!!prefersReducedMotion}
         />
 
         {/* Abstract geometric shape - simpler animation */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-20 h-20 border-2 border-primary-500/20 rounded-lg"
+          className="absolute top-1/4 left-1/4 w-20 h-20 border-2 border-light-accent1/10 dark:border-primary-500/20 rounded-lg"
           animate={
             prefersReducedMotion
               ? {}
@@ -240,24 +234,24 @@ export const About = () => {
           >
             {/* Section Title */}
             <motion.div variants={itemVariants}>
-              <span className="inline-block text-sm font-semibold tracking-widest uppercase text-primary-600 dark:text-primary-400 mb-3">
+              <span className="inline-block text-sm font-semibold tracking-widest uppercase text-light-accent1 dark:text-primary-400 mb-3">
                 {ABOUT_INFO.tagline}
               </span>
               <h2 
                 id="about-heading"
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins text-light-text dark:text-white"
               >
                 {ABOUT_INFO.title.split(' ')[0]}{' '}
-                <span className="gradient-text">{ABOUT_INFO.title.split(' ')[1]}</span>
+                <span className="bg-gradient-to-r from-light-accent1 via-blue-600 to-light-accent2 dark:from-primary-400 dark:via-primary-500 dark:to-purple-500 text-transparent bg-clip-text">{ABOUT_INFO.title.split(' ')[1]}</span>
               </h2>
             </motion.div>
 
             {/* Introduction Paragraphs - Using constants */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-base sm:text-lg text-light-text-secondary dark:text-gray-300 leading-relaxed">
                 {ABOUT_INFO.intro.paragraph1}
               </p>
-              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-base sm:text-lg text-light-text-secondary dark:text-gray-300 leading-relaxed">
                 {ABOUT_INFO.intro.paragraph2}
               </p>
             </motion.div>
@@ -265,7 +259,7 @@ export const About = () => {
             {/* Metrics - Improved cards */}
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-3 gap-4 sm:gap-6 py-8 border-y border-gray-200 dark:border-gray-700"
+              className="grid grid-cols-3 gap-4 sm:gap-6 py-8 border-y border-light-border dark:border-gray-700"
               role="region"
               aria-label="Professional metrics"
             >
@@ -273,7 +267,7 @@ export const About = () => {
                 value={experienceYears}
                 suffix="+"
                 label="Years Experience"
-                color="text-primary-600 dark:text-primary-400"
+                color="text-light-accent1 dark:text-primary-400"
                 isInView={isInView}
                 hasBorder="none"
               />
@@ -281,7 +275,7 @@ export const About = () => {
                 value={projectsCompleted}
                 suffix="+"
                 label="Projects Done"
-                color="text-purple-600 dark:text-purple-400"
+                color="text-light-accent2 dark:text-purple-400"
                 isInView={isInView}
                 hasBorder="both"
               />
@@ -297,7 +291,7 @@ export const About = () => {
 
             {/* Skills Icons - Improved grid */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+              <h3 className="text-xl font-semibold mb-4 text-light-text dark:text-white">
                 What I Bring to the Table
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
@@ -310,14 +304,14 @@ export const About = () => {
                       variants={prefersReducedMotion ? undefined : skillIconVariants}
                       initial="hidden"
                       animate={isInView ? 'visible' : 'hidden'}
-                      className="flex flex-col items-center gap-2 p-3 sm:p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group cursor-default"
+                      className="flex flex-col items-center gap-2 p-3 sm:p-4 rounded-xl bg-white dark:bg-gray-800/50 hover:bg-light-bg-secondary dark:hover:bg-gray-800 transition-colors group cursor-default shadow-soft dark:shadow-none border border-light-border dark:border-transparent"
                       whileHover={prefersReducedMotion ? {} : { scale: 1.05, y: -5 }}
                     >
                       <Icon
                         className={`w-7 h-7 sm:w-8 sm:h-8 ${skill.color} transition-transform group-hover:scale-110`}
                         aria-hidden="true"
                       />
-                      <span className="text-xs font-medium text-gray-700 dark:text-gray-300 text-center">
+                      <span className="text-xs font-medium text-light-text-secondary dark:text-gray-300 text-center">
                         {skill.label}
                       </span>
                     </motion.div>
@@ -330,14 +324,14 @@ export const About = () => {
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-4">
               <a
                 href={ABOUT_INFO.cta.primary.link}
-                className="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                className="px-6 py-3 bg-light-accent1 hover:bg-blue-600 dark:bg-primary-600 dark:hover:bg-primary-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-soft dark:shadow-lg hover:shadow-soft-shadow-hover-light dark:hover:shadow-xl hover:scale-105"
                 aria-label="View my portfolio projects"
               >
                 {ABOUT_INFO.cta.primary.text}
               </a>
               <a
                 href={ABOUT_INFO.cta.secondary.link}
-                className="px-6 py-3 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg transition-all duration-300"
+                className="px-6 py-3 bg-light-bg-secondary dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-light-text dark:text-white font-semibold rounded-lg transition-all duration-300 shadow-soft dark:shadow-none border border-light-border dark:border-transparent"
                 aria-label="Get in touch via contact form"
               >
                 {ABOUT_INFO.cta.secondary.text}
@@ -354,15 +348,15 @@ export const About = () => {
           >
             {/* Simplified background decoration */}
             <div 
-              className="absolute -inset-4 bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500 rounded-3xl blur-2xl opacity-20" 
+              className="absolute -inset-4 bg-gradient-to-br from-light-accent1 via-light-accent2 to-pink-500 dark:from-primary-500 dark:via-purple-500 dark:to-pink-500 rounded-3xl blur-2xl opacity-10 dark:opacity-20" 
               aria-hidden="true"
             />
             
             {/* Image container */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden shadow-light-card-hover dark:shadow-2xl border border-light-border dark:border-transparent">
               {/* Loading skeleton */}
               {!imageLoaded && (
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-br from-light-bg-secondary to-gray-300 dark:from-gray-800 dark:to-gray-700 animate-pulse" />
               )}
               
               {/* Main image - With dimensions to prevent layout shift */}
@@ -389,7 +383,7 @@ export const About = () => {
 
             {/* Floating badge - Improved accessibility */}
             <motion.div
-              className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700"
+              className="absolute -bottom-6 -left-6 bg-light-card dark:bg-gray-800 rounded-2xl shadow-light-card-hover dark:shadow-xl p-4 sm:p-6 border border-light-border dark:border-gray-700"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.8, duration: 0.6 }}
@@ -397,14 +391,14 @@ export const About = () => {
               aria-label="Current availability status"
             >
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-purple-500 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-light-accent1 to-light-accent2 dark:from-primary-500 dark:to-purple-500 flex items-center justify-center">
                   <Zap className="w-6 h-6 text-white" aria-hidden="true" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                  <div className="text-sm font-semibold text-light-text dark:text-white">
                     Available for Work
                   </div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">
+                  <div className="text-xs text-light-text-secondary dark:text-gray-400">
                     Let's build something great
                   </div>
                 </div>
@@ -419,7 +413,7 @@ export const About = () => {
               {DECORATIVE_DOTS.map((i) => (
                 <div
                   key={i}
-                  className="w-2 h-2 rounded-full bg-primary-500"
+                  className="w-2 h-2 rounded-full bg-light-accent1 dark:bg-primary-500"
                 />
               ))}
             </div>

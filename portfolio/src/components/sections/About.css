@@ -1,0 +1,72 @@
+/* Optimized CSS animations for About section */
+
+/* Gradient orb pulse animation - More performant than JS */
+@keyframes gradient-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* Geometric shape rotation */
+@keyframes geometric-rotate {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+}
+
+/* Apply animations with reduced motion support */
+@media (prefers-reduced-motion: no-preference) {
+  .about-gradient-orb {
+    animation: gradient-pulse 10s ease-in-out infinite;
+  }
+
+  .about-geometric-shape {
+    animation: geometric-rotate 6s ease-in-out infinite;
+  }
+}
+
+/* Pause animations when element is out of view for performance */
+@media (prefers-reduced-motion: no-preference) {
+  .about-section:not(.in-view) .about-gradient-orb,
+  .about-section:not(.in-view) .about-geometric-shape {
+    animation-play-state: paused;
+  }
+}
+
+/* Image hover effect optimization */
+.about-image-container {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-image-container:hover {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-image-container:hover {
+    transform: none;
+  }
+}
+
+/* Skill card hover optimization */
+.about-skill-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-skill-card:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-skill-card:hover {
+    transform: none;
+  }
+}

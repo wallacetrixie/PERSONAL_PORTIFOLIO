@@ -29,6 +29,38 @@ export default {
           pink: '#ec4899',
           green: '#10b981',
         },
+        // Dark mode color palette
+        dark: {
+          bg: '#0a0a0f',
+          'bg-secondary': '#1a1b25',
+          card: '#111827',
+          text: '#f4f4f4',
+          'text-secondary': '#c9c9c9',
+          accent1: '#00c6ff',
+          accent2: '#7a42ff',
+          glow: 'rgba(0, 198, 255, 0.5)',
+          border: 'rgba(255, 255, 255, 0.1)',
+        },
+        // Light mode color palette
+        light: {
+          bg: '#f9fafb',
+          'bg-secondary': '#eaecef',
+          card: '#ffffff',
+          text: '#1f2937',
+          'text-secondary': '#4b5563',
+          accent1: '#2563eb',
+          accent2: '#8b5cf6',
+          glow: 'rgba(37, 99, 235, 0.2)',
+          border: 'rgba(0, 0, 0, 0.1)',
+        },
+      },
+      boxShadow: {
+        'glow-cyan': '0 0 20px rgba(0, 198, 255, 0.5)',
+        'glow-purple': '0 0 20px rgba(122, 66, 255, 0.5)',
+        'glow-blue': '0 0 20px rgba(37, 99, 235, 0.3)',
+        'light-card': '0 2px 12px rgba(0, 0, 0, 0.08)',
+        'light-card-hover': '0 4px 20px rgba(0, 0, 0, 0.12)',
+        'soft': '0 2px 8px rgba(0, 0, 0, 0.1)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

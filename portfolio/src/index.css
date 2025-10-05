@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-inter antialiased;
+    @apply bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text font-inter antialiased transition-colors duration-300;
   }
 
   /* Smooth scroll for reduced motion users */
@@ -27,14 +27,67 @@
     @apply bg-gradient-to-r from-primary-400 via-primary-500 to-purple-500 text-transparent bg-clip-text;
   }
 
+  /* Light mode gradient text */
+  .gradient-text-light {
+    @apply bg-gradient-to-r from-light-accent1 via-blue-600 to-light-accent2 text-transparent bg-clip-text;
+  }
+
+  /* Dark mode gradient text */
+  .gradient-text-dark {
+    @apply bg-gradient-to-r from-dark-accent1 via-cyan-400 to-dark-accent2 text-transparent bg-clip-text;
+  }
+
   /* Glass morphism effect */
   .glass {
     @apply bg-white/10 backdrop-blur-lg border border-white/20;
   }
 
+  .glass-light {
+    @apply bg-white/80 backdrop-blur-lg border border-light-border shadow-light-card;
+  }
+
+  .glass-dark {
+    @apply bg-white/10 backdrop-blur-lg border border-dark-border;
+  }
+
   /* Text shadow for better readability */
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-light {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .text-shadow-dark {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Card styles */
+  .card-light {
+    @apply bg-light-card border border-light-border shadow-light-card hover:shadow-light-card-hover transition-all duration-300;
+  }
+
+  .card-dark {
+    @apply bg-dark-card border border-dark-border shadow-lg hover:shadow-glow-cyan transition-all duration-300;
+  }
+
+  /* Glow effects for dark mode */
+  .glow-cyan-dark {
+    box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
+  }
+
+  .glow-purple-dark {
+    box-shadow: 0 0 20px rgba(122, 66, 255, 0.5);
+  }
+
+  /* Soft shadows for light mode */
+  .soft-shadow-light {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .soft-shadow-hover-light {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   }
 }
 

@@ -1,11 +1,13 @@
 import { Hero } from '../components/sections/Hero';
 import { About } from '../components/sections/About';
+import { Skills } from './Skills';
 
 export const Home = () => {
   return (
     <>
       <Hero />
       <About />
+      <Skills />
 
       {/* Projects Preview Section */}
       <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">

@@ -48,6 +48,39 @@ export const PERSONAL_INFO = {
   availability: 'Available for freelance work',
 };
 
+// About Section Information
+export const ABOUT_INFO = {
+  tagline: 'Get to Know Me',
+  title: 'About Me',
+  intro: {
+    paragraph1: "I'm a Backend Engineer and UI/UX Designer dedicated to creating efficient, and reliable digital experiences. I specialize in designing intuitive interfaces and building robust backend systems that users love and businesses depend on.",
+    paragraph2: "My goal is to bridge the gap between design and functionality, transforming ideas into scalable, high-performing solutions that deliver real impact. I believe that great software is not just about writing code—it's about solving problems and creating meaningful experiences.",
+  },
+  metrics: {
+    experience: 5,
+    projects: 50,
+    clients: 30,
+  },
+  skills: [
+    { name: 'Clean Code', category: 'development' },
+    { name: 'Backend Development', category: 'development' },
+    { name: 'UI/UX Design', category: 'design' },
+    { name: 'Performance Optimization', category: 'development' },
+    { name: 'Quality Assurance', category: 'development' },
+    { name: 'Team Collaboration', category: 'soft-skills' },
+  ],
+  cta: {
+    primary: {
+      text: 'View My Work',
+      link: '#projects',
+    },
+    secondary: {
+      text: "Let's Connect",
+      link: '#contact',
+    },
+  },
+};
+
 // Animation variants for Framer Motion
 export const ANIMATION_VARIANTS = {
   fadeIn: {

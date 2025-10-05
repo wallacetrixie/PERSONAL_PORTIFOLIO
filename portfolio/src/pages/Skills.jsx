@@ -164,11 +164,10 @@ export const Skills = () => {
     }
   ];
 
-  // Split into two sections
+
   const skillCategoriesSection1 = skillCategories.slice(0, 3);
   const skillCategoriesSection2 = skillCategories.slice(3, 6);
 
-  // Soft Skills
   const softSkills = [
     { name: 'Problem Solving', description: 'Creative solutions to complex challenges' },
     { name: 'Team Collaboration', description: 'Effective communication and teamwork' },
@@ -202,39 +201,36 @@ export const Skills = () => {
   return (
     <section 
       id="skills" 
-      className="min-h-screen py-20 relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(to bottom, #0a0e27 0%, #16213e 50%, #0a0e27 100%)'
-      }}
+      className="min-h-screen py-20 relative overflow-hidden bg-gradient-to-b from-light-bg via-white to-light-bg-secondary dark:from-[#0a0e27] dark:via-[#16213e] dark:to-[#0a0e27]"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Glowing Orbs */}
         <motion.div 
-          className="absolute top-20 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"
+          className="absolute top-20 left-1/4 w-96 h-96 bg-light-accent1/5 dark:bg-cyan-500/10 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.3, 1], 
-            opacity: [0.2, 0.4, 0.2],
+            opacity: [0.1, 0.2, 0.1],
             x: [0, 50, 0],
             y: [0, 30, 0]
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div 
-          className="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+          className="absolute bottom-20 right-1/4 w-96 h-96 bg-light-accent2/5 dark:bg-purple-500/10 rounded-full blur-3xl"
           animate={{ 
             scale: [1.3, 1, 1.3], 
-            opacity: [0.4, 0.2, 0.4],
+            opacity: [0.2, 0.1, 0.2],
             x: [0, -50, 0],
             y: [0, -30, 0]
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div 
-          className="absolute top-1/2 right-1/3 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute top-1/2 right-1/3 w-72 h-72 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.2, 1], 
-            opacity: [0.3, 0.5, 0.3]
+            opacity: [0.15, 0.25, 0.15]
           }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -252,19 +248,15 @@ export const Skills = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h2 
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight bg-gradient-to-r from-light-accent1 via-light-accent2 to-pink-500 dark:from-cyan-400 dark:via-purple-500 dark:to-pink-500 bg-clip-text text-transparent"
             style={{
-              background: 'linear-gradient(135deg, #22d3ee 0%, #a855f7 50%, #ec4899 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              textShadow: '0 0 80px rgba(168, 85, 247, 0.5)'
+              textShadow: '0 0 40px rgba(37, 99, 235, 0.2)'
             }}
           >
             SKILLS
           </motion.h2>
           <motion.p 
-            className="text-2xl md:text-3xl font-semibold text-white/90"
+            className="text-2xl md:text-3xl font-semibold text-light-text dark:text-white/90"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.3, duration: 0.8 }}

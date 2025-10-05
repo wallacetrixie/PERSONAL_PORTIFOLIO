@@ -1,19 +1,11 @@
 import { Hero } from '../components/sections/Hero';
+import { About } from '../components/sections/About';
 
 export const Home = () => {
   return (
     <>
       <Hero />
-      
-      {/* About Section - This will be scrolled to from Hero */}
-      <section id="about" className="py-20 bg-white dark:bg-gray-800">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">About Me</h2>
-          <p className="text-center text-gray-600 dark:text-gray-400">
-            More content coming soon...
-          </p>
-        </div>
-      </section>
+      <About />
 
       {/* Projects Preview Section */}
       <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">

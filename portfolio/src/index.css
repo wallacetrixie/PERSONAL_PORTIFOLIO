@@ -10,7 +10,9 @@
   }
 
   body {
-    @apply bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text font-inter antialiased transition-colors duration-300;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Smooth scroll for reduced motion users */
@@ -18,6 +20,12 @@
     html {
       scroll-behavior: auto;
     }
+  }
+}
+
+@layer components {
+  body {
+    @apply bg-[#f9fafb] dark:bg-[#0a0a0f] text-[#1f2937] dark:text-[#f4f4f4] transition-colors duration-300;
   }
 }
 

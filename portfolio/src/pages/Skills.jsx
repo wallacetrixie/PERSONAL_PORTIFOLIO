@@ -137,31 +137,32 @@ export const Skills = () => {
         'App Performance'
       ]
     },
-    {
-      id: 'performance',
-      title: 'Performance & Testing',
-      tagline: 'Optimizing apps for speed, reliability, and quality',
+     {
+      id: 'network',
+      title: 'Network Engineering',
+      tagline: 'Designing and securing robust network infrastructure',
       color: 'pink',
       position: 'right',
       rotation: -2,
       techIcons: [
-        { name: 'Jest', icon: '🧪' },
-        { name: 'Lighthouse', icon: '🔦' },
-        { name: 'Webpack', icon: '📦' }
+        { name: 'Cisco', icon: '🌐' },
+        { name: 'Security', icon: '🔒' },
+        { name: 'Routing', icon: '🔀' }
       ],
       technologies: [
-        'Jest',
-        'React Testing Library',
-        'Vitest',
-        'Lighthouse',
-        'Web Vitals',
-        'Webpack',
-        'Code Splitting',
-        'Lazy Loading',
-        'Performance Monitoring',
-        'SEO Optimization'
+        'Cisco Networking',
+        'TCP/IP',
+        'VPN Configuration',
+        'Firewall Management',
+        'DNS & DHCP',
+        'Network Security',
+        'Routing & Switching',
+        'Load Balancing',
+        'Network Monitoring',
+        'Wireshark'
       ]
     }
+
   ];
 
 

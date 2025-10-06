@@ -4,8 +4,8 @@ import type { NavLink, SocialLink, Project } from '../types';
 export const NAV_LINKS: NavLink[] = [
   { id: '1', label: 'Home', path: '/' },
   { id: '2', label: 'About', path: '/#about' },
-  { id: '3', label: 'Projects', path: '/projects' },
-  { id: '4', label: 'Skills', path: '/skills' },
+  { id: '3', label: 'Skills', path: '/skills' },
+  { id: '4', label: 'Projects', path: '/projects' },
   { id: '5', label: 'Contact', path: '/contact' },
 ];
 

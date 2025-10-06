@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Moon, Sun, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Moon, Sun, Github, Linkedin, Mail, Code2 } from 'lucide-react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { NAV_LINKS } from '../../constants';
+import { NAV_LINKS, PERSONAL_INFO } from '../../constants';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
@@ -143,12 +143,15 @@ export const Navbar = () => {
                   }}
                 />
                 
-                <div className="relative text-2xl lg:text-3xl font-bold font-poppins">
+                <div className="relative flex items-center gap-2 text-2xl lg:text-3xl font-bold font-poppins">
+                  {/* Developer Avatar Logo */}
+                  <div className="flex-shrink-0 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-br from-light-accent1 via-blue-500 to-emerald-500 dark:from-cyan-500 dark:via-blue-500 dark:to-emerald-500 flex items-center justify-center shadow-lg">
+                    <Code2 className="w-5 h-5 lg:w-6 lg:h-6 text-white" strokeWidth={2.5} />
+                  </div>
+                  
+                  {/* Brand Name */}
                   <span className="bg-gradient-to-r from-light-accent1 via-blue-500 to-emerald-500 dark:from-cyan-500 dark:via-blue-500 dark:to-emerald-500 bg-clip-text text-transparent">
-                    Wallace
-                  </span>
-                  <span className="text-light-text dark:text-white ml-1">
-                    Wambulwa
+                    walify
                   </span>
                 </div>
               </motion.div>

@@ -23,6 +23,18 @@ export const Navbar = () => {
     setIsMenuOpen(false);
   }, [location]);
 
+  // Handle hash navigation
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [location]);
+
   // Close mobile menu on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -145,7 +157,8 @@ export const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
               {NAV_LINKS.map((link) => {
-                const isActive = location.pathname === link.path;
+                const isActive = location.pathname === link.path || 
+                  (link.path.includes('#') && location.pathname === '/' && location.hash === link.path.split('#')[1] ? `#${location.hash.split('#')[1]}` : '');
                 
                 return (
                   <Link
@@ -326,7 +339,8 @@ export const Navbar = () => {
                 <nav className="flex-1 px-6 py-8" aria-label="Mobile navigation">
                   <ul className="space-y-2">
                     {NAV_LINKS.map((link, index) => {
-                      const isActive = location.pathname === link.path;
+                      const isActive = location.pathname === link.path || 
+                        (link.path.includes('#') && location.pathname === '/' && location.hash === link.path.split('#')[1] ? `#${location.hash.split('#')[1]}` : '');
                       
                       return (
                         <motion.li

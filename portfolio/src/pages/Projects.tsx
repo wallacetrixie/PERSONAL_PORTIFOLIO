@@ -1,14 +1,15 @@
 import { Section } from '../components/ui/Section';
+import { ProjectsSection } from '../components/sections/ProjectsSection';
 
 export const Projects = () => {
   return (
-    <Section id="projects">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold font-poppins mb-8">My Projects</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-          This page is under construction. Check back soon to see my portfolio of projects.
-        </p>
-      </div>
+    <Section id="projects" className="min-h-screen bg-light-bg dark:bg-dark-bg">
+      <ProjectsSection 
+        showHeader={true}
+        showFilter={true}
+        showStats={true}
+        showCTA={true}
+      />
     </Section>
   );
 };

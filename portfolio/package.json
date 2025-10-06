@@ -1,13 +1,23 @@
 {
   "name": "portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "Personal portfolio website for Wallace Wambulwa showcasing projects, skills, and experience",
+  "author": "Wallace Wambulwa <wallacewambulwa@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wallacetrixie/PERSONAL_PORTIFOLIO"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,md}\""
   },
   "dependencies": {
     "framer-motion": "^12.23.22",

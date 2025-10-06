@@ -67,8 +67,8 @@ export const Footer = () => {
           {/* About Section */}
           <div className="lg:col-span-1">
             <h3 className="text-2xl font-bold font-poppins mb-4">
-              <span className="text-primary-600 dark:text-primary-400">W</span>
-              <span className="text-gray-900 dark:text-white">allace</span>
+            
+              <span className="text-gray-900 dark:text-white">Wallace</span>
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
               {PERSONAL_INFO.bio}
@@ -214,11 +214,7 @@ export const Footer = () => {
               </Link>
             </div>
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
-            <span>Crafted with</span>
-            <Heart className="w-4 h-4 text-red-500 fill-current animate-pulse" />
-            <span>using React & Tailwind CSS</span>
-          </p>
+     
         </div>
       </div>
     </footer>

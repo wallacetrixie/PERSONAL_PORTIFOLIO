@@ -10,11 +10,12 @@ export interface Project {
   category: ProjectCategory;
   githubUrl?: string;
   liveUrl?: string;
+  demoUrl?: string;
   featured: boolean;
-  date: string;
+  date?: string;
 }
 
-export type ProjectCategory = 'web' | 'mobile' | 'fullstack' | 'design' | 'other';
+export type ProjectCategory = 'frontend' | 'backend' | 'fullstack' | 'web' | 'mobile' | 'design' | 'other';
 
 export interface Skill {
   id: string;

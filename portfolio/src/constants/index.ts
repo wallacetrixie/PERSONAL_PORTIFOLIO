@@ -1,5 +1,16 @@
 import type { NavLink, SocialLink, Project } from '../types';
 
+// Import project images at highest quality
+import greenStoreImg from '../assets/images/project1 GREEN STORE.png';
+import aiHealthImg from '../assets/images/project 2 AI Health companion.png';
+import solutionHubImg from '../assets/images/project 3 SolutionHub.png';
+import forAuthImg from '../assets/images/project 4 ForAuth.png';
+import taskifyImg from '../assets/images/project 5 Taskify.png';
+import eventManagementImg from '../assets/images/project 6 EVENT_MANAGEMENT_SYSTEM.png';
+import resumeMakerImg from '../assets/images/project 7 RESUME-MAKER.png';
+import contentGuardImg from '../assets/images/project 8 Conten Guard.png';
+import chatAppImg from '../assets/images/project 9 CHAT APP.png';
+
 // Navigation links
 export const NAV_LINKS: NavLink[] = [
   { id: '1', label: 'Home', path: '/' },
@@ -142,7 +153,7 @@ export const PROJECTS: Project[] = [
     description: 'A digital marketplace offering eco-friendly products like sustainable tools and meals. Features include product browsing, shopping cart, secure checkout with Stripe integration, and a fully responsive design.',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'REST API', 'Stripe UI', 'Responsive Design'],
     category: 'frontend',
-    image: '/src/assets/images/project1 GREEN STORE.png',
+    image: greenStoreImg,
     githubUrl: 'https://github.com/wallacetrixie',
     liveUrl: 'https://example.com',
     featured: true,
@@ -153,7 +164,7 @@ export const PROJECTS: Project[] = [
     description: 'A job-searching platform that helps applicants find work and employers post opportunities. Features advanced search filters, user profiles, application tracking, and an intuitive UI/UX.',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'React Router', 'State Management', 'UI/UX Design'],
     category: 'frontend',
-    image: '/src/assets/images/project 5 Taskify.png',
+    image: taskifyImg,
     githubUrl: 'https://github.com/wallacetrixie',
     demoUrl: 'https://example.com',
     featured: false,
@@ -164,7 +175,7 @@ export const PROJECTS: Project[] = [
     description: 'Web app that lets users build professional resumes via templates, live preview, and export to PDF. Includes customizable sections, multiple template options, and client-side PDF generation.',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Template System', 'PDF Export', 'UX Principles'],
     category: 'frontend',
-    image: '/src/assets/images/project 7 RESUME-MAKER.png',
+    image: resumeMakerImg,
     githubUrl: 'https://github.com/wallacetrixie',
     liveUrl: 'https://example.com',
     featured: false,
@@ -176,7 +187,7 @@ export const PROJECTS: Project[] = [
     description: 'Authentication & authorization system with JWT/OAuth support, role-based access control, password hashing, session management, and security best practices for enterprise applications.',
     technologies: ['Node.js', 'Express', 'MySQL/MongoDB', 'JWT', 'OAuth', 'Security'],
     category: 'backend',
-    image: '/src/assets/images/project 4 ForAuth.png',
+    image: forAuthImg,
     githubUrl: 'https://github.com/wallacetrixie',
     featured: true,
   },
@@ -186,7 +197,7 @@ export const PROJECTS: Project[] = [
     description: 'Backend engine for health data and AI-driven insights. Processes user health metrics, provides personalized recommendations, and integrates with external health APIs.',
     technologies: ['Node.js', 'Express', 'MongoDB', 'REST API', 'Data Validation', 'AI Integration'],
     category: 'backend',
-    image: '/src/assets/images/project 2 AI Health companion.png',
+    image: aiHealthImg,
     githubUrl: 'https://github.com/wallacetrixie',
     featured: false,
   },
@@ -196,7 +207,7 @@ export const PROJECTS: Project[] = [
     description: 'Detect plagiarism and AI-generated content with comprehensive reports via admin dashboard. Uses NLP algorithms to analyze text similarity and identify potential issues.',
     technologies: ['Node.js', 'Express', 'MySQL/MongoDB', 'NLP', 'Text Analysis', 'Admin Dashboard'],
     category: 'backend',
-    image: '/src/assets/images/project 8 Conten Guard.png',
+    image: contentGuardImg,
     githubUrl: 'https://github.com/wallacetrixie',
     featured: false,
   },
@@ -206,7 +217,7 @@ export const PROJECTS: Project[] = [
     description: 'Platform connecting freelancers & clients with job posting, user profiles, secure payments, rating system, and real-time notifications for seamless collaboration.',
     technologies: ['Node.js', 'Express', 'MySQL', 'Authentication', 'Payment Gateway', 'Real-time'],
     category: 'backend',
-    image: '/src/assets/images/project 3 SolutionHub.png',
+    image: solutionHubImg,
     githubUrl: 'https://github.com/wallacetrixie',
     liveUrl: 'https://example.com',
     featured: true,
@@ -217,7 +228,7 @@ export const PROJECTS: Project[] = [
     description: 'Real-time messaging application via WebSockets with message persistence, user presence, typing indicators, file sharing, and role-based chat rooms.',
     technologies: ['Node.js', 'Express', 'Socket.io', 'MongoDB', 'Redis', 'WebSocket', 'Real-time Events'],
     category: 'backend',
-    image: '/src/assets/images/project 9 CHAT APP.png',
+    image: chatAppImg,
     githubUrl: 'https://github.com/wallacetrixie',
     demoUrl: 'https://example.com',
     featured: false,
@@ -228,7 +239,7 @@ export const PROJECTS: Project[] = [
     description: 'Comprehensive event management platform with ticketing, attendee registration, event scheduling, payment processing, and admin analytics dashboard.',
     technologies: ['Node.js', 'Express', 'MySQL', 'REST API', 'Payment Integration', 'Admin Panel'],
     category: 'backend',
-    image: '/src/assets/images/project 6 EVENT_MANAGEMENT_SYSTEM.png',
+    image: eventManagementImg,
     githubUrl: 'https://github.com/wallacetrixie',
     featured: false,
   },

@@ -11,13 +11,17 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
     <div className="group relative bg-white dark:bg-dark-card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full">
       {/* Image Container */}
       <div className="relative h-64 overflow-hidden bg-gray-200 dark:bg-gray-800">
-        <motion.img
+        <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover object-center"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-          loading="lazy"
+          className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+          loading="eager"
+          decoding="async"
+          style={{
+            imageRendering: '-webkit-optimize-contrast',
+            WebkitBackfaceVisibility: 'hidden',
+            backfaceVisibility: 'hidden',
+          } as React.CSSProperties}
         />
         
         {/* Overlay on Hover */}

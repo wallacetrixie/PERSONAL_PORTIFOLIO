@@ -1,25 +1,42 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
-// https://vite.dev/config/
+
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: 5173,
-    strictPort: false,
-    host: true, // Listen on all addresses including LAN
-    open: false,
-    cors: true,
-    hmr: {
-      overlay: true,
-      clientPort: 5173,
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
     },
   },
-  preview: {
-    port: 4173,
-    strictPort: false,
-    host: true,
-    open: false,
-    cors: true,
+  build: {
+  
+    assetsInlineLimit: 0,
+
+    chunkSizeWarningLimit: 1500,
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          let extType = assetInfo.name?.split('.').pop() || '';
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp/i.test(extType)) {
+            extType = 'img';
+          }
+          return `assets/${extType}/[name]-[hash][extname]`;
+        },
+        // Optimize chunk splitting
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+      },
+    },
+  },
+  // Ensure proper asset handling - no compression or quality loss
+  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.webp'],
+  // Optimize dependencies that include images
+  optimizeDeps: {
+    exclude: ['@assets'],
   },
 })

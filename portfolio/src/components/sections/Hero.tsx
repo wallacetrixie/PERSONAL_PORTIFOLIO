@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { ChevronDown, Download, Mail, ArrowRight } from 'lucide-react';
+import { ChevronDown, Mail, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { PERSONAL_INFO } from '../../constants';
 import { useTypingEffect } from '../../hooks/useTypingEffect';
@@ -263,24 +263,6 @@ export const Hero = () => {
                 <Mail className="w-5 h-5" />
                 Let's Talk
               </motion.a>
-            </motion.div>
-
-            {/* Download CV Link - Subtle Text Link */}
-            <motion.div
-              className="flex items-center gap-4 text-sm justify-center lg:justify-start"
-              initial={prefersReducedMotion ? {} : { opacity: 0 }}
-              animate={prefersReducedMotion || isTaglineComplete ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <a
-                href="/resume.pdf"
-                download
-                aria-label="Download my resume as PDF"
-                className="text-light-text-secondary dark:text-gray-300 hover:text-light-accent1 dark:hover:text-primary-400 transition-colors flex items-center gap-2 group"
-              >
-                <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
-                Download Resume
-              </a>
             </motion.div>
 
             {/* Social Proof Stats */}

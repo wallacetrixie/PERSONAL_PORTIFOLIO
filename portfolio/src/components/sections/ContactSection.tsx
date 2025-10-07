@@ -5,6 +5,7 @@ import { z } from 'zod';
 import axios from 'axios';
 import { Button } from '../ui/Button';
 import { PERSONAL_INFO } from '../../constants';
+import { API_ENDPOINTS } from '../../utils/api';
 
 const contactSchema = z.object({
   name: z.string()
@@ -57,9 +58,7 @@ export const ContactSection = ({
       const validatedData = contactSchema.parse(formData);
       setIsSubmitting(true);
 
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-
-      const response = await axios.post(`${API_URL}/api/contact`, validatedData, {
+      const response = await axios.post(API_ENDPOINTS.CONTACT, validatedData, {
         headers: {
           'Content-Type': 'application/json',
         },

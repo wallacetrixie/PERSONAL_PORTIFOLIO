@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
+import { API_ENDPOINTS, apiClient, getAuthToken, setAuthToken, removeAuthToken } from '../utils/api';
 
 interface Admin {
   id: number;
@@ -20,8 +21,6 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [admin, setAdmin] = useState<Admin | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -33,33 +32,23 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const verifyAuth = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = getAuthToken();
       
       if (!token) {
         setIsLoading(false);
         return;
       }
 
-      const response = await fetch(`${API_URL}/api/auth/verify`, {
-        method: 'GET',
+      const data = await apiClient.get(API_ENDPOINTS.VERIFY, {
         headers: {
-          'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
-        },
-        credentials: 'include'
+        }
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        setAdmin(data.data.admin);
-      } else {
-        // Token invalid, clear it
-        localStorage.removeItem('adminToken');
-        setAdmin(null);
-      }
+      setAdmin(data.data.admin);
     } catch (error) {
       console.error('Auth verification failed:', error);
-      localStorage.removeItem('adminToken');
+      removeAuthToken();
       setAdmin(null);
     } finally {
       setIsLoading(false);
@@ -68,23 +57,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async (email: string, password: string, rememberMe: boolean = false) => {
     try {
-      const response = await fetch(`${API_URL}/api/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include',
-        body: JSON.stringify({ email, password, rememberMe })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Login failed');
-      }
+      const data = await apiClient.post(API_ENDPOINTS.LOGIN, { email, password, rememberMe });
 
       // Store token
-      localStorage.setItem('adminToken', data.data.token);
+      setAuthToken(data.data.token);
       
       // Set admin
       setAdmin(data.data.admin);
@@ -98,23 +74,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = getAuthToken();
 
       if (token) {
-        await fetch(`${API_URL}/api/auth/logout`, {
-          method: 'POST',
+        await apiClient.post(API_ENDPOINTS.LOGOUT, undefined, {
           headers: {
-            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
-          },
-          credentials: 'include'
+          }
         });
       }
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
       // Clear local state regardless of API call success
-      localStorage.removeItem('adminToken');
+      removeAuthToken();
       setAdmin(null);
     }
   };

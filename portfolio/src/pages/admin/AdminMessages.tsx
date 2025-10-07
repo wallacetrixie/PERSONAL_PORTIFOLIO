@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Mail, Search, Trash2, Eye, Archive } from 'lucide-react';
 import { AdminSidebar } from '../../components/admin/AdminSidebar';
 import { AdminHeader } from '../../components/admin/AdminHeader';
+import { API_ENDPOINTS, apiClient, getAuthToken } from '../../utils/api';
 
 interface Contact {
   id: number;
@@ -33,16 +34,20 @@ export const AdminMessages = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch('http://localhost:5000/api/contacts');
-      const data = await response.json();
+      const token = getAuthToken();
+      const data = await apiClient.get(API_ENDPOINTS.CONTACTS, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       
       if (data.success) {
         setContacts(data.data);
       } else {
         setError(data.message || 'Failed to fetch contacts');
       }
-    } catch (err) {
-      setError('Failed to connect to server. Please ensure the backend is running.');
+    } catch (err: any) {
+      setError(err.message || 'Failed to connect to server. Please ensure the backend is running.');
       console.error('Error fetching contacts:', err);
     } finally {
       setLoading(false);
@@ -51,15 +56,16 @@ export const AdminMessages = () => {
 
   const updateContactStatus = async (id: number, status: Contact['status']) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/contacts/${id}/status`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ status }),
-      });
-      
-      const data = await response.json();
+      const token = getAuthToken();
+      const data = await apiClient.patch(
+        API_ENDPOINTS.CONTACT_STATUS(id),
+        { status },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      );
       
       if (data.success) {
         setContacts(contacts.map(contact => 
@@ -71,19 +77,23 @@ export const AdminMessages = () => {
       } else {
         alert(data.message || 'Failed to update status');
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error updating status:', err);
-      alert('Failed to update status');
+      alert(err.message || 'Failed to update status');
     }
   };
 
   const deleteContact = async (id: number) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/contacts/${id}`, {
-        method: 'DELETE',
-      });
-      
-      const data = await response.json();
+      const token = getAuthToken();
+      const data = await apiClient.delete(
+        API_ENDPOINTS.CONTACT_BY_ID(id),
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      );
       
       if (data.success) {
         setContacts(contacts.filter(contact => contact.id !== id));
@@ -94,9 +104,9 @@ export const AdminMessages = () => {
       } else {
         alert(data.message || 'Failed to delete contact');
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error deleting contact:', err);
-      alert('Failed to delete contact');
+      alert(err.message || 'Failed to delete contact');
     }
   };
 

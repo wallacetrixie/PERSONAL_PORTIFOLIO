@@ -30,7 +30,8 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.5",
     "nodemailer": "^7.0.9",
-    "uuid": "^13.0.0"
+    "uuid": "^13.0.0",
+    "xss": "^1.0.14"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

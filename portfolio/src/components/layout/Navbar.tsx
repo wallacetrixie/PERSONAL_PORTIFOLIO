@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Moon, Sun, Github, Linkedin, Mail, Code2 } from 'lucide-react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { NAV_LINKS, PERSONAL_INFO } from '../../constants';
+import { NAV_LINKS } from '../../constants';
 import { useDarkMode } from '../../hooks/useDarkMode';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
@@ -160,14 +160,25 @@ export const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
               {NAV_LINKS.map((link) => {
-                const isActive = location.pathname === link.path || 
-                  (link.path.includes('#') && location.pathname === '/' && location.hash === link.path.split('#')[1] ? `#${location.hash.split('#')[1]}` : '');
+                const hash = link.path.includes('#') ? link.path.split('#')[1] : '';
+                const isActive = location.hash === `#${hash}` || (hash === 'hero' && !location.hash);
+                
+                const handleClick = (e: React.MouseEvent) => {
+                  e.preventDefault();
+                  const element = document.getElementById(hash);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    window.history.pushState(null, '', `#${hash}`);
+                  }
+                };
                 
                 return (
-                  <Link
+                  <a
                     key={link.id}
-                    to={link.path}
+                    href={link.path}
+                    onClick={handleClick}
                     className="relative px-4 py-2 group"
+                    aria-current={isActive ? 'page' : undefined}
                   >
                     <motion.div
                       whileHover={{ y: -2 }}
@@ -195,7 +206,7 @@ export const Navbar = () => {
                         style={{ originX: 0 }}
                       />
                     </motion.div>
-                  </Link>
+                  </a>
                 );
               })}
             </div>
@@ -342,8 +353,18 @@ export const Navbar = () => {
                 <nav className="flex-1 px-6 py-8" aria-label="Mobile navigation">
                   <ul className="space-y-2">
                     {NAV_LINKS.map((link, index) => {
-                      const isActive = location.pathname === link.path || 
-                        (link.path.includes('#') && location.pathname === '/' && location.hash === link.path.split('#')[1] ? `#${location.hash.split('#')[1]}` : '');
+                      const hash = link.path.includes('#') ? link.path.split('#')[1] : '';
+                      const isActive = location.hash === `#${hash}` || (hash === 'hero' && !location.hash);
+                      
+                      const handleClick = (e: React.MouseEvent) => {
+                        e.preventDefault();
+                        const element = document.getElementById(hash);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          window.history.pushState(null, '', `#${hash}`);
+                          setIsMenuOpen(false);
+                        }
+                      };
                       
                       return (
                         <motion.li
@@ -353,14 +374,15 @@ export const Navbar = () => {
                           initial="closed"
                           animate="open"
                         >
-                          <Link
-                            to={link.path}
-                            onClick={() => setIsMenuOpen(false)}
+                          <a
+                            href={link.path}
+                            onClick={handleClick}
                             className={`block px-4 py-4 rounded-lg font-medium text-lg transition-all duration-300 ${
                               isActive
                                 ? 'bg-gradient-to-r from-light-accent1 to-blue-600 dark:from-cyan-500 dark:to-blue-500 text-white shadow-soft-shadow-light dark:shadow-lg'
                                 : 'text-light-text dark:text-gray-300 hover:bg-light-bg-secondary dark:hover:bg-gray-800'
                             }`}
+                            aria-current={isActive ? 'page' : undefined}
                           >
                             <motion.div
                               whileHover={{ x: 8 }}
@@ -368,7 +390,7 @@ export const Navbar = () => {
                             >
                               {link.label}
                             </motion.div>
-                          </Link>
+                          </a>
                         </motion.li>
                       );
                     })}

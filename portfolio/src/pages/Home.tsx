@@ -7,11 +7,21 @@ import { Skills } from './Skills';
 export const Home = () => {
   return (
     <>
-      <Hero />
-      <About />
-      <Skills />
-      <ProjectsSection />
-      <ContactSection />
+      <section id="hero">
+        <Hero />
+      </section>
+      <section id="about">
+        <About />
+      </section>
+      <section id="skills">
+        <Skills />
+      </section>
+      <section id="projects">
+        <ProjectsSection />
+      </section>
+      <section id="contact">
+        <ContactSection />
+      </section>
     </>
   );
 };

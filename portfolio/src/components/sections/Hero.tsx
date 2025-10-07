@@ -171,9 +171,9 @@ export const Hero = () => {
               </motion.a>
             </motion.div>
 
-            {/* Social Proof Stats */}
+            {/* Social Proof Stats - Hidden on small screens */}
             <motion.div
-              className="flex flex-wrap gap-6 pt-6 border-t border-light-border dark:border-gray-800 justify-center lg:justify-start"
+              className="hidden md:flex flex-wrap gap-6 pt-6 border-t border-light-border dark:border-gray-800 justify-center lg:justify-start"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={prefersReducedMotion || isComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.7 }}
@@ -284,17 +284,18 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Prompt */}
+      {/* Scroll Prompt - Hidden on small screens */}
       <motion.button
         onClick={scrollToNextSection}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-300 hover:text-primary-400 transition-colors group cursor-pointer"
+        className="hidden md:flex absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 flex-col items-center justify-center gap-2 text-light-text-secondary dark:text-gray-300 hover:text-light-accent1 dark:hover:text-primary-400 transition-colors duration-300 group cursor-pointer z-20"
         initial={prefersReducedMotion ? {} : { opacity: 0, y: -20 }}
         animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
         aria-label="Scroll down to next section"
       >
-        <span className="text-sm font-medium">Scroll Down</span>
+        <span className="text-xs md:text-sm font-medium text-center">Scroll Down</span>
         <motion.div
+          className="flex items-center justify-center"
           animate={
             prefersReducedMotion
               ? {}
@@ -304,7 +305,7 @@ export const Hero = () => {
           }
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <ChevronDown className="w-6 h-6 group-hover:text-primary-400 transition-colors" />
+          <ChevronDown className="w-6 h-6 md:w-7 md:h-7 group-hover:text-light-accent1 dark:group-hover:text-primary-400 transition-colors" />
         </motion.div>
       </motion.button>
     </section>

@@ -22,9 +22,9 @@ export const Skills = () => {
       className="min-h-screen py-20 relative overflow-hidden bg-gradient-to-b from-light-bg via-white to-light-bg-secondary dark:from-[#0a0e27] dark:via-[#16213e] dark:to-[#0a0e27]"
       aria-labelledby="skills-heading"
     >
-      {/* Animated Background Elements */}
+      {/* Animated Background Elements - Optimized for mobile */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        {/* Glowing Orbs */}
+        {/* Glowing Orbs - Static on mobile, animated on desktop */}
         <motion.div 
           className="absolute top-20 left-1/4 w-96 h-96 bg-light-accent1/5 dark:bg-cyan-500/10 rounded-full blur-3xl"
           animate={{ 
@@ -59,12 +59,12 @@ export const Skills = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* Header - Faster animations */}
         <motion.div 
           className="text-center mb-20"
           initial={{ opacity: 0, y: -30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
         >
           <motion.h1 
             id="skills-heading"
@@ -79,7 +79,7 @@ export const Skills = () => {
             className="text-xl sm:text-2xl md:text-3xl font-semibold text-light-text dark:text-white/90"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
           >
             Skills & Technologies
           </motion.p>

@@ -31,8 +31,8 @@ export const SoftSkillsGrid = ({ skills }: SoftSkillsGridProps) => {
       className="mt-32 mb-12"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.4 }}
     >
       <h3 className="text-3xl md:text-4xl font-bold text-center mb-4 text-light-text dark:text-white">
         Core Competencies
@@ -103,7 +103,7 @@ export const SoftSkillsGrid = ({ skills }: SoftSkillsGridProps) => {
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-light-bg dark:from-dark-bg to-transparent pointer-events-none" />
       </div>
 
-      {/* Mobile List View */}
+      {/* Mobile List View - Faster animations */}
       <div className="lg:hidden px-4 max-w-3xl mx-auto space-y-6">
         {skills.map((skill, index) => (
           <motion.div
@@ -112,7 +112,7 @@ export const SoftSkillsGrid = ({ skills }: SoftSkillsGridProps) => {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
+            transition={{ delay: index * 0.05, duration: 0.3 }}
           >
             <div className="flex-shrink-0 mt-1">
               <div className="w-6 h-6 rounded-full bg-gradient-to-r from-primary-500 to-accent-purple flex items-center justify-center">

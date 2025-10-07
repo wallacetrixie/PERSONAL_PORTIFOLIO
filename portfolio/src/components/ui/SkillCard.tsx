@@ -16,12 +16,13 @@ export const SkillCard = ({
   customVariants,
   style 
 }: SkillCardProps) => {
+  // Faster, more instant animations
   const cardVariants = customVariants || {
     hidden: { 
       opacity: 0, 
-      scale: 0.8,
-      rotateY: -20,
-      y: 50
+      scale: 0.9,
+      rotateY: -10,
+      y: 20
     },
     visible: {
       opacity: 1,
@@ -29,10 +30,11 @@ export const SkillCard = ({
       rotateY: 0,
       y: 0,
       transition: {
-        delay: index * 0.3,
-        duration: 0.8,
+        delay: index * 0.1,
+        duration: 0.4,
         type: 'spring',
-        stiffness: 100
+        stiffness: 150,
+        damping: 20
       }
     }
   };
@@ -61,7 +63,7 @@ export const SkillCard = ({
           {category.tagline}
         </p>
 
-        {/* Tech Icons */}
+        {/* Tech Icons - Faster animations */}
         <div className="tech-icons" role="list" aria-label="Featured technologies">
           {category.techIcons.map((tech, idx) => (
             <motion.div
@@ -70,7 +72,7 @@ export const SkillCard = ({
               role="listitem"
               initial={{ opacity: 0, scale: 0 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 1 + index * 0.3 + idx * 0.1 }}
+              transition={{ delay: 0.3 + index * 0.1 + idx * 0.05, duration: 0.3 }}
               whileHover={{ 
                 scale: 1.2, 
                 rotate: 360,
@@ -84,7 +86,7 @@ export const SkillCard = ({
           ))}
         </div>
 
-        {/* Technologies List */}
+        {/* Technologies List - Faster animations */}
         <div className="technologies-list" role="list" aria-label="Technology stack">
           {category.technologies.map((tech, idx) => (
             <motion.span
@@ -93,7 +95,7 @@ export const SkillCard = ({
               role="listitem"
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 1.2 + index * 0.3 + idx * 0.05 }}
+              transition={{ delay: 0.4 + index * 0.1 + idx * 0.03, duration: 0.3 }}
             >
               {tech}
             </motion.span>

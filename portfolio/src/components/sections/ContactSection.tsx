@@ -1,9 +1,27 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, AlertCircle } from 'lucide-react';
+import { z } from 'zod';
 import { Button } from '../ui/Button';
 import { PERSONAL_INFO } from '../../constants';
-import type { ContactFormData } from '../../types';
+
+// Zod validation schema
+const contactSchema = z.object({
+  name: z.string()
+    .min(2, 'Name must be at least 2 characters')
+    .max(100, 'Name must be less than 100 characters'),
+  email: z.string()
+    .email('Please enter a valid email address'),
+  subject: z.string()
+    .min(5, 'Subject must be at least 5 characters')
+    .max(200, 'Subject must be less than 200 characters'),
+  message: z.string()
+    .min(10, 'Message must be at least 10 characters')
+    .max(1000, 'Message must be less than 1000 characters'),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+type ValidationErrors = Partial<Record<keyof ContactFormData, string>>;
 
 interface ContactSectionProps {
   showHeader?: boolean;
@@ -21,40 +39,78 @@ export const ContactSection = ({
     message: '',
   });
 
+  const [errors, setErrors] = useState<ValidationErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // TODO: Implement actual form submission (e.g., to a backend API or email service)
-    console.log('Form submitted:', formData);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitMessage('Thank you! Your message has been sent successfully.');
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+    setErrors({});
+    setSubmitStatus({ type: null, message: '' });
+
+    // Validate form data
+    try {
+      const validatedData = contactSchema.parse(formData);
+      setIsSubmitting(true);
+
+      // Submit to backend API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(validatedData),
       });
-      
-      // Clear message after 5 seconds
-      setTimeout(() => setSubmitMessage(''), 5000);
-    }, 1000);
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!',
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        // Handle validation errors
+        const fieldErrors: ValidationErrors = {};
+        error.issues.forEach((issue) => {
+          if (issue.path[0]) {
+            fieldErrors[issue.path[0] as keyof ContactFormData] = issue.message;
+          }
+        });
+        setErrors(fieldErrors);
+      } else {
+        // Handle submission errors
+        setSubmitStatus({
+          type: 'error',
+          message: 'Failed to send message. Please try again or email me directly.',
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error for this field when user starts typing
+    if (errors[name as keyof ContactFormData]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
   };
 
   return (
@@ -185,7 +241,7 @@ export const ContactSection = ({
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">
                   Name *
@@ -196,10 +252,27 @@ export const ContactSection = ({
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
                   placeholder="Your full name"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? 'name-error' : undefined}
+                  className={`w-full px-4 py-3 rounded-lg border ${
+                    errors.name 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500'
+                  } bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:border-transparent outline-none transition-all`}
                 />
+                {errors.name && (
+                  <motion.p
+                    id="name-error"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1"
+                    role="alert"
+                  >
+                    <AlertCircle className="w-4 h-4" />
+                    {errors.name}
+                  </motion.p>
+                )}
               </div>
 
               <div>
@@ -212,10 +285,27 @@ export const ContactSection = ({
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
                   placeholder="your.email@example.com"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
+                  className={`w-full px-4 py-3 rounded-lg border ${
+                    errors.email 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500'
+                  } bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:border-transparent outline-none transition-all`}
                 />
+                {errors.email && (
+                  <motion.p
+                    id="email-error"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1"
+                    role="alert"
+                  >
+                    <AlertCircle className="w-4 h-4" />
+                    {errors.email}
+                  </motion.p>
+                )}
               </div>
 
               <div>
@@ -228,10 +318,27 @@ export const ContactSection = ({
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  required
                   placeholder="What's this about?"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                  aria-invalid={!!errors.subject}
+                  aria-describedby={errors.subject ? 'subject-error' : undefined}
+                  className={`w-full px-4 py-3 rounded-lg border ${
+                    errors.subject 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500'
+                  } bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:border-transparent outline-none transition-all`}
                 />
+                {errors.subject && (
+                  <motion.p
+                    id="subject-error"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1"
+                    role="alert"
+                  >
+                    <AlertCircle className="w-4 h-4" />
+                    {errors.subject}
+                  </motion.p>
+                )}
               </div>
 
               <div>
@@ -243,20 +350,42 @@ export const ContactSection = ({
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  required
                   rows={5}
                   placeholder="Tell me about your project or idea..."
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none"
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
+                  className={`w-full px-4 py-3 rounded-lg border ${
+                    errors.message 
+                      ? 'border-red-500 focus:ring-red-500' 
+                      : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500'
+                  } bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:border-transparent outline-none transition-all resize-none`}
                 />
+                {errors.message && (
+                  <motion.p
+                    id="message-error"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1"
+                    role="alert"
+                  >
+                    <AlertCircle className="w-4 h-4" />
+                    {errors.message}
+                  </motion.p>
+                )}
               </div>
 
-              {submitMessage && (
+              {submitStatus.message && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg text-green-800 dark:text-green-300 text-sm"
+                  className={`p-4 rounded-lg text-sm ${
+                    submitStatus.type === 'success'
+                      ? 'bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-300'
+                      : 'bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 text-red-800 dark:text-red-300'
+                  }`}
+                  role="alert"
                 >
-                  {submitMessage}
+                  {submitStatus.message}
                 </motion.div>
               )}
 
@@ -265,6 +394,7 @@ export const ContactSection = ({
                 size="lg" 
                 className="w-full flex items-center justify-center gap-2"
                 disabled={isSubmitting}
+                aria-label={isSubmitting ? 'Sending message' : 'Send message'}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'} 
                 <Send className="w-5 h-5" />

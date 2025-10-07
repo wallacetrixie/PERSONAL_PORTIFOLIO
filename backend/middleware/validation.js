@@ -18,4 +18,7 @@ const validateRequest = (req, res, next) => {
   next();
 };
 
-module.exports = { validateRequest };
+
+const handleValidationErrors = validateRequest;
+
+module.exports = { validateRequest, handleValidationErrors };

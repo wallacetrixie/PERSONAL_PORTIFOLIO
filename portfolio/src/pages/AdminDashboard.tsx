@@ -26,7 +26,6 @@ export const AdminDashboard = () => {
     setMounted(true);
   }, []);
 
-  // Handle theme toggle
   useEffect(() => {
     const root = window.document.documentElement;
     if (isDark) {

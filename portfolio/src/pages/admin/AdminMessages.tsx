@@ -62,7 +62,6 @@ export const AdminMessages = () => {
       const data = await response.json();
       
       if (data.success) {
-        // Update local state
         setContacts(contacts.map(contact => 
           contact.id === id ? { ...contact, status } : contact
         ));
@@ -214,7 +213,6 @@ export const AdminMessages = () => {
                 <p className="mt-4 text-light-text-secondary dark:text-dark-text-secondary">Loading messages...</p>
               </div>
             ) : (
-              /* Messages List */
               <div className="bg-white dark:bg-dark-card rounded-xl border border-light-border dark:border-dark-border overflow-hidden">
                 {filteredContacts.length === 0 ? (
                   <div className="text-center py-12">

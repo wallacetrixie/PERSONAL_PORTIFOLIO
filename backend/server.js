@@ -23,14 +23,11 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Cookie parser middleware
 app.use(cookieParser());
 
-// Request logging middleware (development)
 if (process.env.NODE_ENV === 'development') {
   app.use((req, res, next) => {
     console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
@@ -38,11 +35,9 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
-// Routes
 app.use('/api', contactRoutes);
 app.use('/api/auth', authRoutes);
 
-// Root endpoint
 app.get('/', (req, res) => {
   res.json({
     success: true,
@@ -55,7 +50,6 @@ app.get('/', (req, res) => {
       updateContactStatus: 'PATCH /api/contacts/:id/status',
       deleteContact: 'DELETE /api/contacts/:id',
       health: 'GET /api/health',
-      // Auth endpoints
       login: 'POST /api/auth/login',
       logout: 'POST /api/auth/logout',
       verifyToken: 'GET /api/auth/verify',
@@ -65,14 +59,11 @@ app.get('/', (req, res) => {
   });
 });
 
-// Error handling
 app.use(notFound);
 app.use(errorHandler);
 
-// Start server
 const startServer = async () => {
   try {
-    // Test database connection
     const dbConnected = await testConnection();
     
     if (!dbConnected) {
@@ -81,7 +72,6 @@ const startServer = async () => {
       process.exit(1);
     }
 
-    // Verify email configuration (non-blocking)
     verifyEmailConfig()
       .then((isVerified) => {
         if (isVerified) {

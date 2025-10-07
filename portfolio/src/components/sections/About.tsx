@@ -17,12 +17,8 @@ const ANIMATION_CONFIG = {
   itemDelay: 0.1,
 } as const;
 
-// Static array outside component to prevent recreation on each render
 const DECORATIVE_DOTS = Array.from({ length: 16 }, (_, i) => i);
 
-// ============================================================================
-// TYPES
-// ============================================================================
 interface Skill {
   icon: LucideIcon;
   label: string;
@@ -63,7 +59,6 @@ const GradientOrb = memo(({ className, animationDuration, prefersReducedMotion }
 
 GradientOrb.displayName = 'GradientOrb';
 
-// Metric Card Component
 interface MetricCardProps {
   value: number;
   suffix: string;
@@ -100,15 +95,11 @@ const MetricCard = memo(({ value, suffix, label, color, isInView, hasBorder = 'n
 
 MetricCard.displayName = 'MetricCard';
 
-// ============================================================================
-// MAIN COMPONENT
-// ============================================================================
 export const About = () => {
   const prefersReducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
   
-  // Memoize intersection observer options to prevent recreation
   const observerOptions = useMemo(
     () => ({
       threshold: ANIMATION_CONFIG.observerThreshold,
@@ -117,10 +108,8 @@ export const About = () => {
     []
   );
 
-  // Detect when section is in view
   const isInView = useIntersectionObserver(sectionRef, observerOptions);
 
-  // Animated metrics with consistent duration
   const experienceYears = useCountUp(
     isInView ? ABOUT_INFO.metrics.experience : 0,
     ANIMATION_CONFIG.countUpDuration
@@ -134,7 +123,6 @@ export const About = () => {
     ANIMATION_CONFIG.countUpDuration
   );
 
-  // Animation variants
   const containerVariants: Variants = useMemo(
     () => ({
       hidden: { opacity: 0 },

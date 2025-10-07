@@ -9,7 +9,6 @@ export const Hero = () => {
   const prefersReducedMotion = useReducedMotion();
   const [imageLoaded, setImageLoaded] = useState(false);
   
-  // Typing effect for the name
   const firstName = PERSONAL_INFO.name.split(' ')[0];
   const lastName = PERSONAL_INFO.name.split(' ')[1];
   const fullName = `${firstName} ${lastName}`;
@@ -20,7 +19,6 @@ export const Hero = () => {
     delay: 500,
   });
 
-  // Smooth scroll to next section
   const scrollToNextSection = () => {
     const nextSection = document.getElementById('about');
     if (nextSection) {

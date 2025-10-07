@@ -6,7 +6,6 @@ import axios from 'axios';
 import { Button } from '../ui/Button';
 import { PERSONAL_INFO } from '../../constants';
 
-// Zod validation schema
 const contactSchema = z.object({
   name: z.string()
     .min(2, 'Name must be at least 2 characters')
@@ -54,20 +53,17 @@ export const ContactSection = ({
     setErrors({});
     setSubmitStatus({ type: null, message: '' });
 
-    // Validate form data
     try {
       const validatedData = contactSchema.parse(formData);
       setIsSubmitting(true);
 
-      // Get API URL from environment or use default
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
-      // Submit to backend API using axios
       const response = await axios.post(`${API_URL}/api/contact`, validatedData, {
         headers: {
           'Content-Type': 'application/json',
         },
-        timeout: 10000, // 10 second timeout
+        timeout: 10000,
       });
 
       if (response.status === 201 || response.status === 200) {
@@ -75,7 +71,6 @@ export const ContactSection = ({
           type: 'success',
           message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!',
         });
-        // Reset form
         setFormData({
           name: '',
           email: '',
@@ -85,7 +80,6 @@ export const ContactSection = ({
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
-        // Handle validation errors
         const fieldErrors: ValidationErrors = {};
         error.issues.forEach((issue) => {
           if (issue.path[0]) {
@@ -94,20 +88,17 @@ export const ContactSection = ({
         });
         setErrors(fieldErrors);
       } else if (axios.isAxiosError(error)) {
-        // Handle axios/network errors
         if (error.code === 'ECONNABORTED') {
           setSubmitStatus({
             type: 'error',
             message: 'Request timeout. Please check your connection and try again.',
           });
         } else if (error.response) {
-          // Server responded with error status
           setSubmitStatus({
             type: 'error',
             message: error.response.data?.message || 'Failed to send message. Please try again or email me directly.',
           });
         } else if (error.request) {
-          // Request made but no response received
           setSubmitStatus({
             type: 'error',
             message: 'Unable to reach the server. Please check your internet connection or email me directly.',
@@ -119,7 +110,6 @@ export const ContactSection = ({
           });
         }
       } else {
-        // Handle other errors
         setSubmitStatus({
           type: 'error',
           message: 'Failed to send message. Please try again or email me directly.',
@@ -135,7 +125,6 @@ export const ContactSection = ({
   ) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    // Clear error for this field when user starts typing
     if (errors[name as keyof ContactFormData]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
@@ -248,7 +237,6 @@ export const ContactSection = ({
               </motion.div>
             </div>
 
-            {/* Social Links or Additional Info */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -262,7 +250,6 @@ export const ContactSection = ({
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}

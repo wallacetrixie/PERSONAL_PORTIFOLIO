@@ -18,12 +18,10 @@ export const AdminLogin = () => {
   const [error, setError] = useState('');
   const [mounted, setMounted] = useState(false);
 
-  // Animation on mount
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated && !authLoading) {
       navigate('/admin/messages');
@@ -36,7 +34,6 @@ export const AdminLogin = () => {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
-    // Clear error when user starts typing
     if (error) setError('');
   };
 
@@ -44,7 +41,6 @@ export const AdminLogin = () => {
     e.preventDefault();
     setError('');
 
-    // Basic validation
     if (!formData.email || !formData.password) {
       setError('Please fill in all fields');
       return;
@@ -59,7 +55,6 @@ export const AdminLogin = () => {
 
     try {
       await login(formData.email, formData.password, formData.rememberMe);
-      // Navigation handled by useEffect above
     } catch (err: any) {
       setError(err.message || 'Login failed. Please check your credentials.');
     } finally {

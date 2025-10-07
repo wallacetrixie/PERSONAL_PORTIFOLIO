@@ -1,6 +1,5 @@
 import type { NavLink, Project } from '../types';
 
-// Import project images at highest quality
 import greenStoreImg from '../assets/images/project1 GREEN STORE.png';
 import aiHealthImg from '../assets/images/project 2 AI Health companion.png';
 import solutionHubImg from '../assets/images/project 3 SolutionHub.png';
@@ -11,7 +10,6 @@ import resumeMakerImg from '../assets/images/project 7 RESUME-MAKER.png';
 import contentGuardImg from '../assets/images/project 8 Conten Guard.png';
 import chatAppImg from '../assets/images/project 9 CHAT APP.png';
 
-// Navigation links - Single-page portfolio with hash navigation
 export const NAV_LINKS: NavLink[] = [
   { id: '1', label: 'Home', path: '/#hero' },
   { id: '2', label: 'About', path: '/#about' },
@@ -43,23 +41,21 @@ export const SOCIAL_LINKS = [
   {
     id: '4',
     platform: 'email',
-    url: 'mailto:your.email@example.com',
+    url: 'mailto:wallacewambulwa@gmail.com',
     icon: 'Mail',
   },
 ];
 
-// Personal Information
 export const PERSONAL_INFO = {
   name: 'Wallace Wambulwa',
   title: 'Software Developer & Founder',
-  company: 'Walify Tech-Solutions',
+  company: 'Neo-Nexus Solutions',
   bio: ' I specialize in building exceptional digital experiences and innovative business solutions',
   email: 'wallacewambulwa@gmail.com',
   location: 'Nairobi,Kenya karen',
   availability: 'Available for freelance work',
 };
 
-// About Section Information
 export const ABOUT_INFO = {
   tagline: 'Get to Know Me',
   title: 'About Me',
@@ -126,7 +122,6 @@ export const ANIMATION_VARIANTS = {
   },
 };
 
-// Stagger children animation
 export const STAGGER_CONTAINER = {
   initial: {},
   animate: {
@@ -136,7 +131,6 @@ export const STAGGER_CONTAINER = {
   },
 };
 
-// Transition configurations
 export const TRANSITIONS = {
   default: { duration: 0.3, ease: 'easeInOut' },
   smooth: { duration: 0.5, ease: 'easeInOut' },
@@ -144,9 +138,7 @@ export const TRANSITIONS = {
   springy: { type: 'spring', stiffness: 100, damping: 15 },
 };
 
-// Projects Data
 export const PROJECTS: Project[] = [
-  // Frontend Projects
   {
     id: '1',
     title: 'Green Store',
@@ -180,7 +172,6 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://example.com',
     featured: false,
   },
-  // Backend Projects
   {
     id: '4',
     title: 'ForAUTH',
@@ -245,7 +236,6 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-// Project Categories
 export const PROJECT_CATEGORIES = [
   { id: 'all', label: 'All Projects', count: PROJECTS.length },
   { id: 'frontend', label: 'Frontend', count: PROJECTS.filter(p => p.category === 'frontend').length },

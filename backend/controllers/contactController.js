@@ -2,23 +2,18 @@ const ContactModel = require('../models/Contact');
 const { sendContactNotification } = require('../services/emailService');
 
 class ContactController {
-  // Handle contact form submission
   static async createContact(req, res) {
     try {
       const { name, email, subject, message } = req.body;
 
-      // Create contact in database
       const contact = await ContactModel.create({ name, email, subject, message });
 
-      // Send email notification asynchronously (don't wait for it to complete)
-      // This ensures the user gets a quick response even if email sending is slow
       sendContactNotification(contact)
         .then(() => {
           console.log('✅ Email notification sent for contact:', contact.id);
         })
         .catch((error) => {
           console.error('❌ Failed to send email notification:', error.message);
-          // Don't fail the request if email fails - just log it
         });
 
       res.status(201).json({
@@ -40,7 +35,6 @@ class ContactController {
     }
   }
 
-  // Get all contacts (admin endpoint)
   static async getAllContacts(req, res) {
     try {
       const limit = parseInt(req.query.limit) || 100;
@@ -69,7 +63,6 @@ class ContactController {
     }
   }
 
-  // Get single contact by ID
   static async getContactById(req, res) {
     try {
       const { id } = req.params;
@@ -96,7 +89,6 @@ class ContactController {
     }
   }
 
-  // Delete contact by ID
   static async deleteContact(req, res) {
     try {
       const { id } = req.params;

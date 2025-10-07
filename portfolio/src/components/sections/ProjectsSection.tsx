@@ -23,7 +23,6 @@ export const ProjectsSection = ({
   const [showAll, setShowAll] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  // Check if screen is mobile
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -35,24 +34,20 @@ export const ProjectsSection = ({
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Reset showAll when category changes
   useEffect(() => {
     setShowAll(false);
   }, [activeCategory]);
 
-  // Filter projects based on selected category
   const filteredProjects = activeCategory === 'all'
     ? PROJECTS
     : PROJECTS.filter(project => project.category === activeCategory as ProjectCategory);
 
-  // For mobile, show only 3 projects initially
   const displayedProjects = isMobile && !showAll 
     ? filteredProjects.slice(0, 3) 
     : filteredProjects;
 
   const hasMoreProjects = isMobile && filteredProjects.length > 3;
 
-  // Enhanced animation variants for container with slide effect
   const containerVariants = {
     hidden: { 
       opacity: 0,
@@ -73,7 +68,6 @@ export const ProjectsSection = ({
     }
   };
 
-  // Card animation variants with slide effect
   const cardVariants = {
     hidden: { 
       opacity: 0, 
@@ -104,7 +98,6 @@ export const ProjectsSection = ({
   return (
     <section id="projects-section" className="py-20 bg-light-bg dark:bg-dark-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
         {showHeader && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -113,7 +106,6 @@ export const ProjectsSection = ({
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -124,7 +116,6 @@ export const ProjectsSection = ({
               Portfolio
             </motion.p>
 
-            {/* Title */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -135,7 +126,6 @@ export const ProjectsSection = ({
               Sample <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-purple">Projects</span>
             </motion.h2>
 
-            {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -159,7 +149,6 @@ export const ProjectsSection = ({
           </motion.div>
         )}
 
-        {/* Category Filter */}
         {showFilter && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -175,7 +164,6 @@ export const ProjectsSection = ({
           </motion.div>
         )}
 
-        {/* Projects Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory}
@@ -198,7 +186,6 @@ export const ProjectsSection = ({
           </motion.div>
         </AnimatePresence>
 
-        {/* View More Button (Mobile Only) */}
         {hasMoreProjects && !showAll && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -219,7 +206,6 @@ export const ProjectsSection = ({
           </motion.div>
         )}
 
-        {/* View Less Button (Mobile Only - after showing all) */}
         {hasMoreProjects && showAll && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -230,7 +216,6 @@ export const ProjectsSection = ({
             <motion.button
               onClick={() => {
                 setShowAll(false);
-                // Scroll to top of projects section smoothly
                 const projectsSection = document.getElementById('projects-section');
                 if (projectsSection) {
                   projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -246,7 +231,6 @@ export const ProjectsSection = ({
           </motion.div>
         )}
 
-        {/* Empty State */}
         {filteredProjects.length === 0 && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -264,7 +248,6 @@ export const ProjectsSection = ({
           </motion.div>
         )}
 
-        {/* Stats Section */}
         {showStats && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -300,7 +283,6 @@ export const ProjectsSection = ({
           </motion.div>
         )}
 
-        {/* Call to Action */}
         {showCTA && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}

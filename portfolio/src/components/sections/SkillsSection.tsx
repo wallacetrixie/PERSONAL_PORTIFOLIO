@@ -8,10 +8,8 @@ interface SkillsSectionProps {
 }
 
 export const SkillsSection = ({ categories, sectionRef }: SkillsSectionProps) => {
-  // Faster triggering with lower threshold
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
-  // Desktop staircase positions
   const positions = [
     { top: '0px', left: '5%' },           // Top left
     { top: '140px', left: '35%' },        // Middle center

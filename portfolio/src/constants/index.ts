@@ -1,4 +1,4 @@
-import type { NavLink, SocialLink, Project } from '../types';
+import type { NavLink, Project } from '../types';
 
 // Import project images at highest quality
 import greenStoreImg from '../assets/images/project1 GREEN STORE.png';
@@ -21,7 +21,7 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 
-export const SOCIAL_LINKS: SocialLink[] = [
+export const SOCIAL_LINKS = [
   {
     id: '1',
     platform: 'github',
@@ -31,14 +31,14 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     id: '2',
     platform: 'linkedin',
-    url: 'https://linkedin.com/in/wallacewambulwa',
+    url: 'https://www.linkedin.com/in/wallace-wambulwa-b0a988278/',
     icon: 'Linkedin',
   },
   {
     id: '3',
-    platform: 'twitter',
-    url: 'https://twitter.com/yourhandle',
-    icon: 'Twitter',
+    platform: 'facebook',
+    url: 'https://www.facebook.com/wallace.wambulwa.7/',
+    icon: 'Facebook',
   },
   {
     id: '4',
@@ -52,8 +52,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const PERSONAL_INFO = {
   name: 'Wallace Wambulwa',
   title: 'Software Developer & Founder',
-  company: 'E-sail Tech Company',
-  bio: 'A passionate software developer specializing in building exceptional digital experiences.',
+  company: 'Walify Tech-Solutions',
+  bio: ' I specialize in building exceptional digital experiences and innovative business solutions',
   email: 'wallacewambulwa@gmail.com',
   location: 'Nairobi,Kenya karen',
   availability: 'Available for freelance work',
@@ -64,8 +64,8 @@ export const ABOUT_INFO = {
   tagline: 'Get to Know Me',
   title: 'About Me',
   intro: {
-    paragraph1: "I'm a Backend Engineer and UI/UX Designer dedicated to creating efficient, and reliable digital experiences. I specialize in designing intuitive interfaces and building robust backend systems that users love and businesses depend on.",
-    paragraph2: "My goal is to bridge the gap between design and functionality, transforming ideas into scalable, high-performing solutions that deliver real impact. I believe that great software is not just about writing code—it's about solving problems and creating meaningful experiences.",
+    paragraph1: "I am a Software Developer dedicated to building efficient, scalable, and reliable solutions that solve real-world problems. I focus on developing clean, maintainable code and crafting systems that deliver both performance and impact.",
+    paragraph2: "My goal is to create software that not only meets technical standards but also adds genuine value to users and businesses alike. To me, great software goes beyond functionality,it's about innovation, problem-solving, and delivering meaningful digital experiences.",
   },
   metrics: {
     experience: 5,

@@ -2,28 +2,37 @@ import { Link } from 'react-router-dom';
 import { 
   Github, 
   Linkedin, 
-  Twitter, 
   Mail, 
   MapPin, 
   Send,
   Code2,
-  Briefcase,
-  FileText,
-  ArrowUp
+  ArrowUp,
+  Palette,
+  Server,
+  Smartphone,
+  Cloud,
+  Lightbulb,
+  Users,
+  Target,
+  Zap,
+  Clock,
+  Facebook
 } from 'lucide-react';
 import { SOCIAL_LINKS, PERSONAL_INFO, NAV_LINKS } from '../../constants';
 import { useState } from 'react';
+import { PolicyModal } from '../ui/PolicyModal';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
   const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [modalOpen, setModalOpen] = useState<'privacy' | 'terms' | null>(null);
 
   const getSocialIcon = (iconName: string) => {
     const icons: Record<string, React.ReactNode> = {
       Github: <Github className="w-5 h-5" />,
       Linkedin: <Linkedin className="w-5 h-5" />,
-      Twitter: <Twitter className="w-5 h-5" />,
+      Facebook: <Facebook className="w-5 h-5" />,
       Mail: <Mail className="w-5 h-5" />,
     };
     return icons[iconName] || null;
@@ -44,9 +53,18 @@ export const Footer = () => {
   };
 
   const services = [
-    { icon: <Code2 className="w-4 h-4" />, name: 'Web Development', link: '/projects' },
-    { icon: <Briefcase className="w-4 h-4" />, name: 'UI/UX Design', link: '/projects' },
-    { icon: <FileText className="w-4 h-4" />, name: 'Backend Solutions', link: '/projects' },
+    // Hard Skills
+    { icon: <Code2 className="w-4 h-4" />, name: 'Website Development', link: '/#skills' },
+    { icon: <Palette className="w-4 h-4" />, name: 'Software Development & Maintenance', link: '/#skills' },
+    { icon: <Server className="w-4 h-4" />, name: 'Database Design & Optimization', link: '/#skills' },
+    { icon: <Smartphone className="w-4 h-4" />, name: 'Mobile app Development', link: '/#skills' },
+    { icon: <Cloud className="w-4 h-4" />, name: 'DevOps & Cloud Services', link: '/#skills' },
+    // Soft Skills
+    { icon: <Lightbulb className="w-4 h-4" />, name: 'Technical Consultation', link: '/#skills' },
+    { icon: <Users className="w-4 h-4" />, name: 'Business Planning', link: '/#skills' },
+    { icon: <Target className="w-4 h-4" />, name: 'Project Management', link: '/#skills' },
+    { icon: <Zap className="w-4 h-4" />, name: 'System Integration & API Development', link: '/#skills' },
+
   ];
 
   return (
@@ -204,17 +222,32 @@ export const Footer = () => {
             </p>
             <div className="hidden md:block w-1 h-1 bg-gray-400 rounded-full"></div>
             <div className="flex gap-4">
-              <Link to="/privacy" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+              <button 
+                onClick={() => setModalOpen('privacy')}
+                className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >
                 Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+              </button>
+              <button 
+                onClick={() => setModalOpen('terms')}
+                className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >
                 Terms of Service
-              </Link>
+              </button>
             </div>
           </div>
      
         </div>
       </div>
+
+      {/* Policy Modals */}
+      {modalOpen && (
+        <PolicyModal
+          isOpen={modalOpen !== null}
+          onClose={() => setModalOpen(null)}
+          type={modalOpen}
+        />
+      )}
     </footer>
   );
 };

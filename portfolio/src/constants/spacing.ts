@@ -1,10 +1,4 @@
-// ============================================================================
-// SECTION SPACING CONSTANTS
-// ============================================================================
 
-/**
- * Standardized section spacing for consistent layout
- */
 export const SECTION_SPACING = {
   hero: 'min-h-screen',
   full: 'min-h-screen py-20 lg:py-section-lg',

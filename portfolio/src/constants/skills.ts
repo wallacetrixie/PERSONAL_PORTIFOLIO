@@ -25,7 +25,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: 'frontend',
     title: 'Frontend Engineering',
-    tagline: 'Building scalable, interactive, and pixel-perfect web interfaces',
+    tagline: 'I specialize in building scalable, interactive, and pixel-perfect web interfaces',
     color: 'cyan',
     position: 'left',
     rotation: -3,
@@ -50,7 +50,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: 'design',
     title: 'UI/UX Design',
-    tagline: 'Turning ideas into delightful, intuitive user experiences',
+    tagline: 'I Turn ideas into delightful, intuitive user experiences',
     color: 'purple',
     position: 'center',
     rotation: 2,
@@ -75,7 +75,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: 'backend',
     title: 'Backend Engineering',
-    tagline: 'Designing reliable, secure, and scalable backend systems',
+    tagline: 'I specialize in designing reliable, secure, and scalable backend systems',
     color: 'blue',
     position: 'right',
     rotation: -2,
@@ -100,7 +100,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: 'devops',
     title: 'DevOps & Cloud',
-    tagline: 'Streamlining development with modern tooling and deployment',
+    tagline: 'I streamline development with modern tooling and deployment',
     color: 'green',
     position: 'left',
     rotation: -3,
@@ -125,7 +125,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: 'mobile',
     title: 'Mobile Development',
-    tagline: 'Creating responsive and native mobile experiences',
+    tagline: 'I create responsive and native mobile experiences',
     color: 'orange',
     position: 'center',
     rotation: 2,
@@ -150,7 +150,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: 'network',
     title: 'Network Engineering',
-    tagline: 'Designing and securing robust network infrastructure',
+    tagline: 'I design and secure  network infrastructure',
     color: 'pink',
     position: 'right',
     rotation: -2,
@@ -177,11 +177,11 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 export const SOFT_SKILLS: SoftSkill[] = [
   { 
     name: 'Problem Solving', 
-    description: 'Creative solutions to complex challenges' 
+    description: 'I develop creative solutions to complex challenges' 
   },
   { 
     name: 'Team Collaboration', 
-    description: 'Effective communication and teamwork' 
+    description: 'I foster effective communication and teamwork' 
   },
   { 
     name: 'Attention to Detail', 
@@ -189,11 +189,11 @@ export const SOFT_SKILLS: SoftSkill[] = [
   },
   { 
     name: 'Adaptability', 
-    description: 'Quick learning and flexibility' 
+    description: 'I demonstrate quick learning and flexibility' 
   },
   { 
     name: 'Time Management', 
-    description: 'Efficient prioritization and delivery' 
+    description: 'I prioritize tasks efficiently and deliver on time' 
   }
 ];
 

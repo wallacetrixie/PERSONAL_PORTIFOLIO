@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Play } from 'lucide-react';
+import { Github } from 'lucide-react';
 import type { Project } from '../../types';
 
 interface ProjectCardProps {
@@ -31,9 +31,9 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           transition={{ duration: 0.3 }}
           className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col justify-end p-6"
         >
-          {/* Tech Stack */}
+          {/* Tech Stack - Show up to 5 technologies */}
           <div className="flex flex-wrap gap-2 mb-4">
-            {project.technologies.slice(0, 4).map((tech) => (
+            {project.technologies.slice(0, 5).map((tech) => (
               <span
                 key={tech}
                 className="px-3 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full border border-white/30"
@@ -41,39 +41,10 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                 {tech}
               </span>
             ))}
-            {project.technologies.length > 4 && (
-              <span className="px-3 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full border border-white/30">
-                +{project.technologies.length - 4} more
-              </span>
-            )}
           </div>
 
-          {/* Action Buttons */}
+          {/* Action Button - GitHub Only */}
           <div className="flex gap-3">
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors duration-200 text-sm font-medium"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <ExternalLink size={16} />
-                View Live
-              </a>
-            )}
-            {project.demoUrl && (
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-accent-purple hover:bg-purple-600 text-white rounded-lg transition-colors duration-200 text-sm font-medium"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Play size={16} />
-                Demo
-              </a>
-            )}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -83,7 +54,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                 onClick={(e) => e.stopPropagation()}
               >
                 <Github size={16} />
-                Code
+                View Code
               </a>
             )}
           </div>
@@ -120,9 +91,9 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           {project.description}
         </p>
 
-        {/* Technologies List (visible always) */}
+        {/* Technologies List (visible always) - Show up to 5 technologies */}
         <div className="flex flex-wrap gap-2">
-          {project.technologies.slice(0, 3).map((tech) => (
+          {project.technologies.slice(0, 5).map((tech) => (
             <span
               key={tech}
               className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded"
@@ -130,11 +101,6 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
               {tech}
             </span>
           ))}
-          {project.technologies.length > 3 && (
-            <span className="px-2 py-1 text-xs font-medium text-gray-500 dark:text-gray-500">
-              +{project.technologies.length - 3}
-            </span>
-          )}
         </div>
       </div>
     </div>

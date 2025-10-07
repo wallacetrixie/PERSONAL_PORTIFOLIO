@@ -29,9 +29,7 @@ interface Skill {
   color: string;
 }
 
-// ============================================================================
-// SKILL CONFIGURATION - Using theme colors
-// ============================================================================
+
 const SKILLS: Skill[] = [
   { icon: Code2, label: 'Clean Code', color: 'text-primary-600 dark:text-primary-400' },
   { icon: Server, label: 'Backend', color: 'text-green-600 dark:text-green-400' },

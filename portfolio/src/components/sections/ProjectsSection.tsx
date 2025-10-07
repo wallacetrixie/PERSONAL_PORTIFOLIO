@@ -132,7 +132,7 @@ export const ProjectsSection = ({
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-6 text-gray-900 dark:text-white"
             >
-              Sample<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-purple">Projects</span>
+              Sample <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-purple">Projects</span>
             </motion.h2>
 
             {/* Description */}

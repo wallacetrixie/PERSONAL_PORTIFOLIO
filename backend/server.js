@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
 const { testConnection } = require('./config/database');
+const { verifyEmailConfig } = require('./services/emailService');
 const contactRoutes = require('./routes/contact');
 const authRoutes = require('./routes/auth');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
@@ -79,6 +80,21 @@ const startServer = async () => {
       console.log('💡 Run "npm run init-db" to initialize the database first.');
       process.exit(1);
     }
+
+    // Verify email configuration (non-blocking)
+    verifyEmailConfig()
+      .then((isVerified) => {
+        if (isVerified) {
+          console.log('✅ Email service is configured and ready');
+        } else {
+          console.warn('⚠️  Email service configuration needs attention');
+          console.log('💡 Check EMAIL_SETUP_GUIDE.md for configuration instructions');
+        }
+      })
+      .catch((error) => {
+        console.warn('⚠️  Email service not configured:', error.message);
+        console.log('💡 Contact form will work but email notifications are disabled');
+      });
 
     app.listen(PORT, () => {
       console.log('\n🚀 Server is running!');

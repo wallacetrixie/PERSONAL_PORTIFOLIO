@@ -26,7 +26,7 @@ export const AdminLogin = () => {
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated && !authLoading) {
-      navigate('/admin/dashboard');
+      navigate('/admin/messages');
     }
   }, [isAuthenticated, authLoading, navigate]);
 

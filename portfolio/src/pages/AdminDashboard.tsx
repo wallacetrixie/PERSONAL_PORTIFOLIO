@@ -6,11 +6,11 @@ import {
   FolderKanban, 
   Settings, 
   BarChart3,
-  User,
   Moon,
   Sun
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { AdminSidebar } from '../components/admin/AdminSidebar';
 
 export const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -109,67 +109,67 @@ export const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-light-bg dark:bg-dark-bg transition-colors duration-300">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/80 dark:bg-dark-card/80 backdrop-blur-xl border-b border-light-border dark:border-dark-border shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo/Title */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-purple-600 dark:from-dark-accent1 dark:to-dark-accent2 flex items-center justify-center">
-                <User className="w-6 h-6 text-white" />
-              </div>
+    <div className="flex min-h-screen bg-light-bg dark:bg-dark-bg transition-colors duration-300">
+      {/* Sidebar */}
+      <AdminSidebar />
+
+      {/* Main Content Area */}
+      <div className="flex-1 ml-64">
+        {/* Header */}
+        <header className="sticky top-0 z-30 bg-white/80 dark:bg-dark-card/80 backdrop-blur-xl border-b border-light-border dark:border-dark-border shadow-sm">
+          <div className="px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              {/* Page Title */}
               <div>
                 <h1 className="text-xl font-bold gradient-text-light dark:gradient-text-dark">
-                  Admin Dashboard
+                  Dashboard Overview
                 </h1>
                 <p className="text-xs text-light-text-secondary dark:text-dark-text-secondary">
                   Welcome back, {admin?.full_name || 'Admin'}
                 </p>
               </div>
-            </div>
 
-            {/* Actions */}
-            <div className="flex items-center space-x-4">
-              {/* Theme Toggle */}
-              <button
-                onClick={() => setIsDark(!isDark)}
-                className="p-2 rounded-lg bg-light-bg-secondary dark:bg-dark-bg-secondary hover:bg-light-border dark:hover:bg-dark-border transition-colors duration-200"
-                aria-label="Toggle theme"
-              >
-                {isDark ? (
-                  <Sun className="w-5 h-5 text-yellow-500" />
-                ) : (
-                  <Moon className="w-5 h-5 text-gray-600" />
-                )}
-              </button>
+              {/* Actions */}
+              <div className="flex items-center space-x-4">
+                {/* Theme Toggle */}
+                <button
+                  onClick={() => setIsDark(!isDark)}
+                  className="p-2 rounded-lg bg-light-bg-secondary dark:bg-dark-bg-secondary hover:bg-light-border dark:hover:bg-dark-border transition-colors duration-200"
+                  aria-label="Toggle theme"
+                >
+                  {isDark ? (
+                    <Sun className="w-5 h-5 text-yellow-500" />
+                  ) : (
+                    <Moon className="w-5 h-5 text-gray-600" />
+                  )}
+                </button>
 
-              {/* Back to Portfolio */}
-              <button
-                onClick={() => navigate('/')}
-                className="hidden sm:flex items-center px-4 py-2 rounded-lg bg-light-bg-secondary dark:bg-dark-bg-secondary hover:bg-light-border dark:hover:bg-dark-border text-light-text dark:text-dark-text transition-colors duration-200"
-              >
-                View Portfolio
-              </button>
+                {/* Back to Portfolio */}
+                <button
+                  onClick={() => navigate('/')}
+                  className="hidden sm:flex items-center px-4 py-2 rounded-lg bg-light-bg-secondary dark:bg-dark-bg-secondary hover:bg-light-border dark:hover:bg-dark-border text-light-text dark:text-dark-text transition-colors duration-200"
+                >
+                  View Portfolio
+                </button>
 
-              {/* Logout */}
-              <button
-                onClick={handleLogout}
-                disabled={isLoggingOut}
-                className="flex items-center px-4 py-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 transition-colors duration-200 disabled:opacity-50"
-              >
-                <LogOut className="w-4 h-4 mr-2" />
-                <span className="hidden sm:inline">
-                  {isLoggingOut ? 'Logging out...' : 'Logout'}
-                </span>
-              </button>
+                {/* Logout */}
+                <button
+                  onClick={handleLogout}
+                  disabled={isLoggingOut}
+                  className="flex items-center px-4 py-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 transition-colors duration-200 disabled:opacity-50"
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  <span className="hidden sm:inline">
+                    {isLoggingOut ? 'Logging out...' : 'Logout'}
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Main Content */}
+        <main className="px-4 sm:px-6 lg:px-8 py-8">
         <div
           className={`transform transition-all duration-700 ${
             mounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
@@ -270,10 +270,9 @@ export const AdminDashboard = () => {
               </div>
             </div>
           </div>
-        </div>
-      </main>
+          </div>
+        </main>
+      </div>
     </div>
   );
-};
-
-export default AdminDashboard;
+};export default AdminDashboard;

@@ -97,5 +97,21 @@
   .soft-shadow-hover-light {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   }
+
+  /* Animation: Shake for error messages */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+  }
+
+  .animate-shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  /* Glow shadow effects */
+  .shadow-glow-cyan {
+    box-shadow: 0 0 30px rgba(0, 198, 255, 0.3), 0 10px 40px rgba(0, 0, 0, 0.2);
+  }
 }
 

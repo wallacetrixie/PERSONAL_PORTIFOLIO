@@ -111,6 +111,45 @@ class ContactController {
     }
   }
 
+  // Update contact status
+  static async updateContactStatus(req, res) {
+    try {
+      const { id } = req.params;
+      const { status } = req.body;
+
+      // Validate status
+      const validStatuses = ['new', 'read', 'replied', 'archived'];
+      if (!status || !validStatuses.includes(status)) {
+        return res.status(400).json({
+          success: false,
+          message: `Invalid status. Must be one of: ${validStatuses.join(', ')}`
+        });
+      }
+
+      const updated = await ContactModel.updateStatus(id, status);
+
+      if (!updated) {
+        return res.status(404).json({
+          success: false,
+          message: 'Contact not found'
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        message: 'Contact status updated successfully',
+        data: { id, status }
+      });
+    } catch (error) {
+      console.error('Error updating contact status:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Failed to update contact status',
+        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      });
+    }
+  }
+
   // Health check endpoint
   static async healthCheck(req, res) {
     res.status(200).json({

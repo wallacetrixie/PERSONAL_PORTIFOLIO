@@ -40,6 +40,7 @@ const contactValidation = [
 router.post('/contact', contactValidation, validateRequest, ContactController.createContact);
 router.get('/contacts', ContactController.getAllContacts);
 router.get('/contacts/:id', ContactController.getContactById);
+router.patch('/contacts/:id/status', ContactController.updateContactStatus);
 router.delete('/contacts/:id', ContactController.deleteContact);
 router.get('/health', ContactController.healthCheck);
 

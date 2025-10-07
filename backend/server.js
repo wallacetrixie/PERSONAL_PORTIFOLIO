@@ -51,6 +51,7 @@ app.get('/', (req, res) => {
       contact: 'POST /api/contact',
       getContacts: 'GET /api/contacts',
       getContact: 'GET /api/contacts/:id',
+      updateContactStatus: 'PATCH /api/contacts/:id/status',
       deleteContact: 'DELETE /api/contacts/:id',
       health: 'GET /api/health',
       // Auth endpoints

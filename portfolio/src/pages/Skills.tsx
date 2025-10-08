@@ -2,10 +2,12 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { SkillsSection } from '../components/sections/SkillsSection';
 import { SoftSkillsGrid } from '../components/ui/SoftSkillsGrid';
+import { CertificationsSection } from '../components/sections/CertificationsSection';
 import { 
   SKILL_CATEGORIES_SECTION_1, 
   SKILL_CATEGORIES_SECTION_2,
-  SOFT_SKILLS 
+  SOFT_SKILLS,
+  CERTIFICATIONS
 } from '../constants/skills';
 import './Skills.css';
 
@@ -99,6 +101,9 @@ export const Skills = () => {
 
         {/* Soft Skills Section */}
         <SoftSkillsGrid skills={SOFT_SKILLS} />
+
+        {/* Certifications Section */}
+        <CertificationsSection certifications={CERTIFICATIONS} />
       </div>
     </section>
   );

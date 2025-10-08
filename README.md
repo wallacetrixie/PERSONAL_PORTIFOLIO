@@ -17,29 +17,29 @@ This portfolio serves as a comprehensive platform demonstrating:
 - **High Performance** optimized loading and rendering
 -  **Enterprise Security** with JWT authentication and XSS protection
 -  **Fully Responsive** design across all devices
-- 🌐**Full-Stack Architecture** with React frontend and Node.js backend
+- **Full-Stack Architecture** with React frontend and Node.js backend
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 ### Frontend (React + TypeScript)
 - ⚡ Built with **Vite** for lightning-fast development
-- 🎭 **Framer Motion** animations for smooth UX
-- 🎨 **Tailwind CSS** for modern styling
-- 🌗 Dark/Light mode toggle with persistent state
+-  **Framer Motion** animations for smooth UX
+-  **Tailwind CSS** for modern styling
+-  Dark/Light mode toggle with persistent state
 - 📱 Mobile-first responsive design
-- 🔐 Protected admin dashboard
-- 📊 Real-time contact management interface
+-  Protected admin dashboard
+-  Real-time contact management interface
 
 ### Backend (Node.js + Express)
-- 🔒 **JWT Authentication** with session management
-- 🛡️ **Enterprise Security**: XSS protection, rate limiting, CORS
-- 📧 Email notifications via Nodemailer
-- 🗄️ **MySQL Database** with connection pooling
-- ⚡ **Express-validator** for input validation
-- 🚦 **Rate Limiting** on all endpoints
-- 📝 Comprehensive API documentation
+-  **JWT Authentication** with session management
+-  **Enterprise Security**: XSS protection, rate limiting, CORS
+-  Email notifications via Nodemailer
+-  **MySQL Database** with connection pooling
+-  **Express-validator** for input validation
+-  **Rate Limiting** on all endpoints
+-  Comprehensive API documentation
 
 ---
 
@@ -60,7 +60,7 @@ Helmet | Nodemailer | XSS Protection
 
 ### DevOps & Tools
 ```
-Git | PM2 | Nginx | Docker (optional)
+Git | PM2 | Nginx | Docker
 Let's Encrypt SSL | Environment Management
 ```
 

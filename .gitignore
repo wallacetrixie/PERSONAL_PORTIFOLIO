@@ -1,0 +1,90 @@
+# Dependencies
+node_modules/
+*/node_modules/
+package-lock.json
+*/package-lock.json
+yarn.lock
+*/yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production
+backend/.env
+portfolio/.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+*/dist/
+*/build/
+portfolio/dist/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE and Editor files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*.swn
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.code-workspace
+.history/
+
+# Test coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Temporary files
+*.tmp
+temp/
+tmp/
+temp_backup/
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Secrets and credentials
+*.pem
+*.key
+*.cert
+secrets/
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Miscellaneous
+*.local
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vercel
+.netlify

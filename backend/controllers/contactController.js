@@ -154,13 +154,49 @@ class ContactController {
     }
   }
 
-  // Health check endpoint
+  // Comprehensive health check endpoint for cloud monitoring
   static async healthCheck(req, res) {
-    res.status(200).json({
+    const healthStatus = {
       success: true,
-      message: 'Server is running',
-      timestamp: new Date().toISOString()
-    });
+      status: 'healthy',
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+      environment: process.env.NODE_ENV || 'development',
+      version: '1.0.0',
+      services: {
+        database: 'unknown',
+        email: 'unknown'
+      },
+      memory: {
+        used: Math.round(process.memoryUsage().heapUsed / 1024 / 1024),
+        total: Math.round(process.memoryUsage().heapTotal / 1024 / 1024),
+        unit: 'MB'
+      }
+    };
+
+    // Check database connection
+    try {
+      const { pool } = require('../config/database');
+      await pool.query('SELECT 1');
+      healthStatus.services.database = 'connected';
+    } catch (error) {
+      healthStatus.services.database = 'disconnected';
+      healthStatus.success = false;
+      healthStatus.status = 'unhealthy';
+    }
+
+    // Check email service configuration
+    try {
+      const { verifyEmailConfig } = require('../services/emailService');
+      const isEmailConfigured = await verifyEmailConfig();
+      healthStatus.services.email = isEmailConfigured ? 'configured' : 'not-configured';
+    } catch (error) {
+      healthStatus.services.email = 'not-configured';
+      // Email is optional, so don't mark as unhealthy
+    }
+
+    const statusCode = healthStatus.success ? 200 : 503;
+    res.status(statusCode).json(healthStatus);
   }
 }
 

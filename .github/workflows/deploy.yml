@@ -1,0 +1,71 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy Application
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          cd backend && npm ci
+          cd ../portfolio && npm ci
+
+      - name: Build frontend
+        working-directory: ./portfolio
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        run: npm run build
+
+      - name: Deploy to production
+        run: |
+          echo "🚀 Deployment would happen here"
+          echo "Configure your deployment based on your hosting platform"
+          echo "Examples:"
+          echo "  - Vercel: vercel --prod"
+          echo "  - Netlify: netlify deploy --prod"
+          echo "  - SSH Deploy: rsync to your server"
+          echo "  - Docker: docker-compose up -d --build"
+
+      # Example: Deploy to Vercel (uncomment and configure)
+      # - name: Deploy to Vercel
+      #   uses: amondnet/vercel-action@v25
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+      #     vercel-args: '--prod'
+
+      # Example: Deploy via SSH (uncomment and configure)
+      # - name: Deploy to VPS
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     script: |
+      #       cd /path/to/app
+      #       git pull origin main
+      #       docker-compose down
+      #       docker-compose up -d --build
+
+      - name: Deployment summary
+        run: |
+          echo "✅ Deployment process completed"
+          echo "📝 Please configure the actual deployment steps above"

@@ -32,7 +32,10 @@ export const SoftSkillsGrid = ({ skills }: SoftSkillsGridProps) => {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.4 }}
+      transition={{ 
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
     >
       <h3 className="text-3xl md:text-4xl font-bold text-center mb-4 text-light-text dark:text-white">
         Core Competencies
@@ -65,7 +68,10 @@ export const SoftSkillsGrid = ({ skills }: SoftSkillsGridProps) => {
                 scale: hoveredIndex === index ? 1.05 : 1,
                 width: hoveredIndex === index ? 380 : 280
               }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{ 
+                duration: 0.5, 
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
             >
               <div className={`
                 h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900

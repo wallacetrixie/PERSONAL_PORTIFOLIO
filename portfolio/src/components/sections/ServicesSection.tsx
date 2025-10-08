@@ -6,8 +6,6 @@ import {
   Server, 
   Smartphone, 
   Cloud, 
-  Lightbulb, 
-  Target, 
   Zap,
   Check,
   ArrowRight
@@ -24,8 +22,6 @@ const iconMap = {
   Server: Server,
   Smartphone: Smartphone,
   Cloud: Cloud,
-  Lightbulb: Lightbulb,
-  Target: Target,
   Zap: Zap,
 };
 
@@ -223,8 +219,8 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
 
                     {/* Technologies */}
                     {service.technologies && (
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {service.technologies.slice(0, 3).map((tech, idx) => (
+                      <div className="flex flex-wrap gap-2">
+                        {service.technologies.slice(0, 4).map((tech, idx) => (
                           <span 
                             key={idx}
                             className={`
@@ -239,26 +235,6 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                         ))}
                       </div>
                     )}
-
-                    {/* Pricing & CTA */}
-                    <div className="flex items-center justify-between pt-6 border-t border-gray-200 dark:border-gray-700">
-                      <span className={`text-lg font-bold ${colors.text}`}>
-                        {service.pricing}
-                      </span>
-                      <motion.button
-                        className={`
-                          ${colors.button}
-                          text-white px-4 py-2 rounded-lg
-                          flex items-center gap-2
-                          transition-all duration-300
-                        `}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <span className="text-sm font-medium">Learn More</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </motion.button>
-                    </div>
                   </div>
 
                   {/* Decorative Corner Element */}

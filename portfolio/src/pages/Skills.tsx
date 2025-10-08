@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { SkillsSection } from '../components/sections/SkillsSection';
 import { SoftSkillsGrid } from '../components/ui/SoftSkillsGrid';
@@ -15,7 +15,6 @@ export const Skills = () => {
   const containerRef = useRef<HTMLElement>(null);
   const section1Ref = useRef<HTMLDivElement>(null);
   const section2Ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.2 });
 
   return (
     <section 
@@ -61,12 +60,11 @@ export const Skills = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - Faster animations */}
+        {/* Header - Instant appearance */}
         <motion.div 
           className="text-center mb-20"
-          initial={{ opacity: 0, y: -30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
         >
           <motion.h1 
             id="skills-heading"
@@ -79,9 +77,8 @@ export const Skills = () => {
           </motion.h1>
           <motion.p 
             className="text-xl sm:text-2xl md:text-3xl font-semibold text-light-text dark:text-white/90"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.1, duration: 0.4 }}
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
           >
             Skills & Technologies
           </motion.p>

@@ -103,10 +103,12 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ 
-                delay: index * 0.1, 
-                duration: 0.4,
+                delay: index * 0.15, 
+                duration: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
                 type: "spring",
-                stiffness: 100
+                stiffness: 80,
+                damping: 15
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
@@ -126,7 +128,10 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
                   y: -8,
                   scale: 1.02
                 }}
-                transition={{ duration: 0.3 }}
+                transition={{ 
+                  duration: 0.5,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
               >
                 {/* Animated Background Glow */}
                 <motion.div
@@ -151,7 +156,10 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
                         scale: isHovered ? 1.1 : 1,
                         rotate: isHovered ? [0, -5, 5, 0] : 0
                       }}
-                      transition={{ duration: 0.5 }}
+                      transition={{ 
+                        duration: 0.5,
+                        ease: [0.25, 0.46, 0.45, 0.94]
+                      }}
                     >
                       {cert.icon}
                     </motion.div>

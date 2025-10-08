@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { Star, Quote, ChevronLeft, ChevronRight, Building2, Briefcase } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Testimonial } from '../../constants/services';
 
 interface TestimonialsSectionProps {
@@ -133,29 +133,20 @@ export const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) 
                   </p>
 
                   {/* Client Info */}
-                  <div className="flex items-center gap-4">
-                    {/* Avatar */}
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-accent-purple flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                      {testimonials[currentIndex].name.charAt(0)}
-                    </div>
-
-                    {/* Details */}
-                    <div className="flex-1">
-                      <h4 className="text-lg font-bold text-gray-900 dark:text-white">
-                        {testimonials[currentIndex].name}
-                      </h4>
-                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                        <Briefcase className="w-4 h-4" />
-                        <span>{testimonials[currentIndex].role}</span>
-                        <span>•</span>
-                        <Building2 className="w-4 h-4" />
-                        <span>{testimonials[currentIndex].company}</span>
+                  <div className="flex items-center justify-between">
+                    {/* Avatar & Name */}
+                    <div className="flex items-center gap-4">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-accent-purple flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                        {testimonials[currentIndex].name.charAt(0)}
                       </div>
-                      {testimonials[currentIndex].project && (
-                        <p className="text-xs text-primary-600 dark:text-primary-400 mt-1">
-                          Project: {testimonials[currentIndex].project}
+                      <div>
+                        <h4 className="text-lg font-bold text-gray-900 dark:text-white">
+                          {testimonials[currentIndex].name}
+                        </h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-500">
+                          Verified Client
                         </p>
-                      )}
+                      </div>
                     </div>
 
                     {/* Date */}
@@ -247,8 +238,8 @@ export const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) 
                   <h5 className="text-sm font-semibold text-gray-900 dark:text-white truncate">
                     {testimonial.name}
                   </h5>
-                  <p className="text-xs text-gray-500 dark:text-gray-500 truncate">
-                    {testimonial.role} at {testimonial.company}
+                  <p className="text-xs text-gray-500 dark:text-gray-500">
+                    {testimonial.date}
                   </p>
                 </div>
               </div>

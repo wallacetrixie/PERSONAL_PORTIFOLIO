@@ -21,6 +21,16 @@ export interface SoftSkill {
   description: string;
 }
 
+export interface Certification {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  description: string;
+  icon: string; // emoji icon
+  color: 'cyan' | 'purple' | 'blue' | 'green' | 'orange' | 'pink';
+}
+
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: 'frontend',
@@ -194,6 +204,63 @@ export const SOFT_SKILLS: SoftSkill[] = [
   { 
     name: 'Time Management', 
     description: 'I prioritize tasks efficiently and deliver on time' 
+  }
+];
+
+export const CERTIFICATIONS: Certification[] = [
+  {
+    id: 'alx-software-engineering',
+    title: 'ALX Software Engineering',
+    issuer: 'ALX Africa',
+    date: '2024',
+    description: 'Comprehensive full-stack software engineering program covering modern web development, algorithms, data structures, system design, and professional software development practices.',
+    icon: '🚀',
+    color: 'cyan'
+  },
+  {
+    id: 'bachelors-it',
+    title: 'Bachelor of Science in Information Technology',
+    issuer: 'Co-operative University of Kenya',
+    date: '2025',
+    description: 'Degree program covering computer science fundamentals, software engineering principles, database systems, networking, cybersecurity, and advanced programming concepts.',
+    icon: '🎓',
+    color: 'purple'
+  },
+  {
+    id: 'aws-cloud-practitioner',
+    title: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services',
+    date: '2024',
+    description: 'Foundation-level certification demonstrating knowledge of AWS Cloud, services, architecture, security, pricing, and support. Essential for cloud-based application development.',
+    icon: '☁️',
+    color: 'orange'
+  },
+  {
+    id: 'aws-solutions-architect',
+    title: 'AWS Solutions Architect Associate',
+    issuer: 'Amazon Web Services',
+    date: '2024',
+    description: 'Professional certification validating expertise in designing distributed systems, implementing scalable applications, and architecting resilient solutions on AWS infrastructure.',
+    icon: '🏗️',
+    color: 'blue'
+  },
+  {
+    id: 'responsive-web-design',
+    title: 'Responsive Web Design Certification',
+    issuer: 'freeCodeCamp',
+    date: '2023',
+    description: 'Certification demonstrating proficiency in HTML5, CSS3, Flexbox, CSS Grid, responsive design principles, and accessibility standards for modern web development.',
+    icon: '📱',
+    color: 'green'
+  },
+  {
+    id: 'javascript-algorithms',
+    title: 'JavaScript Algorithms & Data Structures',
+    issuer: 'freeCodeCamp',
+    date: '2023',
+    description: 'Advanced certification covering ES6+, functional programming, object-oriented programming, algorithms, data structures, and problem-solving techniques in JavaScript.',
+    icon: '⚡',
+    color: 'pink'
   }
 ];
 

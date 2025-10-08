@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 type Theme = 'dark';
 
 // Always use dark mode - no toggling
-export const useDarkMode = (): [Theme] => {
+export const useDarkMode = (): [Theme, () => void] => {
   useEffect(() => {
     const root = window.document.documentElement;
     // Always add dark class
@@ -11,5 +11,10 @@ export const useDarkMode = (): [Theme] => {
     localStorage.setItem('theme', 'dark');
   }, []);
 
-  return ['dark'];
+  // Empty toggle function since we don't actually toggle
+  const toggleTheme = () => {
+    // Do nothing - always stay in dark mode
+  };
+
+  return ['dark', toggleTheme];
 };

@@ -15,7 +15,6 @@ import {
   Users,
   Target,
   Zap,
-  Clock,
   Facebook
 } from 'lucide-react';
 import { SOCIAL_LINKS, PERSONAL_INFO, NAV_LINKS } from '../../constants';

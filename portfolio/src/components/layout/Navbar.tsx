@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Moon, Sun, Github, Linkedin, Mail, Code2 } from 'lucide-react';
+import { Menu, X, Moon, Github, Linkedin, Mail, Code2 } from 'lucide-react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { NAV_LINKS } from '../../constants';
 import { useDarkMode } from '../../hooks/useDarkMode';
@@ -9,7 +9,7 @@ import { useScrollProgress } from '../../hooks/useScrollProgress';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [theme, toggleTheme] = useDarkMode();
+  const [, toggleTheme] = useDarkMode();
   const scrollPosition = useScrollPosition();
   const scrollProgress = useScrollProgress();
   const location = useLocation();
@@ -218,30 +218,18 @@ export const Navbar = () => {
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleTheme}
                 className="p-2 rounded-full bg-light-bg-secondary dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 shadow-soft dark:shadow-none"
-                aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                aria-label="Theme mode"
               >
                 <AnimatePresence mode="wait">
-                  {theme === 'light' ? (
-                    <motion.div
-                      key="moon"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Moon className="w-5 h-5 text-light-text" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="sun"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <Sun className="w-5 h-5 text-yellow-400" />
-                    </motion.div>
-                  )}
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Moon className="w-5 h-5 text-cyan-400" />
+                  </motion.div>
                 </AnimatePresence>
               </motion.button>
             </div>
@@ -253,13 +241,9 @@ export const Navbar = () => {
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleTheme}
                 className="p-2 rounded-full bg-light-bg-secondary dark:bg-gray-800 shadow-soft dark:shadow-none"
-                aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                aria-label="Theme mode"
               >
-                {theme === 'light' ? (
-                  <Moon className="w-5 h-5 text-light-text" />
-                ) : (
-                  <Sun className="w-5 h-5 text-yellow-400" />
-                )}
+                <Moon className="w-5 h-5 text-cyan-400" />
               </motion.button>
 
               {/* Hamburger Button */}

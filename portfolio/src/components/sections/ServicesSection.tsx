@@ -80,8 +80,38 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 relative bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-20 left-10 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"
+          animate={{
+            y: [0, -50, 0],
+            x: [0, 30, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-accent-purple/10 rounded-full blur-3xl"
+          animate={{
+            y: [0, 50, 0],
+            x: [0, -30, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -148,12 +178,12 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                 <motion.div
                   className={`
                     relative h-full overflow-hidden
-                    bg-gradient-to-br ${colors.gradient}
-                    backdrop-blur-sm
+                    bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl
                     border-2 ${colors.border}
                     rounded-2xl p-8
+                    shadow-lg hover:shadow-2xl
                     transition-all duration-300
-                    ${isHovered ? `shadow-2xl ${colors.shadow}` : 'shadow-lg'}
+                    ${isHovered ? colors.shadow : ''}
                   `}
                   whileHover={{ 
                     y: -8,
@@ -165,9 +195,23 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                   <motion.div
                     className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-0`}
                     animate={{
-                      opacity: isHovered ? 0.5 : 0
+                      opacity: isHovered ? 0.6 : 0
                     }}
                     transition={{ duration: 0.3 }}
+                  />
+
+                  {/* Floating particles */}
+                  <motion.div
+                    className={`absolute top-4 right-4 w-20 h-20 ${colors.gradient} rounded-full blur-2xl`}
+                    animate={{
+                      y: isHovered ? [0, -10, 0] : 0,
+                      scale: isHovered ? [1, 1.2, 1] : 1,
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
                   />
 
                   {/* Content */}
@@ -177,30 +221,40 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                       className={`
                         w-16 h-16 rounded-xl ${colors.icon}
                         flex items-center justify-center mb-6
-                        shadow-lg
+                        shadow-lg backdrop-blur-sm
                       `}
                       animate={{
-                        scale: isHovered ? 1.1 : 1,
-                        rotate: isHovered ? [0, -10, 10, 0] : 0
+                        scale: isHovered ? 1.15 : 1,
+                        rotate: isHovered ? [0, -5, 5, -5, 0] : 0
                       }}
                       transition={{ duration: 0.5 }}
                     >
-                      {Icon && <Icon className="w-8 h-8 text-white" />}
+                      {Icon && <Icon className="w-8 h-8 text-white drop-shadow-lg" />}
                     </motion.div>
 
-                    {/* Title */}
-                    <h3 className={`
-                      text-2xl font-bold mb-3 ${colors.text}
-                    `}>
-                      {service.title}
-                    </h3>
+                    {/* Title with gradient on hover */}
+                    <motion.h3 
+                      className={`text-2xl font-bold mb-3 transition-all duration-300`}
+                      animate={{
+                        color: isHovered ? 'transparent' : ''
+                      }}
+                      style={{
+                        backgroundImage: isHovered ? 'linear-gradient(to right, var(--tw-gradient-stops))' : 'none',
+                        backgroundClip: isHovered ? 'text' : 'border-box',
+                        WebkitBackgroundClip: isHovered ? 'text' : 'border-box',
+                      }}
+                    >
+                      <span className={isHovered ? `bg-gradient-to-r ${colors.icon} bg-clip-text text-transparent` : colors.text}>
+                        {service.title}
+                      </span>
+                    </motion.h3>
 
                     {/* Description */}
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                       {service.description}
                     </p>
 
-                    {/* Features */}
+                    {/* Features with stagger animation */}
                     <ul className="space-y-2 mb-6">
                       {service.features.slice(0, 3).map((feature, idx) => (
                         <motion.li 
@@ -210,41 +264,80 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
                           transition={{ delay: index * 0.1 + idx * 0.05 }}
+                          whileHover={{ x: 4 }}
                         >
-                          <Check className={`w-4 h-4 ${colors.text} flex-shrink-0 mt-0.5`} />
+                          <motion.div
+                            animate={{
+                              scale: isHovered ? [1, 1.2, 1] : 1
+                            }}
+                            transition={{ 
+                              delay: idx * 0.1,
+                              duration: 0.3 
+                            }}
+                          >
+                            <Check className={`w-4 h-4 ${colors.text} flex-shrink-0 mt-0.5`} />
+                          </motion.div>
                           <span>{feature}</span>
                         </motion.li>
                       ))}
                     </ul>
 
-                    {/* Technologies */}
+                    {/* Technologies with glassmorphism */}
                     {service.technologies && (
-                      <div className="flex flex-wrap gap-2">
+                      <motion.div 
+                        className="flex flex-wrap gap-2"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + 0.3 }}
+                      >
                         {service.technologies.slice(0, 4).map((tech, idx) => (
-                          <span 
+                          <motion.span 
                             key={idx}
                             className={`
-                              text-xs px-3 py-1 rounded-full
-                              bg-white/50 dark:bg-gray-800/50
+                              text-xs px-3 py-1.5 rounded-full
+                              bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm
                               ${colors.text}
                               border ${colors.border}
+                              shadow-sm hover:shadow-md
+                              transition-all duration-200
                             `}
+                            initial={{ scale: 0, rotate: -180 }}
+                            whileInView={{ scale: 1, rotate: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ 
+                              delay: index * 0.1 + idx * 0.05,
+                              type: "spring",
+                              stiffness: 200
+                            }}
+                            whileHover={{ 
+                              scale: 1.1,
+                              y: -2
+                            }}
                           >
                             {tech}
-                          </span>
+                          </motion.span>
                         ))}
-                      </div>
+                      </motion.div>
                     )}
                   </div>
 
-                  {/* Decorative Corner Element */}
+                  {/* Decorative Corner Element with enhanced effect */}
                   <motion.div
                     className={`absolute top-0 right-0 w-32 h-32 ${colors.gradient} blur-3xl rounded-full`}
                     animate={{
-                      scale: isHovered ? 1.5 : 1,
-                      opacity: isHovered ? 0.3 : 0.1
+                      scale: isHovered ? 1.8 : 1,
+                      opacity: isHovered ? 0.4 : 0.1
                     }}
                     transition={{ duration: 0.4 }}
+                  />
+                  
+                  {/* Shine effect on hover */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
+                    initial={{ x: '-100%' }}
+                    animate={{ x: isHovered ? '100%' : '-100%' }}
+                    transition={{ duration: 0.8 }}
                   />
                 </motion.div>
               </motion.div>
@@ -252,7 +345,7 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
           })}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA with Glassmorphism */}
         <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -260,18 +353,37 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Don't see what you're looking for? Let's discuss your custom requirements!
-          </p>
-          <motion.a
-            href="/#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-purple text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
+          <motion.div
+            className="inline-block p-8 rounded-3xl bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl border border-white/40 dark:border-gray-700/40 shadow-2xl"
+            whileHover={{ scale: 1.02 }}
           >
-            <span>Get In Touch</span>
-            <ArrowRight className="w-5 h-5" />
-          </motion.a>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+            >
+              <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg font-medium">
+                Don't see what you're looking for? Let's discuss your custom requirements!
+              </p>
+              <motion.a
+                href="/#contact"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-purple text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {/* Shine effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  initial={{ x: '-100%' }}
+                  whileHover={{ x: '100%' }}
+                  transition={{ duration: 0.6 }}
+                />
+                <span className="relative z-10">Get In Touch</span>
+                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+              </motion.a>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

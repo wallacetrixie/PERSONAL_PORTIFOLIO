@@ -1,0 +1,13 @@
+# robots.txt for Wallace Wambulwa Portfolio
+# https://wallacewambulwa-gilt.vercel.app
+
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Block admin routes from being indexed
+Disallow: /admin/
+Disallow: /admin/*
+
+# Sitemap location
+Sitemap: https://wallacewambulwa-gilt.vercel.app/sitemap.xml

@@ -125,7 +125,7 @@ export const Hero = () => {
               animate={prefersReducedMotion || isComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.4 }}
             >
-              {PERSONAL_INFO.bio} Building innovative solutions at{' '}
+              {PERSONAL_INFO.bio} at{' '}
               <span className="text-light-accent1 dark:text-primary-300 font-semibold">{PERSONAL_INFO.company}</span>.
             </motion.p>
 

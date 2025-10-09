@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Code2, 
   Palette, 
@@ -78,6 +78,14 @@ const colorClasses = {
 
 export const ServicesSection = ({ services }: ServicesSectionProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <section className="py-20 relative bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
@@ -185,34 +193,36 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                     transition-all duration-300
                     ${isHovered ? colors.shadow : ''}
                   `}
-                  whileHover={{ 
+                  whileHover={!isMobile ? { 
                     y: -8,
                     scale: 1.02
-                  }}
+                  } : {}}
                   transition={{ duration: 0.3 }}
                 >
                   {/* Animated Background Glow */}
                   <motion.div
                     className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-0`}
-                    animate={{
+                    animate={!isMobile ? {
                       opacity: isHovered ? 0.6 : 0
-                    }}
+                    } : {}}
                     transition={{ duration: 0.3 }}
                   />
 
-                  {/* Floating particles */}
-                  <motion.div
-                    className={`absolute top-4 right-4 w-20 h-20 ${colors.gradient} rounded-full blur-2xl`}
-                    animate={{
-                      y: isHovered ? [0, -10, 0] : 0,
-                      scale: isHovered ? [1, 1.2, 1] : 1,
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
+                  {/* Floating particles - desktop only */}
+                  {!isMobile && (
+                    <motion.div
+                      className={`absolute top-4 right-4 w-20 h-20 ${colors.gradient} rounded-full blur-2xl`}
+                      animate={{
+                        y: isHovered ? [0, -10, 0] : 0,
+                        scale: isHovered ? [1, 1.2, 1] : 1,
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  )}
 
                   {/* Content */}
                   <div className="relative z-10">
@@ -223,10 +233,10 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                         flex items-center justify-center mb-6
                         shadow-lg backdrop-blur-sm
                       `}
-                      animate={{
+                      animate={!isMobile ? {
                         scale: isHovered ? 1.15 : 1,
                         rotate: isHovered ? [0, -5, 5, -5, 0] : 0
-                      }}
+                      } : {}}
                       transition={{ duration: 0.5 }}
                     >
                       {Icon && <Icon className="w-8 h-8 text-white drop-shadow-lg" />}
@@ -260,16 +270,21 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                         <motion.li 
                           key={idx}
                           className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
-                          initial={{ opacity: 0, x: -10 }}
+                          initial={{ opacity: 0, x: isMobile ? 0 : -10 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 + idx * 0.05 }}
-                          whileHover={{ x: 4 }}
+                          transition={isMobile ? {
+                            delay: idx * 0.05,
+                            duration: 0.3
+                          } : {
+                            delay: index * 0.1 + idx * 0.05
+                          }}
+                          whileHover={!isMobile ? { x: 4 } : {}}
                         >
                           <motion.div
-                            animate={{
+                            animate={!isMobile ? {
                               scale: isHovered ? [1, 1.2, 1] : 1
-                            }}
+                            } : {}}
                             transition={{ 
                               delay: idx * 0.1,
                               duration: 0.3 
@@ -302,18 +317,34 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                               shadow-sm hover:shadow-md
                               transition-all duration-200
                             `}
-                            initial={{ scale: 0, rotate: -180 }}
-                            whileInView={{ scale: 1, rotate: 0 }}
+                            initial={isMobile ? { 
+                              opacity: 0, 
+                              x: -20 
+                            } : { 
+                              scale: 0, 
+                              rotate: -180 
+                            }}
+                            whileInView={isMobile ? { 
+                              opacity: 1, 
+                              x: 0 
+                            } : { 
+                              scale: 1, 
+                              rotate: 0 
+                            }}
                             viewport={{ once: true }}
-                            transition={{ 
+                            transition={isMobile ? {
+                              delay: idx * 0.08,
+                              duration: 0.4,
+                              ease: "easeOut"
+                            } : { 
                               delay: index * 0.1 + idx * 0.05,
                               type: "spring",
                               stiffness: 200
                             }}
-                            whileHover={{ 
+                            whileHover={!isMobile ? { 
                               scale: 1.1,
                               y: -2
-                            }}
+                            } : {}}
                           >
                             {tech}
                           </motion.span>
@@ -322,23 +353,27 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                     )}
                   </div>
 
-                  {/* Decorative Corner Element with enhanced effect */}
-                  <motion.div
-                    className={`absolute top-0 right-0 w-32 h-32 ${colors.gradient} blur-3xl rounded-full`}
-                    animate={{
-                      scale: isHovered ? 1.8 : 1,
-                      opacity: isHovered ? 0.4 : 0.1
-                    }}
-                    transition={{ duration: 0.4 }}
-                  />
+                  {/* Decorative Corner Element with enhanced effect - desktop only */}
+                  {!isMobile && (
+                    <motion.div
+                      className={`absolute top-0 right-0 w-32 h-32 ${colors.gradient} blur-3xl rounded-full`}
+                      animate={{
+                        scale: isHovered ? 1.8 : 1,
+                        opacity: isHovered ? 0.4 : 0.1
+                      }}
+                      transition={{ duration: 0.4 }}
+                    />
+                  )}
                   
-                  {/* Shine effect on hover */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
-                    initial={{ x: '-100%' }}
-                    animate={{ x: isHovered ? '100%' : '-100%' }}
-                    transition={{ duration: 0.8 }}
-                  />
+                  {/* Shine effect on hover - desktop only */}
+                  {!isMobile && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
+                      initial={{ x: '-100%' }}
+                      animate={{ x: isHovered ? '100%' : '-100%' }}
+                      transition={{ duration: 0.8 }}
+                    />
+                  )}
                 </motion.div>
               </motion.div>
             );

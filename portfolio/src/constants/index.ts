@@ -52,7 +52,7 @@ export const PERSONAL_INFO = {
   name: 'Wallace Wambulwa',
   title: 'Software Developer & Founder',
   company: 'Neo-Nexus Solutions',
-  bio: ' I specialize in building exceptional digital experiences and innovative business solutions',
+  bio: 'I specialize in crafting innovative digital solutions that drive business growth and user satisfaction',
   email: 'wallacewambulwa@gmail.com',
   location: 'Nairobi,Kenya karen',
   availability: 'Available for freelance work',

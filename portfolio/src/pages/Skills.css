@@ -567,6 +567,16 @@
   .skill-card-futuristic {
     padding: 24px;
     min-height: 240px;
+    /* Disable 3D transforms on mobile */
+    transform: none !important;
+    transform-style: flat !important;
+    /* Simplified transitions */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Disable complex hover effects on mobile */
+  .skill-card-futuristic:hover {
+    transform: none !important;
   }
 
   .skill-card-title-futuristic {
@@ -588,6 +598,32 @@
     width: 44px;
     height: 44px;
     font-size: 16px;
+    /* Keep basic transitions for visual feedback */
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  /* Add subtle active state for touch feedback */
+  .tech-icon:active {
+    transform: scale(0.95);
+    background: rgba(37, 99, 235, 0.15);
+  }
+
+  .dark .tech-icon:active {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Remove complex hover animations but keep icons visible */
+  .tech-icon:hover {
+    transform: none;
+  }
+
+  /* Simplify tech tag animations */
+  .tech-tag {
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .tech-tag:hover {
+    transform: none !important;
   }
 }
 
@@ -595,6 +631,18 @@
   .skill-card-futuristic {
     padding: 20px;
     min-height: 220px;
+    /* Disable all transform effects */
+    transform: none !important;
+    transform-style: flat !important;
+    /* Keep only essential transitions */
+    transition: border-color 0.2s ease;
+  }
+
+  /* Completely disable hover effects on small screens */
+  .skill-card-futuristic:hover,
+  .skill-card-futuristic:active {
+    transform: none !important;
+    scale: 1 !important;
   }
 
   .skill-card-title-futuristic {
@@ -611,6 +659,43 @@
     height: 40px;
     font-size: 15px;
     border-radius: 10px;
+    /* Keep minimal transitions for touch feedback */
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  /* Touch feedback on small screens */
+  .tech-icon:active {
+    transform: scale(0.92);
+    background: rgba(37, 99, 235, 0.12);
+  }
+
+  .dark .tech-icon:active {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  /* No hover effects but icons remain fully visible and interactive */
+  .tech-icon:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .dark .tech-icon:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  /* Disable all tech tag animations */
+  .tech-tag {
+    transition: none;
+  }
+
+  .tech-tag:hover,
+  .tech-tag:active {
+    transform: none !important;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .dark .tech-tag:hover,
+  .dark .tech-tag:active {
+    background: rgba(255, 255, 255, 0.05);
   }
 }
 
@@ -651,10 +736,13 @@
 @media (max-width: 1024px) {
   .soft-skill-button {
     padding: 12px 24px;
+    /* Simplified transitions for tablets */
+    transition: background 0.3s ease, border-color 0.3s ease;
   }
 
   .soft-skill-button:hover {
-    padding: 16px 28px;
+    padding: 12px 24px;
+    transform: none;
   }
 
   .soft-skill-title {
@@ -669,10 +757,20 @@
 @media (max-width: 768px) {
   .soft-skill-button {
     padding: 10px 20px;
+    /* Minimal transitions for mobile */
+    transition: border-color 0.2s ease;
   }
 
-  .soft-skill-button:hover {
-    padding: 14px 24px;
+  /* No hover effects on mobile */
+  .soft-skill-button:hover,
+  .soft-skill-button:active {
+    padding: 10px 20px;
+    transform: none !important;
+    scale: 1 !important;
+  }
+
+  .soft-skill-button::before {
+    display: none;
   }
 
   .soft-skill-title {
@@ -681,5 +779,17 @@
 
   .soft-skill-desc {
     font-size: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .soft-skill-button {
+    padding: 8px 16px;
+    transition: none;
+  }
+
+  .soft-skill-button:hover,
+  .soft-skill-button:active {
+    padding: 8px 16px;
   }
 }

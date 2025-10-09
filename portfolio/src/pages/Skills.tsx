@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { SkillsSection } from '../components/sections/SkillsSection';
 import { SoftSkillsGrid } from '../components/ui/SoftSkillsGrid';
 import { CertificationsSection } from '../components/sections/CertificationsSection';
@@ -15,6 +15,14 @@ export const Skills = () => {
   const containerRef = useRef<HTMLElement>(null);
   const section1Ref = useRef<HTMLDivElement>(null);
   const section2Ref = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <section 
@@ -23,35 +31,35 @@ export const Skills = () => {
       className="min-h-screen py-20 relative overflow-hidden bg-gradient-to-b from-light-bg via-white to-light-bg-secondary dark:from-[#0a0e27] dark:via-[#16213e] dark:to-[#0a0e27]"
       aria-labelledby="skills-heading"
     >
-      {/* Animated Background Elements - Optimized for mobile */}
+      {/* Animated Background Elements - Static on mobile, animated on desktop */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         {/* Glowing Orbs - Static on mobile, animated on desktop */}
         <motion.div 
           className="absolute top-20 left-1/4 w-96 h-96 bg-light-accent1/5 dark:bg-cyan-500/10 rounded-full blur-3xl"
-          animate={{ 
+          animate={!isMobile ? { 
             scale: [1, 1.3, 1], 
             opacity: [0.1, 0.2, 0.1],
             x: [0, 50, 0],
             y: [0, 30, 0]
-          }}
+          } : {}}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div 
           className="absolute bottom-20 right-1/4 w-96 h-96 bg-light-accent2/5 dark:bg-purple-500/10 rounded-full blur-3xl"
-          animate={{ 
+          animate={!isMobile ? { 
             scale: [1.3, 1, 1.3], 
             opacity: [0.2, 0.1, 0.2],
             x: [0, -50, 0],
             y: [0, -30, 0]
-          }}
+          } : {}}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div 
           className="absolute top-1/2 right-1/3 w-72 h-72 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl"
-          animate={{ 
+          animate={!isMobile ? { 
             scale: [1, 1.2, 1], 
             opacity: [0.15, 0.25, 0.15]
-          }}
+          } : {}}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         />
 

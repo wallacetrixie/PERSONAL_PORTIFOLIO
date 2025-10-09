@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 // Throttle utility function
-const throttle = (func: (...args: any[]) => void, limit: number) => {
+const throttle = <T extends unknown[]>(func: (...args: T) => void, limit: number) => {
   let inThrottle: boolean;
-  return function(this: any, ...args: any[]) {
+  return function(this: unknown, ...args: T) {
     if (!inThrottle) {
       func.apply(this, args);
       inThrottle = true;

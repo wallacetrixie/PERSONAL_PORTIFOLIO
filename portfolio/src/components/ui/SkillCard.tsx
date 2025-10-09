@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import type { SkillCategory } from '../../constants/skills';
 import { useEffect, useState } from 'react';
 
@@ -6,7 +6,7 @@ interface SkillCardProps {
   category: SkillCategory;
   index: number;
   isInView: boolean;
-  customVariants?: any;
+  customVariants?: Variants;
   style?: React.CSSProperties;
 }
 
@@ -27,7 +27,7 @@ export const SkillCard = ({
   }, []);
 
   // Mobile-friendly variants with minimal animation
-  const mobileCardVariants = {
+  const mobileCardVariants: Variants = {
     hidden: { 
       opacity: 0,
       y: 20
@@ -38,13 +38,13 @@ export const SkillCard = ({
       transition: {
         delay: index * 0.1,
         duration: 0.4,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
 
   // Desktop variants with full animations
-  const desktopCardVariants = customVariants || {
+  const desktopCardVariants: Variants = customVariants || {
     hidden: { 
       opacity: 0, 
       scale: 0.95,
@@ -60,7 +60,7 @@ export const SkillCard = ({
         delay: index * 0.15,
         duration: 0.8,
         ease: [0.25, 0.46, 0.45, 0.94],
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 80,
         damping: 15
       }
@@ -70,7 +70,7 @@ export const SkillCard = ({
   const cardVariants = isMobile ? mobileCardVariants : desktopCardVariants;
 
   // Mobile-friendly icon variants with slide-in effect
-  const mobileIconVariants = {
+  const mobileIconVariants: Variants = {
     hidden: { 
       opacity: 0,
       x: -20,
@@ -83,7 +83,7 @@ export const SkillCard = ({
     }
   };
 
-  const desktopIconVariants = {
+  const desktopIconVariants: Variants = {
     hidden: { opacity: 0, scale: 0 },
     visible: { opacity: 1, scale: 1 }
   };

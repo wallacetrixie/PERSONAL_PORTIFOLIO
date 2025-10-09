@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import type { RefObject } from 'react';
 
 interface IntersectionObserverOptions extends IntersectionObserverInit {
@@ -12,11 +12,20 @@ export const useIntersectionObserver = (
   const [isIntersecting, setIsIntersecting] = useState(false);
   const hasTriggeredRef = useRef(false);
 
+  // Memoize options to avoid re-creating observer on every render
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const memoizedOptions = useMemo(() => options, [
+    options?.root,
+    options?.rootMargin,
+    options?.threshold,
+    options?.triggerOnce
+  ]);
+
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
-    const { triggerOnce, ...observerOptions } = options || {};
+    const { triggerOnce, ...observerOptions } = memoizedOptions || {};
 
     const observer = new IntersectionObserver(([entry]) => {
       // If triggerOnce is enabled and already triggered, don't update
@@ -37,8 +46,7 @@ export const useIntersectionObserver = (
       observer.unobserve(element);
       observer.disconnect();
     };
-    // Stringify options to avoid dependency issues with object references
-  }, [ref, JSON.stringify(options)]);
+  }, [ref, memoizedOptions]);
 
   return isIntersecting;
 };

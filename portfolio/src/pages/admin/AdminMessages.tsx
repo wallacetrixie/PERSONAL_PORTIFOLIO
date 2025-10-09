@@ -46,8 +46,9 @@ export const AdminMessages = () => {
       } else {
         setError(data.message || 'Failed to fetch contacts');
       }
-    } catch (err: any) {
-      setError(err.message || 'Failed to connect to server. Please ensure the backend is running.');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to connect to server. Please ensure the backend is running.';
+      setError(errorMessage);
       console.error('Error fetching contacts:', err);
     } finally {
       setLoading(false);
@@ -77,9 +78,10 @@ export const AdminMessages = () => {
       } else {
         alert(data.message || 'Failed to update status');
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to update status';
       console.error('Error updating status:', err);
-      alert(err.message || 'Failed to update status');
+      alert(errorMessage);
     }
   };
 
@@ -104,9 +106,10 @@ export const AdminMessages = () => {
       } else {
         alert(data.message || 'Failed to delete contact');
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to delete contact';
       console.error('Error deleting contact:', err);
-      alert(err.message || 'Failed to delete contact');
+      alert(errorMessage);
     }
   };
 

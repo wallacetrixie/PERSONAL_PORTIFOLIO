@@ -47,7 +47,7 @@ export const apiClient = {
   /**
    * POST request
    */
-  post: async (url: string, data?: any, options: RequestInit = {}) => {
+  post: async <T = unknown>(url: string, data?: T, options: RequestInit = {}) => {
     const response = await fetch(url, {
       ...defaultFetchOptions,
       ...options,
@@ -60,7 +60,7 @@ export const apiClient = {
   /**
    * PATCH request
    */
-  patch: async (url: string, data?: any, options: RequestInit = {}) => {
+  patch: async <T = unknown>(url: string, data?: T, options: RequestInit = {}) => {
     const response = await fetch(url, {
       ...defaultFetchOptions,
       ...options,

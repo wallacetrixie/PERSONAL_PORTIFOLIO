@@ -67,7 +67,7 @@ export const Navbar = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: [0.22, 1, 0.36, 1] as any
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   };
@@ -78,7 +78,7 @@ export const Navbar = () => {
       x: '100%',
       transition: {
         duration: 0.3,
-        ease: [0.22, 1, 0.36, 1] as any
+        ease: [0.22, 1, 0.36, 1]
       }
     },
     open: {
@@ -86,7 +86,7 @@ export const Navbar = () => {
       x: 0,
       transition: {
         duration: 0.4,
-        ease: [0.22, 1, 0.36, 1] as any
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   };
@@ -99,7 +99,7 @@ export const Navbar = () => {
       transition: {
         delay: i * 0.1,
         duration: 0.5,
-        ease: [0.22, 1, 0.36, 1] as any
+        ease: [0.22, 1, 0.36, 1]
       }
     })
   };

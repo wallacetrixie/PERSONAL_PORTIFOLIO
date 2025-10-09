@@ -5,14 +5,6 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/google11c981db57feb3c4.html",
-      "destination": "/google11c981db57feb3c4.html"
-    },
-    {
-      "source": "/BingSiteAuth.xml",
-      "destination": "/BingSiteAuth.xml"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
@@ -49,54 +41,6 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
-        }
-      ]
-    },
-    {
-      "source": "/robots.txt",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/plain"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/xml"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "/BingSiteAuth.xml",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/xml"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
-      "source": "/google*.html",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/html"
         }
       ]
     }

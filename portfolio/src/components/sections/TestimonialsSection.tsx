@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight, Sparkles, Play, Pause } from 'lucide-react';
 import type { Testimonial } from '../../constants/services';
 
@@ -17,6 +17,11 @@ export const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) 
   
   const AUTOPLAY_DELAY = 5000; // 5 seconds
   const PROGRESS_INTERVAL = 50; // Update every 50ms
+
+  const handleNext = useCallback(() => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  }, [testimonials.length]);
 
   // Autoplay functionality
   useEffect(() => {
@@ -46,16 +51,11 @@ export const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) 
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
     };
-  }, [currentIndex, isAutoPlaying]);
+  }, [currentIndex, isAutoPlaying, handleNext]);
 
   const toggleAutoplay = () => {
     setIsAutoPlaying(!isAutoPlaying);
     setProgress(0);
-  };
-
-  const handleNext = () => {
-    setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   const handlePrev = () => {

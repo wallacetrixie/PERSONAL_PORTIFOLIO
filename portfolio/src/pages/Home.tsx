@@ -2,6 +2,7 @@ import { Hero } from '../components/sections/Hero';
 import { About } from '../components/sections/About';
 import { ProjectsSection } from '../components/sections/ProjectsSection';
 import { ContactSection } from '../components/sections/ContactSection';
+import { MapSection } from '../components/sections/MapSection';
 import { ServicesSection } from '../components/sections/ServicesSection';
 import { TestimonialsSection } from '../components/sections/TestimonialsSection';
 import { Skills } from './Skills';
@@ -30,6 +31,9 @@ export const Home = () => {
       </section>
       <section id="contact">
         <ContactSection />
+      </section>
+      <section id="map">
+        <MapSection />
       </section>
     </>
   );

@@ -2,7 +2,7 @@
 
 This directory contains comprehensive documentation for the portfolio project.
 
-## 📚 Documentation Structure
+## Documentation Structure
 
 ### About Section
 - [About Section Documentation](./ABOUT_SECTION_DOCUMENTATION.md) - Complete technical documentation
@@ -43,13 +43,13 @@ This directory contains comprehensive documentation for the portfolio project.
 - [Integration Quick Reference](./INTEGRATION_QUICK_REFERENCE.md) - Quick integration guide
 - [Light Mode Implementation](./LIGHT_MODE_IMPLEMENTATION.md) - Dark/Light mode guide
 
-## 🚀 Quick Start
+## Quick Start
 
 For a quick overview of the entire project, start with:
 1. Main [README.md](../README.md) in the root directory
 2. [Integration Quick Reference](./INTEGRATION_QUICK_REFERENCE.md)
 
-## 📝 Contributing
+## Contributing
 
 When adding new documentation:
 1. Use descriptive filenames with the section name prefix

@@ -3,9 +3,9 @@
 ## Overview
 The Hero section is a stunning, fully-featured landing section for your portfolio that showcases your professional identity with eye-catching animations and modern design.
 
-## ✨ Features Implemented
+## Features Implemented
 
-### 🎨 Visual Design
+### Visual Design
 - **Full viewport height** (100vh) dark-themed container
 - **Two-column desktop layout**: Text content on the left, portrait image on the right
 - **Mobile-responsive**: Stacked layout on mobile devices with text above the image
@@ -16,7 +16,7 @@ The Hero section is a stunning, fully-featured landing section for your portfoli
   - Floating abstract shapes (circles and squares)
   - 20 floating particles with randomized positions and animations
 
-### 🖼️ Portrait Image
+### Portrait Image
 - **Circular masked image** with professional styling
 - **Gradient border effect** (primary → purple → pink)
 - **Floating animation**: Smooth bobbing motion (3s cycle)
@@ -27,7 +27,7 @@ The Hero section is a stunning, fully-featured landing section for your portfoli
   - Tablet: 320px
   - Desktop: 400px
 
-### 📝 Content
+### Content
 - **Greeting**: Animated wave emoji with "Hello, I'm" text
 - **Headline**: Large, bold name with gradient accent on last name
   - "Wallace Wambulwa" with "Wambulwa" in gradient colors
@@ -35,13 +35,13 @@ The Hero section is a stunning, fully-featured landing section for your portfoli
 - **Description**: Bio text with company name highlighted
 - **Availability badge**: Green pulsing indicator showing "Available for freelance work"
 
-### 🎯 Call-to-Actions
+### Call-to-Actions
 Three styled buttons with hover effects:
 1. **Primary CTA**: "View Projects" (gradient background, arrow icon)
 2. **Secondary CTA**: "Contact Me" (outlined, mail icon)
 3. **Tertiary CTA**: "Download CV" (gray background, download icon)
 
-### 🎭 Animations (Framer Motion)
+### Animations (Framer Motion)
 
 #### Entrance Animations
 - **Text content**: Slides in from left with fade (0.5s duration, 0.2s delay)
@@ -63,7 +63,7 @@ Three styled buttons with hover effects:
 - **Primary button**: Gradient slide-in effect on hover
 - **Scroll prompt**: Bouncing animation (1.5s infinite)
 
-### ♿ Accessibility
+### Accessibility
 - **Alt text** on portrait image
 - **ARIA label** on scroll prompt button
 - **Keyboard accessible** buttons and links
@@ -72,7 +72,7 @@ Three styled buttons with hover effects:
   - Users who prefer reduced motion see static content without animations
   - Ensures comfort for users with vestibular disorders
 
-### 📱 Responsive Design
+### Responsive Design
 - **Mobile-first approach**
 - **Breakpoints**:
   - `lg`: 1024px+ (two-column layout)
@@ -84,13 +84,13 @@ Three styled buttons with hover effects:
 - **Button layout**: Stacks on mobile, horizontal on desktop
 - **Portrait sizing**: Scales appropriately for each breakpoint
 
-### 🎬 Smooth Scrolling
+### Smooth Scrolling
 - **Scroll prompt button** at the bottom center
 - **Smooth scroll behavior** to the next section (About)
 - **Animated chevron** with bouncing effect
 - **HTML smooth scroll** enabled globally in CSS
 
-## 🎨 Color Palette
+## Color Palette
 
 ### Primary Colors
 - **Primary 400**: `#38bdf8` (Light blue for accents)
@@ -107,13 +107,13 @@ Three styled buttons with hover effects:
 - **Gray 800**: `#1f2937` (Secondary dark background)
 - **Gray 700**: `#374151` (Tertiary elements)
 
-## 🛠️ Technologies Used
+## Technologies Used
 - **React 19** with TypeScript
 - **Framer Motion 12** for animations
 - **Tailwind CSS 3** for styling
 - **Lucide React** for icons (ChevronDown, Download, Mail, ArrowRight)
 
-## 📁 File Structure
+## File Structure
 ```
 src/
 ├── components/
@@ -129,7 +129,7 @@ src/
 └── index.css                 # Global styles with smooth scroll
 ```
 
-## 🔧 Customization Guide
+## Customization Guide
 
 ### Change Personal Information
 Edit `/src/constants/index.ts`:
@@ -169,14 +169,14 @@ Modify href values in the Hero component:
 - `#contact` → Navigate to contact section
 - `/cv.pdf` → Link to your CV file
 
-## 🚀 Performance Optimizations
+## Performance Optimizations
 - **Reduced motion support** for accessibility
 - **Optimized animations** using CSS transforms
 - **Lazy image loading** (can be added with `loading="lazy"`)
 - **Minimal re-renders** with proper React patterns
 - **Efficient Framer Motion** usage with appropriate animation types
 
-## 🎯 Next Steps
+## Next Steps
 To further enhance the Hero section:
 1. Add a video background option
 2. Implement typewriter effect for tagline
@@ -187,14 +187,14 @@ To further enhance the Hero section:
 7. Add achievement/stats counter animation
 8. Create an animated background mesh gradient
 
-## 📝 Notes
+## Notes
 - The Hero section is fully integrated into the Home page
 - Smooth scrolling works seamlessly across all sections
 - All animations are performance-optimized
 - The component is fully accessible and responsive
 - Dark mode is the default theme
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Portrait image not showing
 - Ensure the image path is correct in the import

@@ -1,6 +1,6 @@
 # Projects Section - Visual & Style Guide
 
-## 🎨 Color Palette
+## Color Palette
 
 ### Light Mode
 ```
@@ -55,7 +55,7 @@ Grid Gap:         32px (gap-8)
 
 ---
 
-## ✨ Animation Specifications
+## Animation Specifications
 
 ### Card Reveal Animation
 ```
@@ -107,7 +107,7 @@ Active Background:
 
 ---
 
-## 🎭 Component Hierarchy
+## Component Hierarchy
 
 ```
 Projects Page
@@ -151,7 +151,7 @@ Projects Page
 
 ---
 
-## 🖼️ Image Guidelines
+## Image Guidelines
 
 ### Recommended Specs
 ```
@@ -178,7 +178,7 @@ Container:  overflow-hidden
 
 ---
 
-## 📱 Responsive Behavior
+## Responsive Behavior
 
 ### Breakpoints
 ```tsx
@@ -217,7 +217,7 @@ Mobile: (auto-adjusts)
 
 ---
 
-## 🎯 Interactive States
+## Interactive States
 
 ### Category Filter Tabs
 
@@ -265,7 +265,7 @@ Outline Offset: 2px
 
 ---
 
-## 🏷️ Badge Styles
+## Badge Styles
 
 ### Category Badges
 
@@ -354,7 +354,7 @@ Hover:        white/20
 
 ---
 
-## 📊 Typography Hierarchy
+## Typography Hierarchy
 
 ```
 Page Title:          60px / 48px / 36px (lg/md/sm)
@@ -402,7 +402,7 @@ Stats Labels:        14px
 
 ---
 
-## 🎬 Animation Timing Reference
+## Animation Timing Reference
 
 ```
 Fast:        0.15s - 0.2s  (button hover)
@@ -414,7 +414,7 @@ Spring:      300/30        (category filter)
 
 ---
 
-## 🧩 Component Props
+## Component Props
 
 ### ProjectCard
 ```typescript
@@ -464,7 +464,7 @@ Add to `index.css` for additional effects:
 
 ---
 
-## 🎯 Design Tokens Summary
+## Design Tokens Summary
 
 ```javascript
 const designTokens = {

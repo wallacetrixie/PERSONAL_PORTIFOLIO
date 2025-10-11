@@ -1,12 +1,12 @@
 # Enhanced Category Switching Animations
 
-## ✨ What Was Improved
+## What Was Improved
 
 The Projects section now has enhanced slide-in animations when switching between categories (All, Frontend, Backend). Every category change triggers smooth, professional animations.
 
 ---
 
-## 🎬 Animation Details
+## Animation Details
 
 ### 1. Category Button Animation
 When you click a category button:
@@ -94,7 +94,7 @@ containerVariants: {
 
 ---
 
-## 🎯 User Experience Flow
+## User Experience Flow
 
 ### Scenario: User Clicks "Frontend"
 
@@ -118,7 +118,7 @@ containerVariants: {
 
 ---
 
-## 📊 Animation Timing Breakdown
+## Animation Timing Breakdown
 
 ```
 User Clicks "Backend"
@@ -139,12 +139,12 @@ User Clicks "Backend"
 │  ├─ 720ms ──> Card 5 appears
 │  └─ 800ms ──> Card 6 appears
 │
-└─ 800ms ───────> Animation complete ✓
+└─ 800ms ───────> Animation complete
 ```
 
 ---
 
-## 🎨 Visual Effects Summary
+## Visual Effects Summary
 
 | Element | Effect | Duration | Easing |
 |---------|--------|----------|--------|
@@ -157,7 +157,7 @@ User Clicks "Backend"
 
 ---
 
-## 🔧 Technical Implementation
+## Technical Implementation
 
 ### AnimatePresence Mode
 ```typescript
@@ -188,7 +188,7 @@ exit="exit"
 
 ---
 
-## 📱 Responsive Behavior
+## Responsive Behavior
 
 ### Mobile (< 768px)
 - Same animations apply
@@ -202,14 +202,14 @@ exit="exit"
 
 ---
 
-## ⚡ Performance Considerations
+## Performance Considerations
 
 ### GPU Acceleration
 All animations use GPU-accelerated properties:
-- ✅ `opacity` (composited)
-- ✅ `transform` (translate, scale) (composited)
-- ❌ No width/height animations
-- ❌ No layout-triggering properties
+- `opacity` (composited)
+- `transform` (translate, scale) (composited)
+- No width/height animations
+- No layout-triggering properties
 
 ### Render Optimization
 - `key={activeCategory}` forces re-render on change
@@ -224,7 +224,7 @@ All animations use GPU-accelerated properties:
 
 ---
 
-## 🎯 Comparison: Before vs After
+## Comparison: Before vs After
 
 ### BEFORE
 ```
@@ -251,7 +251,7 @@ Professional, polished feel
 
 ---
 
-## 💡 Design Decisions
+## Design Decisions
 
 ### Why Slide Left/Right?
 - **Directional flow**: Matches reading direction
@@ -275,7 +275,7 @@ Professional, polished feel
 
 ---
 
-## 🧪 Testing Checklist
+## Testing Checklist
 
 Test these scenarios:
 
@@ -289,7 +289,7 @@ Test these scenarios:
 
 ---
 
-## 🎬 Animation Showcase
+## Animation Showcase
 
 ### Entry Effect
 ```
@@ -319,16 +319,16 @@ Test these scenarios:
 
 ---
 
-## 🚀 Result
+## Result
 
 Every category switch now feels smooth, professional, and intentional. The animations:
-- ✅ Provide clear visual feedback
-- ✅ Guide user attention
-- ✅ Feel premium and polished
-- ✅ Run smoothly at 60fps
-- ✅ Work on all devices
-- ✅ Enhance the overall portfolio experience
+- Provide clear visual feedback
+- Guide user attention
+- Feel premium and polished
+- Run smoothly at 60fps
+- Work on all devices
+- Enhance the overall portfolio experience
 
 ---
 
-**Your projects section now has industry-leading animation quality! 🎉**
+**Your projects section now has industry-leading animation quality!**

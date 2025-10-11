@@ -1,6 +1,6 @@
 # Projects Section - Quick Start Guide
 
-## ⚡ Quick Setup (5 Minutes)
+## Quick Setup (5 Minutes)
 
 ### 1. Install Dependencies (if needed)
 ```bash
@@ -11,11 +11,11 @@ npm install framer-motion lucide-react
 The following files have been created for you:
 
 ```
-✅ src/pages/Projects.tsx              - Main projects page
-✅ src/components/ui/ProjectCard.tsx   - Project card component
-✅ src/components/ui/CategoryFilter.tsx - Category filter tabs
-✅ src/constants/index.ts              - Project data (updated)
-✅ src/types/index.ts                  - TypeScript types (updated)
+src/pages/Projects.tsx              - Main projects page
+src/components/ui/ProjectCard.tsx   - Project card component
+src/components/ui/CategoryFilter.tsx - Category filter tabs
+src/constants/index.ts              - Project data (updated)
+src/types/index.ts                  - TypeScript types (updated)
 ```
 
 ### 3. Verify Images
@@ -47,7 +47,7 @@ http://localhost:5173/projects
 
 ---
 
-## 🎨 Customization Checklist
+## Customization Checklist
 
 ### Update Project Links
 Edit `/src/constants/index.ts` and replace placeholder URLs:
@@ -98,7 +98,7 @@ After setup, test these features:
 
 ---
 
-## 📱 Responsive Breakpoints
+## Responsive Breakpoints
 
 The layout automatically adjusts:
 
@@ -108,7 +108,7 @@ The layout automatically adjusts:
 
 Test by resizing your browser window.
 
-### 📱 New Mobile Feature: View More/View Less
+### New Mobile Feature: View More/View Less
 - On mobile devices, only **3 projects** are shown initially
 - Click **"View More Projects"** to see all projects
 - Click **"View Less"** to collapse back to 3 projects
@@ -117,7 +117,7 @@ Test by resizing your browser window.
 
 ---
 
-## 🐛 Common Issues & Fixes
+## Common Issues & Fixes
 
 ### Issue: Images not showing
 **Fix:** Check the image paths in `/src/constants/index.ts`. They should match your actual file names.
@@ -133,7 +133,7 @@ Test by resizing your browser window.
 
 ---
 
-## 🚀 Next Steps
+## Next Steps
 
 ### Add Real Project Data
 1. Open `/src/constants/index.ts`
@@ -169,7 +169,7 @@ The category counts will update automatically!
 
 ---
 
-## 💡 Pro Tips
+## Pro Tips
 
 1. **Featured Projects**: Set `featured: true` for your best 2-3 projects
 2. **Tech Stack**: Limit to 5-6 technologies per project for clean display
@@ -179,24 +179,24 @@ The category counts will update automatically!
 
 ---
 
-## 🎯 Feature Highlights
+## Feature Highlights
 
 ### What Works Out of the Box
-- ✅ Smooth scroll animations
-- ✅ Hover overlay with tech stack
-- ✅ Category filtering with counts
-- ✅ Featured project badges
-- ✅ Responsive grid layout
-- ✅ Dark mode support
-- ✅ Action buttons (Live, Demo, GitHub)
-- ✅ Stats section
-- ✅ Call-to-action section
-- ✅ Empty state handling
-- ✅ Lazy image loading
+- Smooth scroll animations
+- Hover overlay with tech stack
+- Category filtering with counts
+- Featured project badges
+- Responsive grid layout
+- Dark mode support
+- Action buttons (Live, Demo, GitHub)
+- Stats section
+- Call-to-action section
+- Empty state handling
+- Lazy image loading
 
 ---
 
-## 📚 Learn More
+## Learn More
 
 - Full documentation: `PROJECTS_SECTION_DOCUMENTATION.md`
 - Framer Motion docs: https://www.framer.com/motion/
@@ -215,4 +215,4 @@ If you encounter issues:
 
 ---
 
-**That's it! Your projects section is ready to showcase your work! 🎉**
+**That's it! Your projects section is ready to showcase your work!**

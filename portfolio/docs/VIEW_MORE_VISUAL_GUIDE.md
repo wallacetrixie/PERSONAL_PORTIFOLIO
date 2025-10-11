@@ -1,6 +1,6 @@
 # View More/View Less - Visual Guide
 
-## 📱 Mobile User Flow Diagram
+## Mobile User Flow Diagram
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -80,7 +80,7 @@ EXPANDED STATE (All Projects Visible)
 
 ---
 
-## 🖥️ Desktop View (NO CHANGE)
+## Desktop View (NO CHANGE)
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -110,7 +110,7 @@ EXPANDED STATE (All Projects Visible)
 
 ---
 
-## 🎯 Button Appearance
+## Button Appearance
 
 ### View More Button (Mobile Only)
 ```
@@ -198,32 +198,32 @@ Display "View More" if > 3 projects
 
 ---
 
-## 📊 Comparison: Before vs After
+## Comparison: Before vs After
 
 ### BEFORE (Mobile)
 ```
 Problems:
-❌ 9 projects load immediately
-❌ Long scroll required
-❌ Overwhelming for users
-❌ Slower perceived performance
-❌ No content control
+9 projects load immediately
+Long scroll required
+Overwhelming for users
+Slower perceived performance
+No content control
 ```
 
 ### AFTER (Mobile)
 ```
 Benefits:
-✅ 3 projects load initially
-✅ Short initial scroll
-✅ Clean, focused interface
-✅ Faster perceived performance
-✅ User controls expansion
-✅ Better engagement
+3 projects load initially
+Short initial scroll
+Clean, focused interface
+Faster perceived performance
+User controls expansion
+Better engagement
 ```
 
 ---
 
-## 🎬 Animation Sequence
+## Animation Sequence
 
 ### View More Button Appears
 ```
@@ -252,7 +252,7 @@ Effect: Grid re-renders with 3 items
 
 ---
 
-## 🎨 Responsive Behavior Matrix
+## Responsive Behavior Matrix
 
 | Screen Size | Projects Shown | Button Visible | Grid Columns |
 |-------------|---------------|----------------|--------------|
@@ -262,7 +262,7 @@ Effect: Grid re-renders with 3 items
 
 ---
 
-## 💡 User Experience Notes
+## User Experience Notes
 
 ### Why 3 Projects?
 - **Optimal preview**: Enough to show variety
@@ -320,7 +320,7 @@ User resizes to desktop:
 
 ---
 
-## 🎯 Performance Impact
+## Performance Impact
 
 ### Mobile (Collapsed)
 ```

@@ -6,7 +6,7 @@ Added **smooth slide-in animations** when switching between project categories (
 
 ---
 
-## 🎬 Animation Features
+## Animation Features
 
 ### When You Click a Category:
 
@@ -28,14 +28,14 @@ Added **smooth slide-in animations** when switching between project categories (
 
 ---
 
-## 🎯 Result
+## Result
 
 **Before:** Projects instantly swap (jarring)
 **After:** Smooth, professional slide transitions
 
 ---
 
-## ⚡ Performance
+## Performance
 
 - 60fps smooth animations
 - GPU-accelerated (transform, opacity)
@@ -54,24 +54,24 @@ Added **smooth slide-in animations** when switching between project categories (
 
 ---
 
-## 📁 Files Modified
+## Files Modified
 
-- ✅ `src/components/sections/ProjectsSection.tsx` - Enhanced animations
-- ✅ `src/components/ui/CategoryFilter.tsx` - Added button pulse
-- ✅ `src/components/ui/ProjectCard.tsx` - Simplified for parent control
-
----
-
-## 💡 Key Improvements
-
-✅ **Slide Effect**: Projects slide left/right instead of instant swap
-✅ **Stagger**: Cards appear sequentially (wave effect)
-✅ **Button Feedback**: Pulse animation confirms click
-✅ **Smooth Exit**: Projects cleanly exit before new ones appear
-✅ **Professional Feel**: Premium, polished interaction
+- `src/components/sections/ProjectsSection.tsx` - Enhanced animations
+- `src/components/ui/CategoryFilter.tsx` - Added button pulse
+- `src/components/ui/ProjectCard.tsx` - Simplified for parent control
 
 ---
 
-**Your category switching now looks amazing! 🚀**
+## Key Improvements
+
+**Slide Effect**: Projects slide left/right instead of instant swap
+**Stagger**: Cards appear sequentially (wave effect)
+**Button Feedback**: Pulse animation confirms click
+**Smooth Exit**: Projects cleanly exit before new ones appear
+**Professional Feel**: Premium, polished interaction
+
+---
+
+**Your category switching now looks amazing!**
 
 For complete technical details, see: `CATEGORY_ANIMATION_GUIDE.md`

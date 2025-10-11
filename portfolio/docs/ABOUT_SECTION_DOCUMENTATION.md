@@ -5,13 +5,13 @@ A professional, fully-featured About section built with React (JavaScript) that 
 
 ---
 
-## 🎯 Features
+## Features
 
 ### Core Structure
-- ✅ **Semantic HTML**: Proper `<section>` with `id="about"` for navigation scrolling
-- ✅ **Two-Column Layout**: Desktop view with text on left, image on right
-- ✅ **Responsive Design**: Stacks vertically on mobile devices
-- ✅ **Theme Consistency**: Matches existing dark/light theme system
+- **Semantic HTML**: Proper `<section>` with `id="about"` for navigation scrolling
+- **Two-Column Layout**: Desktop view with text on left, image on right
+- **Responsive Design**: Stacks vertically on mobile devices
+- **Theme Consistency**: Matches existing dark/light theme system
 
 ### Content Sections
 
@@ -36,12 +36,12 @@ Metrics animate from 0 to target when section scrolls into view.
 
 #### 4. Skills Showcase
 Six core competencies displayed as icon cards:
-- 🔵 **Clean Code** (Blue)
-- 🟢 **Backend** (Green)
-- 🟣 **UI/UX** (Purple)
-- 🟡 **Performance** (Yellow)
-- 🩷 **Quality** (Pink)
-- 🟦 **Collaboration** (Indigo)
+- **Clean Code** (Blue)
+- **Backend** (Green)
+- **UI/UX** (Purple)
+- **Performance** (Yellow)
+- **Quality** (Pink)
+- **Collaboration** (Indigo)
 
 Each card features:
 - Icon from Lucide React
@@ -68,7 +68,7 @@ Each card features:
 
 ---
 
-## 🎨 Visual Design Elements
+## Visual Design Elements
 
 ### Background Decorations
 1. **Gradient Orbs**
@@ -102,7 +102,7 @@ Each card features:
 
 ---
 
-## ⚡ Animations & Motion
+## Animations & Motion
 
 ### Framer Motion Implementation
 
@@ -164,7 +164,7 @@ Custom `useCountUp` hook:
 
 ---
 
-## 📱 Responsive Behavior
+## Responsive Behavior
 
 ### Breakpoints (Tailwind)
 - **Mobile**: < 640px (sm)
@@ -199,7 +199,7 @@ Custom `useCountUp` hook:
 
 ---
 
-## ♿ Accessibility Features
+## Accessibility Features
 
 ### WCAG 2.1 AA Compliance
 
@@ -248,7 +248,7 @@ Respects user's system preference:
 
 ---
 
-## 🛠️ Technical Implementation
+## Technical Implementation
 
 ### File Structure
 ```
@@ -318,7 +318,7 @@ export const ABOUT_INFO = {
 
 ---
 
-## 🎯 Performance Optimizations
+## Performance Optimizations
 
 ### 1. Image Loading
 - **Lazy Loading**: `loading="lazy"` attribute
@@ -344,7 +344,7 @@ export const ABOUT_INFO = {
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### Basic Implementation
 ```javascript
@@ -406,7 +406,7 @@ const skills = [
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Issue: Animations not triggering
 **Solution**: Ensure Framer Motion is installed and ref is properly attached:
@@ -428,13 +428,13 @@ import portraitImage from '../../assets/images/Potrait.jpg';
 
 ---
 
-## 📊 Browser Support
+## Browser Support
 
-- ✅ Chrome 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+- Mobile browsers (iOS Safari, Chrome Mobile)
 
 ### Polyfills Required
 - **IntersectionObserver**: Supported in all modern browsers
@@ -467,7 +467,7 @@ import portraitImage from '../../assets/images/Potrait.jpg';
 
 ---
 
-## 📝 Future Enhancements
+## Future Enhancements
 
 ### Potential Additions
 - [ ] Add download resume button

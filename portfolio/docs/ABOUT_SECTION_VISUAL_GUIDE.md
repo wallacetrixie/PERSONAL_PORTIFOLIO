@@ -1,6 +1,6 @@
 # About Section - Visual Guide
 
-## 🎨 Component Anatomy
+## Component Anatomy
 
 ```
 ╔══════════════════════════════════════════════════════════════════════╗
@@ -93,7 +93,7 @@ Spacing between: 48px
 
 ---
 
-## 🎭 Animation Timeline
+## Animation Timeline
 
 ### On Scroll Into View (20% visible)
 
@@ -163,7 +163,7 @@ GEOMETRIC SHAPE:
 
 ---
 
-## 🎨 Color Palette Used
+## Color Palette Used
 
 ```css
 /* Primary Blues */
@@ -322,7 +322,7 @@ Badge Text (Available):
 
 ---
 
-## 🎯 Interactive Elements
+## Interactive Elements
 
 ### Hover States
 
@@ -358,7 +358,7 @@ All interactive elements have:
 
 ---
 
-## 📱 Responsive Breakpoints
+## Responsive Breakpoints
 
 ```
 /* Mobile First Approach */
@@ -388,7 +388,7 @@ h2 { font-size: 60px; }
 
 ---
 
-## 🔍 Accessibility Details
+## Accessibility Details
 
 ### Keyboard Navigation Order
 ```
@@ -469,26 +469,26 @@ h2 { font-size: 60px; }
 ## 🎓 Code Quality Highlights
 
 ### Clean Code Principles
-✓ Single Responsibility: Each component does one thing  
-✓ DRY: Data in constants, not hardcoded  
-✓ Readable: Clear variable and function names  
-✓ Commented: Explains "why" not just "what"  
-✓ Consistent: Matches project style  
+Single Responsibility: Each component does one thing  
+DRY: Data in constants, not hardcoded  
+Readable: Clear variable and function names  
+Commented: Explains "why" not just "what"  
+Consistent: Matches project style  
 
 ### Performance Optimizations
-✓ Memoization: Static arrays outside component  
-✓ Lazy loading: Images load when needed  
-✓ GPU acceleration: Transform and opacity only  
-✓ Debouncing: IntersectionObserver throttled  
-✓ Tree shaking: Import only needed icons  
+Memoization: Static arrays outside component  
+Lazy loading: Images load when needed  
+GPU acceleration: Transform and opacity only  
+Debouncing: IntersectionObserver throttled  
+Tree shaking: Import only needed icons  
 
 ### Best Practices
-✓ Semantic HTML: Proper elements for meaning  
-✓ Accessibility: WCAG 2.1 AA compliant  
-✓ Mobile-first: Responsive from smallest screen  
-✓ Progressive enhancement: Works without JS  
-✓ Error handling: Graceful fallbacks  
+Semantic HTML: Proper elements for meaning  
+Accessibility: WCAG 2.1 AA compliant  
+Mobile-first: Responsive from smallest screen  
+Progressive enhancement: Works without JS  
+Error handling: Graceful fallbacks  
 
 ---
 
-**Ready to customize? Update the values in `constants/index.ts` and make it yours!** 🚀
+**Ready to customize? Update the values in `constants/index.ts` and make it yours!**

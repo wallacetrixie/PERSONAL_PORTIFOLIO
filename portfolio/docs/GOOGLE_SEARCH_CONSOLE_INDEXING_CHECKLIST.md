@@ -1,8 +1,8 @@
 # Google Search Console - Indexing Checklist
 
-## 🎯 Your Portfolio Indexing Checklist
+## Your Portfolio Indexing Checklist
 
-### Phase 1: Verification (COMPLETED ✅)
+### Phase 1: Verification (COMPLETED)
 - [x] Google verification file uploaded to `/public`
 - [x] Vercel.json configured with rewrite rule
 - [x] Changes pushed to production
@@ -104,7 +104,7 @@ Check if you have a sitemap at: `https://yourdomain.com/sitemap.xml`
 
 ---
 
-## 📝 Detailed Procedures
+## Detailed Procedures
 
 ### How to Request Indexing (Step-by-Step)
 
@@ -135,7 +135,7 @@ Check if you have a sitemap at: `https://yourdomain.com/sitemap.xml`
 
 ---
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### Common Issues & Solutions
 
@@ -164,7 +164,7 @@ Check if you have a sitemap at: `https://yourdomain.com/sitemap.xml`
 
 ---
 
-## 📊 Success Metrics
+## Success Metrics
 
 ### Week 1:
 - [ ] At least homepage indexed
@@ -182,7 +182,7 @@ Check if you have a sitemap at: `https://yourdomain.com/sitemap.xml`
 
 ---
 
-## 🚀 Quick Command Reference
+## Quick Command Reference
 
 ### Test Verification File:
 ```bash
@@ -219,7 +219,7 @@ site:yourdomain.com/projects
 
 ---
 
-## 🎯 Next Steps After This Checklist
+## Next Steps After This Checklist
 
 1. [ ] Set up Google Analytics
 2. [ ] Create structured data (JSON-LD)

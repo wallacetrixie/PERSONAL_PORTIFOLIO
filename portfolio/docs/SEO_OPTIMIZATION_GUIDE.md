@@ -1,13 +1,13 @@
 # SEO Optimization Guide - Wallace Wambulwa Portfolio
 
-## 🎯 Goal
+## Goal
 Make your portfolio appear when someone searches "Wallace Wambulwa" on Google.
 
 ---
 
-## ✅ What We've Already Done
+## What We've Already Done
 
-### 1. Enhanced Meta Tags ✓
+### 1. Enhanced Meta Tags
 - **Title optimization**: Includes your name + keywords
 - **Meta description**: Clear, keyword-rich description
 - **Keywords**: Comprehensive list including your name, skills, location
@@ -15,7 +15,7 @@ Make your portfolio appear when someone searches "Wallace Wambulwa" on Google.
 - **Twitter Cards**: For Twitter sharing
 - **Canonical URL**: Tells Google the primary version of your site
 
-### 2. Structured Data (Schema.org) ✓
+### 2. Structured Data (Schema.org)
 Added JSON-LD markup for:
 - **Person schema**: Your professional information
 - **Website schema**: Portfolio details
@@ -23,24 +23,24 @@ Added JSON-LD markup for:
 
 This helps Google create rich snippets in search results!
 
-### 3. robots.txt ✓
+### 3. robots.txt
 - Allows all search engines to crawl your site
 - Protects admin routes
 - Links to your sitemap
 
-### 4. sitemap.xml ✓
+### 4. sitemap.xml
 - Lists all important pages/sections
 - Helps Google find and index your content faster
 - Updated with priority levels
 
-### 5. Vercel Headers ✓
+### 5. Vercel Headers
 - SEO-friendly caching
 - Security headers for better ranking
 - Proper content types for robots.txt and sitemap.xml
 
 ---
 
-## 🚀 Next Steps - CRITICAL for Google Ranking
+## Next Steps - CRITICAL for Google Ranking
 
 ### Step 1: Create an OG Image (Social Share Image)
 **Why?** Makes your links look professional when shared on social media.
@@ -62,7 +62,7 @@ This helps Google create rich snippets in search results!
 
 ---
 
-### Step 2: Submit to Google Search Console ⭐ MOST IMPORTANT
+### Step 2: Submit to Google Search Console - MOST IMPORTANT
 **This is how Google knows your site exists!**
 
 #### Instructions:
@@ -164,7 +164,7 @@ This helps Google create rich snippets in search results!
 
 ---
 
-### Step 5: Speed Optimization ⚡
+### Step 5: Speed Optimization
 **Fast sites rank higher!**
 
 #### Test Your Speed:
@@ -206,7 +206,7 @@ export default defineConfig({
 
 ---
 
-## 📊 Track Your Progress
+## Track Your Progress
 
 ### Google Search Console Metrics to Watch:
 1. **Impressions**: How many times your site appeared in search
@@ -220,11 +220,11 @@ Search Google for:
 site:wallacewambulwa-gilt.vercel.app
 ```
 
-If your site appears = you're indexed! 🎉
+If your site appears = you're indexed!
 
 ---
 
-## 🎯 Target Keywords to Rank For
+## Target Keywords to Rank For
 
 ### Primary (Should rank within 2-4 weeks):
 - Wallace Wambulwa
@@ -239,7 +239,7 @@ If your site appears = you're indexed! 🎉
 
 ---
 
-## 💡 Pro Tips
+## Pro Tips
 
 ### 1. Update Content Regularly
 - Add new projects monthly
@@ -264,12 +264,12 @@ Search "Wallace Wambulwa" weekly to see improvements!
 
 ---
 
-## 📱 Mobile Optimization (Already Done!)
+## Mobile Optimization (Already Done!)
 Your site is mobile-responsive, which is crucial since Google uses mobile-first indexing.
 
 ---
 
-## 🔍 Additional SEO Improvements (Optional)
+## Additional SEO Improvements (Optional)
 
 ### Add a Blog Section
 ```typescript
@@ -303,7 +303,7 @@ Your site is mobile-responsive, which is crucial since Google uses mobile-first 
 
 ---
 
-## ⏱️ Expected Timeline
+## Expected Timeline
 
 | Action | Timeline |
 |--------|----------|
@@ -368,6 +368,6 @@ If you encounter issues:
 
 ---
 
-**Remember:** SEO takes time, but with your name being unique, you should rank #1 for "Wallace Wambulwa" within 2-4 weeks of following these steps! 🚀
+**Remember:** SEO takes time, but with your name being unique, you should rank #1 for "Wallace Wambulwa" within 2-4 weeks of following these steps!
 
-Good luck! 🎉
+Good luck!

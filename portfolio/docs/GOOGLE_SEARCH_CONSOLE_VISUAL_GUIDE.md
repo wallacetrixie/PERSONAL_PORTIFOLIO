@@ -4,7 +4,7 @@
 
 ---
 
-## 🎯 STEP 1: Login & Access Console
+## STEP 1: Login & Access Console
 
 ### What You'll See:
 ```
@@ -14,7 +14,7 @@
 │  [🔽 Select Property]                           │
 │                                                 │
 │  ┌─ Properties ────────────────────┐           │
-│  │  https://yourdomain.com      ✓  │           │
+│  │  https://yourdomain.com       │           │
 │  │  https://anotherdomain.com      │           │
 │  └─────────────────────────────────┘           │
 └─────────────────────────────────────────────────┘
@@ -27,7 +27,7 @@
 
 ---
 
-## 🔍 STEP 2: Open URL Inspection Tool
+## STEP 2: Open URL Inspection Tool
 
 ### Method A: Top Search Bar (EASIEST)
 
@@ -49,7 +49,7 @@
 #### What You'll See:
 ```
 ┌─────────────────────┐
-│  📊 Overview        │
+│  Overview        │
 │  🔍 URL Inspection  │ ← Click Here
 │  📈 Performance     │
 │  📄 Coverage        │
@@ -65,7 +65,7 @@
 
 ---
 
-## 📝 STEP 3: Enter URL
+## STEP 3: Enter URL
 
 ### Input Screen:
 ```
@@ -115,7 +115,7 @@ https://yourdomain.com/about
 
 ---
 
-## 📊 STEP 5: View Results
+## STEP 5: View Results
 
 ### Result A: URL NOT Indexed (New Page)
 ```
@@ -131,33 +131,33 @@ https://yourdomain.com/about
 │  [🔵 REQUEST INDEXING]  ← Click This Button       │
 │                                                    │
 │  📋 Details                                        │
-│  ✅ URL is accessible                             │
-│  ✅ No robots.txt blocking                        │
+│  URL is accessible                             │
+│  No robots.txt blocking                        │
 └────────────────────────────────────────────────────┘
 ```
 
 ### Result B: URL Already Indexed
 ```
 ┌────────────────────────────────────────────────────┐
-│  ✅ URL is on Google                               │
+│  URL is on Google                               │
 │                                                    │
 │  ┌──────────────────────────────────────────────┐ │
-│  │  Coverage:    ✅ Indexed                     │ │
+│  │  Coverage:    Indexed                     │ │
 │  │  Sitemaps:    Listed in sitemap             │ │
 │  │  Last crawl:  Oct 9, 2025                   │ │
 │  └──────────────────────────────────────────────┘ │
 │                                                    │
 │  🔗 Request indexing  ← Click this link           │
 │                                                    │
-│  📊 VIEW INDEXED VERSION                          │
-│  📱 TEST LIVE URL                                 │
+│  VIEW INDEXED VERSION                          │
+│  TEST LIVE URL                                 │
 └────────────────────────────────────────────────────┘
 ```
 
 ### Result C: Error Status
 ```
 ┌────────────────────────────────────────────────────┐
-│  ❌ URL has issues                                 │
+│  URL has issues                                 │
 │                                                    │
 │  ┌──────────────────────────────────────────────┐ │
 │  │  Error: Server error (5xx)                  │ │
@@ -173,7 +173,7 @@ https://yourdomain.com/about
 
 ---
 
-## 🚀 STEP 6: Request Indexing
+## STEP 6: Request Indexing
 
 ### Click the Button:
 ```
@@ -194,8 +194,8 @@ https://yourdomain.com/about
 │    [████████████░░░░░░] 75%                 │
 │                                              │
 │    Checking:                                │
-│    ✅ Page loads                            │
-│    ✅ No blocking directives                │
+│    Page loads                            │
+│    No blocking directives                │
 │    ⏳ Analyzing content...                  │
 │                                              │
 │    This usually takes 10-60 seconds         │
@@ -203,20 +203,20 @@ https://yourdomain.com/about
 ```
 
 **What Google Checks:**
-1. ✅ Can access the URL
-2. ✅ Not blocked by robots.txt
-3. ✅ No `noindex` meta tag
-4. ✅ Page has content
-5. ✅ Valid HTML structure
+1. Can access the URL
+2. Not blocked by robots.txt
+3. No `noindex` meta tag
+4. Page has content
+5. Valid HTML structure
 
 ---
 
-## ✅ STEP 7: Success Confirmation
+## STEP 7: Success Confirmation
 
 ### Success Message:
 ```
 ┌──────────────────────────────────────────────────┐
-│  ✅ Indexing requested                           │
+│  Indexing requested                           │
 │                                                  │
 │  Your URL has been added to the priority        │
 │  crawl queue. It will typically be crawled      │
@@ -226,35 +226,35 @@ https://yourdomain.com/about
 │                                                  │
 │  ⏰ Expected: Within 24-48 hours                │
 │                                                  │
-│  [✓ Got it]                                     │
+│  [Got it]                                     │
 └──────────────────────────────────────────────────┘
 ```
 
 ### What This Means:
-- ✅ Request submitted successfully
+- Request submitted successfully
 - 📋 URL added to Google's crawl queue
 - ⏰ Google will visit your page soon
 - 🔄 Usually indexed within 24-48 hours
 
 ---
 
-## 📊 STEP 8: Monitor Progress
+## STEP 8: Monitor Progress
 
 ### After 24-48 Hours - Re-inspect the URL
 
 #### If Successful:
 ```
 ┌────────────────────────────────────────────────────┐
-│  ✅ URL is on Google                               │
+│  URL is on Google                               │
 │                                                    │
 │  ┌──────────────────────────────────────────────┐ │
-│  │  Coverage:    ✅ Indexed, not submitted      │ │
+│  │  Coverage:    Indexed, not submitted      │ │
 │  │                  in sitemap                  │ │
 │  │  Last crawl:  Oct 11, 2025                  │ │
 │  │  Googlebot:   Desktop                       │ │
 │  └──────────────────────────────────────────────┘ │
 │                                                    │
-│  🎉 Your page is now indexed!                     │
+│  Your page is now indexed!                     │
 └────────────────────────────────────────────────────┘
 ```
 
@@ -275,12 +275,12 @@ https://yourdomain.com/about
 
 ---
 
-## 🗺️ BONUS: Submit Sitemap
+## BONUS: Submit Sitemap
 
 ### Navigate to Sitemaps:
 ```
 ┌─────────────────────┐
-│  📊 Overview        │
+│  Overview        │
 │  🔍 URL Inspection  │
 │  📈 Performance     │
 │  📄 Coverage        │
@@ -302,7 +302,7 @@ https://yourdomain.com/about
 │  Submitted sitemaps                                 │
 │  ┌────────────────────────────────────────────────┐ │
 │  │  Sitemap              Status      Discovered   │ │
-│  │  sitemap.xml          ✅ Success  50 URLs      │ │
+│  │  sitemap.xml          Success  50 URLs      │ │
 │  │  Last read: Oct 10, 2025                      │ │
 │  └────────────────────────────────────────────────┘ │
 └──────────────────────────────────────────────────────┘
@@ -315,7 +315,7 @@ https://yourdomain.com/about
 
 ---
 
-## 🎯 Quick Reference: Button Locations
+## Quick Reference: Button Locations
 
 ### Main Actions & Where to Find Them:
 
@@ -329,7 +329,7 @@ Google Search Console Interface Map:
 │          │                                  │
 │ Overview │  ┌────────────────────────────┐ │
 │ URL      │  │  URL Status                │ │
-│ Inspect  │  │  ✅ or ⚠️ or ❌             │ │
+│ Inspect  │  │  or ⚠️ or             │ │
 │          │  │                            │ │
 │ Perform. │  │  [REQUEST INDEXING]        │ │ ← Main Button
 │ Coverage │  │                            │ │
@@ -347,7 +347,7 @@ Google Search Console Interface Map:
 
 #### Error 1: Blocked by robots.txt
 ```
-❌ Page is blocked by robots.txt
+Page is blocked by robots.txt
    
    What it means: Your robots.txt file is blocking Google
    
@@ -359,7 +359,7 @@ Google Search Console Interface Map:
 
 #### Error 2: No index tag
 ```
-❌ Page has 'noindex' directive
+Page has 'noindex' directive
 
    What it means: HTML contains noindex meta tag
    
@@ -372,7 +372,7 @@ Google Search Console Interface Map:
 
 #### Error 3: Server Error
 ```
-❌ Server error (5xx)
+Server error (5xx)
 
    What it means: Your server returned an error
    
@@ -385,7 +385,7 @@ Google Search Console Interface Map:
 
 #### Error 4: Not Found
 ```
-❌ Page not found (404)
+Page not found (404)
 
    What it means: URL doesn't exist
    
@@ -398,7 +398,7 @@ Google Search Console Interface Map:
 
 ---
 
-## 📱 Mobile View Tips
+## Mobile View Tips
 
 ### On Mobile Devices:
 ```
@@ -428,10 +428,10 @@ Google Search Console Interface Map:
 ```
 Day 0 (Today):
 │
-├─ ✅ Submit verification file
-├─ ✅ Configure vercel.json
-├─ ✅ Deploy to Vercel
-└─ ✅ Verify in Search Console
+├─ Submit verification file
+├─ Configure vercel.json
+├─ Deploy to Vercel
+└─ Verify in Search Console
    │
    ▼
 Day 1:
@@ -442,25 +442,25 @@ Day 1:
    ▼
 Day 2-3:
 ├─ 🔍 Check indexing status
-├─ ✅ Homepage appears: "URL is on Google"
-└─ 📊 Some pages indexed
+├─ Homepage appears: "URL is on Google"
+└─ Some pages indexed
    │
    ▼
 Week 1:
-├─ ✅ All main pages indexed
+├─ All main pages indexed
 ├─ 📈 Appearing in Google search
-└─ 🎯 Getting impressions
+└─ Getting impressions
    │
    ▼
 Month 1:
-├─ 📊 Performance data available
+├─ Performance data available
 ├─ 🔍 Ranking for brand name
 └─ 💡 Getting clicks
 ```
 
 ---
 
-## 🎯 Action Checklist (Visual)
+## Action Checklist (Visual)
 
 ### Use This as Your Guide:
 

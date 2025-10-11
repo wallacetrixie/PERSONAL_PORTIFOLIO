@@ -1,4 +1,4 @@
-# 🎯 URLs to Index for Wallace Wambulwa Portfolio
+# URLs to Index for Wallace Wambulwa Portfolio
 
 **Domain:** https://wallacewambulwa-gilt.vercel.app/
 
@@ -6,7 +6,7 @@
 
 ## 📋 Primary URLs to Submit for Indexing
 
-### ✅ Priority 1: Main Pages (Submit These First)
+### Priority 1: Main Pages (Submit These First)
 
 #### 1. Homepage
 ```
@@ -26,7 +26,7 @@ https://wallacewambulwa-gilt.vercel.app/
 
 ---
 
-### ✅ Section Deep Links (For SEO)
+### Section Deep Links (For SEO)
 
 While your site is a single-page application, you can still submit the anchor links for better SEO:
 
@@ -72,17 +72,17 @@ https://wallacewambulwa-gilt.vercel.app/#contact
 
 These should NOT be submitted for indexing (private/protected):
 ```
-❌ https://wallacewambulwa-gilt.vercel.app/admin/login
-❌ https://wallacewambulwa-gilt.vercel.app/admin/messages
-❌ https://wallacewambulwa-gilt.vercel.app/admin/projects
-❌ https://wallacewambulwa-gilt.vercel.app/admin/settings
+https://wallacewambulwa-gilt.vercel.app/admin/login
+https://wallacewambulwa-gilt.vercel.app/admin/messages
+https://wallacewambulwa-gilt.vercel.app/admin/projects
+https://wallacewambulwa-gilt.vercel.app/admin/settings
 ```
 
 **Note:** Make sure these have `noindex` meta tags or are blocked in robots.txt
 
 ---
 
-## 🚀 Indexing Strategy for SPA
+## Indexing Strategy for SPA
 
 ### Day 1: Core Submission
 **Focus:** Submit the main homepage URL
@@ -99,7 +99,7 @@ These should NOT be submitted for indexing (private/protected):
 
 ---
 
-## 🗺️ Create a Sitemap
+## Create a Sitemap
 
 For better indexing, create a sitemap that includes section anchors:
 
@@ -164,7 +164,7 @@ For better indexing, create a sitemap that includes section anchors:
 
 ---
 
-## 📝 Step-by-Step Indexing Guide
+## Step-by-Step Indexing Guide
 
 ### STEP 1: Verify Google File Accessibility
 ```bash
@@ -176,8 +176,8 @@ curl https://wallacewambulwa-gilt.vercel.app/google11c981db57feb3c4.html
 google-site-verification: google11c981db57feb3c4.html
 ```
 
-✅ If you see this, proceed to Step 2
-❌ If not, check your Vercel deployment
+If you see this, proceed to Step 2
+If not, check your Vercel deployment
 
 ---
 
@@ -201,7 +201,7 @@ google-site-verification: google11c981db57feb3c4.html
 5. Click **[REQUEST INDEXING]**
 6. Wait for confirmation
 
-**Expected result:** ✅ "Indexing requested"
+**Expected result:** "Indexing requested"
 
 ---
 
@@ -227,7 +227,7 @@ Check indexing status:
 
 ---
 
-## 🛠️ Create Your Sitemap
+## Create Your Sitemap
 
 I'll create the sitemap file for you:
 
@@ -239,27 +239,27 @@ Use a sitemap generator package
 
 ---
 
-## 📊 Quick Copy-Paste Checklist
+## Quick Copy-Paste Checklist
 
 ### URLs to Index (In Order):
 
 **Day 1 - Priority:**
 ```
-✅ https://wallacewambulwa-gilt.vercel.app/
+https://wallacewambulwa-gilt.vercel.app/
 ```
 
 **That's it!** For a single-page app, you only need to index the homepage.
 
 ---
 
-## 🔍 Verify Indexing Success
+## Verify Indexing Success
 
 ### After 24-48 Hours:
 
 #### Test 1: Direct URL Check
 1. Go to Google Search Console
 2. Inspect: `https://wallacewambulwa-gilt.vercel.app/`
-3. Should show: ✅ "URL is on Google"
+3. Should show: "URL is on Google"
 
 #### Test 2: Google Search
 Search in Google:
@@ -279,7 +279,7 @@ Wallace Wambulwa
 
 ---
 
-## 🎯 SEO Optimization Tips for Your SPA
+## SEO Optimization Tips for Your SPA
 
 ### 1. Add Meta Tags
 Ensure your `index.html` has proper meta tags:
@@ -312,10 +312,10 @@ Add JSON-LD schema for better SEO
 
 ---
 
-## ⚠️ Important Notes for SPA Indexing
+## Important Notes for SPA Indexing
 
 ### Google and Single-Page Apps:
-✅ **Good News:**
+**Good News:**
 - Google can crawl and index SPAs
 - Modern Googlebot executes JavaScript
 - All your sections will be indexed from the homepage
@@ -326,16 +326,16 @@ Add JSON-LD schema for better SEO
 - Anchor links (#about, #skills) help with navigation but aren't separate pages
 
 ### What NOT to Do:
-❌ Don't submit multiple URLs for sections (they're not separate pages)
-❌ Don't index admin routes
-❌ Don't expect each section to rank as a separate page
+Don't submit multiple URLs for sections (they're not separate pages)
+Don't index admin routes
+Don't expect each section to rank as a separate page
 
 ### What TO Do:
-✅ Focus on homepage SEO
-✅ Use descriptive section headings
-✅ Add alt text to images
-✅ Ensure fast load times
-✅ Make site mobile-friendly
+Focus on homepage SEO
+Use descriptive section headings
+Add alt text to images
+Ensure fast load times
+Make site mobile-friendly
 
 ---
 
@@ -353,16 +353,16 @@ Add JSON-LD schema for better SEO
 
 ---
 
-## 🚀 Next Steps
+## Next Steps
 
-1. ✅ Create sitemap.xml
-2. ✅ Update robots.txt
-3. ✅ Verify meta tags
-4. ✅ Test Google verification file
-5. ✅ Complete Search Console verification
-6. ✅ Submit homepage for indexing
-7. ✅ Submit sitemap
-8. ✅ Monitor progress
+1. Create sitemap.xml
+2. Update robots.txt
+3. Verify meta tags
+4. Test Google verification file
+5. Complete Search Console verification
+6. Submit homepage for indexing
+7. Submit sitemap
+8. Monitor progress
 
 ---
 

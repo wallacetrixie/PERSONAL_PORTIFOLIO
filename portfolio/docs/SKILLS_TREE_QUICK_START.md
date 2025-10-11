@@ -1,6 +1,6 @@
-# 🎯 Quick Start - Skills Tree Visualization
+# Quick Start - Skills Tree Visualization
 
-## ✅ What's Been Implemented
+## What's Been Implemented
 
 ### 🌳 **Tree Branch Design**
 Your Skills section now features a **stunning tree visualization** with:
@@ -9,9 +9,9 @@ Your Skills section now features a **stunning tree visualization** with:
 - **Central glowing trunk** connecting everything
 - **Sequential card stacking** animation
 
-### 📊 **New Categories Added**
+### **New Categories Added**
 
-#### ⚡ Performance & Testing (NEW!)
+#### Performance & Testing (NEW!)
 My recommendation based on your frontend/backend focus:
 - Web Vitals optimization
 - Lighthouse auditing
@@ -22,7 +22,7 @@ My recommendation based on your frontend/backend focus:
 
 This shows you care about **code quality and performance**, which is crucial for modern web development!
 
-### 🎬 **Animation Flow**
+### **Animation Flow**
 
 Watch this sequence when you scroll to the Skills section:
 
@@ -32,7 +32,7 @@ Watch this sequence when you scroll to the Skills section:
 4. **Skills stack** inside each card with progress bars
 5. **Soft skills pills** bounce in at the bottom
 
-### 🎨 **Visual Features**
+### **Visual Features**
 
 - **Color-coded categories:** Each has unique theme color
 - **3D hover effects:** Cards lift and tilt on mouse over
@@ -41,22 +41,22 @@ Watch this sequence when you scroll to the Skills section:
 - **Glow effects:** Color-themed shadows on hover
 - **Responsive:** Tree on desktop, grid on mobile
 
-## 🚀 View Your Skills Tree
+## View Your Skills Tree
 
 **Visit:** `http://localhost:5175/skills`
 
 Or check the home page if you added it there!
 
-## 🎭 The 6 Branches
+## The 6 Branches
 
 ```
 LEFT SIDE:                          RIGHT SIDE:
 ⚛️ Frontend Engineering             🎨 UI/UX Design
-🔧 Backend Engineering              🚀 DevOps & Cloud  
-📱 Mobile Development               ⚡ Performance & Testing
+🔧 Backend Engineering              DevOps & Cloud  
+Mobile Development               ⚡ Performance & Testing
 ```
 
-## 🎨 Color Theme
+## Color Theme
 
 | Branch | Color | Vibe |
 |--------|-------|------|
@@ -67,7 +67,7 @@ LEFT SIDE:                          RIGHT SIDE:
 | Mobile | 🧡 Orange | Dynamic, Accessible |
 | Performance | 💖 Pink | Fast, Optimized |
 
-## 📱 Responsive Behavior
+## Responsive Behavior
 
 - **Desktop (>1024px):** Full tree visualization with branches
 - **Tablet (640-1024px):** 2-column grid
@@ -75,14 +75,14 @@ LEFT SIDE:                          RIGHT SIDE:
 
 The tree branches are hidden on smaller screens for better usability!
 
-## 🎯 Key Improvements
+## Key Improvements
 
-1. ✅ **Added 6th category** (Performance & Testing)
-2. ✅ **Tree branch visualization** with SVG paths
-3. ✅ **Sequential card stacking** from branches
-4. ✅ **3D card effects** on hover
-5. ✅ **Compact skill display** for tree layout
-6. ✅ **Mobile-optimized** fallback design
+1. **Added 6th category** (Performance & Testing)
+2. **Tree branch visualization** with SVG paths
+3. **Sequential card stacking** from branches
+4. **3D card effects** on hover
+5. **Compact skill display** for tree layout
+6. **Mobile-optimized** fallback design
 
 ## 🌟 Why This Design Works
 
@@ -111,25 +111,25 @@ This section itself demonstrates:
 
 It's **meta** - the skills section showcases the skills it describes! 🤯
 
-## 🔧 Files Modified
+## Files Modified
 
 1. **`src/pages/Skills.jsx`** - Complete redesign with tree logic
 2. **`src/pages/Skills.css`** - New tree branch styles
 3. **Documentation** created for reference
 
-## 🎉 What Makes This Unique
+## What Makes This Unique
 
 Most portfolios show skills in:
-- ❌ Boring lists
-- ❌ Simple grids
-- ❌ Basic progress bars
+- Boring lists
+- Simple grids
+- Basic progress bars
 
 Yours features:
-- ✅ Interactive tree visualization
-- ✅ Sequenced animations
-- ✅ 3D effects
-- ✅ Branch metaphor
-- ✅ Color-coded categories
+- Interactive tree visualization
+- Sequenced animations
+- 3D effects
+- Branch metaphor
+- Color-coded categories
 
 **This will make you stand out!** 🌟
 

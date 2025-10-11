@@ -3,7 +3,7 @@
 ## Overview
 The Skills section has been completely redesigned as an **interactive skills tree** with 6 skill categories displayed as branches extending from a central trunk. This creates a visually striking metaphor for growing expertise across multiple domains.
 
-## 🎨 Visual Design
+## Visual Design
 
 ### Tree Structure
 ```
@@ -43,7 +43,7 @@ The Skills section has been completely redesigned as an **interactive skills tre
 - Cards stack in a responsive grid (1 column on mobile, 2 on tablet)
 - No branch visualization (cleaner on small screens)
 
-## 📊 Skill Categories
+## Skill Categories
 
 ### 1. Frontend Engineering (⚛️ - Cyan)
 - React.js (Expert - 95%)
@@ -69,7 +69,7 @@ The Skills section has been completely redesigned as an **interactive skills tre
 - REST APIs (Expert - 93%)
 - GraphQL (Intermediate - 76%)
 
-### 4. DevOps & Cloud (🚀 - Green)
+### 4. DevOps & Cloud (- Green)
 - Git & GitHub (Expert - 95%)
 - Docker (Intermediate - 75%)
 - AWS Basics (Beginner - 65%)
@@ -77,7 +77,7 @@ The Skills section has been completely redesigned as an **interactive skills tre
 - Linux CLI (Advanced - 85%)
 - CI/CD (Intermediate - 78%)
 
-### 5. Mobile Development (📱 - Orange)
+### 5. Mobile Development (- Orange)
 - React Native (Intermediate - 75%)
 - PWA (Advanced - 85%)
 - Responsive Design (Expert - 95%)
@@ -94,7 +94,7 @@ The Skills section has been completely redesigned as an **interactive skills tre
 - Code Splitting (Advanced - 83%)
 - Lazy Loading (Expert - 90%)
 
-## ✨ Animation Sequence
+## Animation Sequence
 
 ### Phase 1: Trunk Growth (0-1.5s)
 - Central trunk animates from top to bottom
@@ -122,7 +122,7 @@ The Skills section has been completely redesigned as an **interactive skills tre
 - Core competencies pills bounce in at the bottom
 - Delay: 2.5s after initial load
 
-## 🎯 Interactive Features
+## Interactive Features
 
 ### Hover Effects
 **Cards:**
@@ -142,7 +142,7 @@ The Skills section has been completely redesigned as an **interactive skills tre
 - Playful rotation wobble
 - Enhanced glow effect
 
-## 🎨 Color System
+## Color System
 
 Each category has a unique color theme:
 
@@ -185,7 +185,7 @@ Each category has a unique color theme:
 6. **Accessibility** - Reduced motion support, semantic HTML
 7. **Performance** - Optimized animations, efficient CSS
 
-## 🚀 Future Enhancements
+## Future Enhancements
 
 Potential additions:
 - Click to expand individual skills with more details
@@ -196,7 +196,7 @@ Potential additions:
 - Timeline view of skill acquisition
 - Skill comparison tool
 
-## 📱 Browser Support
+## Browser Support
 
 Tested and optimized for:
 - Chrome 90+

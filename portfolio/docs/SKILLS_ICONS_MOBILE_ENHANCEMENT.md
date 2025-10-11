@@ -91,12 +91,12 @@ transition={{
 
 ## Visual Effects
 
-### Desktop Experience 🖥️
+### Desktop Experience
 - **Entry**: Pop in with scale from 0
 - **Hover**: Rotate 360° + scale up
 - **Interaction**: Full spring physics
 
-### Mobile Experience 📱
+### Mobile Experience
 - **Entry**: Slide in from left (-20px) + slight scale (0.8 → 1.0)
 - **Touch**: Scale down (0.95) with color feedback
 - **Animation**: Smooth spring with bounce
@@ -163,10 +163,10 @@ background: rgba(255, 255, 255, 0.15); /* White highlight */
 ## Performance Considerations
 
 ### Optimized Animations
-- ✅ Uses `transform` and `opacity` (GPU accelerated)
-- ✅ Short duration (0.4s) for snappy feel
-- ✅ Spring physics calculated efficiently
-- ✅ Staggered delays prevent layout thrashing
+- Uses `transform` and `opacity` (GPU accelerated)
+- Short duration (0.4s) for snappy feel
+- Spring physics calculated efficiently
+- Staggered delays prevent layout thrashing
 
 ### Touch Response
 - ⚡ 0.15s transition for instant feedback
@@ -187,7 +187,7 @@ background: rgba(255, 255, 255, 0.15); /* White highlight */
 - Timing feels natural and responsive
 - Touch feedback confirms interaction
 
-### Mobile-First Design 📱
+### Mobile-First Design
 - Optimized for touch interactions
 - No hover dependencies
 - Fast, smooth performance
@@ -247,7 +247,7 @@ The existing `prefers-reduced-motion` media query will automatically disable the
 
 ## Before vs After
 
-### Before ❌
+### Before
 ```
 Icons: Simple fade-in
 Effect: Flat, boring
@@ -255,7 +255,7 @@ Timing: Instant appearance
 Touch: No feedback
 ```
 
-### After ✅
+### After
 ```
 Icons: Slide-in from left with bounce
 Effect: Dynamic, engaging
@@ -282,9 +282,9 @@ Touch: Scale down feedback
 
 ## Summary
 
-✅ **Icons now have engaging slide-in animations on mobile**  
-✅ **Touch interactions provide clear feedback**  
-✅ **Animations are performant and accessible**  
-✅ **Professional polish without being excessive**
+**Icons now have engaging slide-in animations on mobile**  
+**Touch interactions provide clear feedback**  
+**Animations are performant and accessible**  
+**Professional polish without being excessive**
 
 The skills section icons now provide a delightful, modern experience on mobile devices while maintaining the clean, professional aesthetic. 🎨✨

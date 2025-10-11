@@ -1,19 +1,19 @@
-# 🌀 Dynamic Spiral Skills Section - Documentation
+# Dynamic Spiral Skills Section - Documentation
 
 ## Overview
 A visually stunning, animated Skills section featuring a spiral motion layout with glassmorphism design, neon glows, and smooth scroll-triggered animations. Built with React, Framer Motion, and Tailwind CSS.
 
 ---
 
-## 🎨 Design Features
+## Design Features
 
 ### Visual Elements
 - **Dark Theme**: Deep gradient background (gray-900 → purple-900 → gray-900)
 - **Glassmorphism Cards**: Semi-transparent cards with backdrop blur and subtle borders
 - **Neon Glow Effects**: Color-coded glows for each skill category:
-  - 🔵 **Cyan** - Frontend Engineering
-  - 🟣 **Purple** - UI/UX Design  
-  - 🔷 **Blue** - Backend Engineering
+  - **Cyan** - Frontend Engineering
+  - **Purple** - UI/UX Design  
+  - **Blue** - Backend Engineering
 - **Animated Orbs**: Floating, pulsing gradient orbs in the background
 - **Grid Pattern**: Subtle grid overlay for depth
 
@@ -37,7 +37,7 @@ src/pages/
 
 ---
 
-## 🧩 Component Breakdown
+## Component Breakdown
 
 ### 1. Main Skill Cards (Spiral Layout)
 **Categories:**
@@ -97,7 +97,7 @@ src/pages/
 
 ---
 
-## 🎬 Animation Details
+## Animation Details
 
 ### Framer Motion Variants
 
@@ -129,7 +129,7 @@ hover: { scale: 1.2, rotate: 360° }
 
 ---
 
-## 📱 Responsive Design
+## Responsive Design
 
 ### Desktop (1024px+)
 - Full spiral layout with 3D perspective
@@ -150,7 +150,7 @@ hover: { scale: 1.2, rotate: 360° }
 
 ---
 
-## 🎨 Color Palette
+## Color Palette
 
 ### Primary Colors
 - **Cyan**: `#06b6d4` (Frontend)
@@ -168,7 +168,7 @@ hover: { scale: 1.2, rotate: 360° }
 
 ---
 
-## ⚙️ Technical Implementation
+## Technical Implementation
 
 ### Dependencies
 ```json
@@ -194,7 +194,7 @@ hover: { scale: 1.2, rotate: 360° }
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### Navigate to Skills Section
 ```bash
@@ -233,7 +233,7 @@ transition: { duration: 0.8 } // Slower = higher value
 
 ---
 
-## ✨ Key Highlights
+## Key Highlights
 
 ### What Makes This Special
 1. **Spiral Symbolism**: Represents continuous growth and mastery
@@ -253,7 +253,7 @@ transition: { duration: 0.8 } // Slower = higher value
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Cards Not Animating
 - Ensure Framer Motion is installed: `npm install framer-motion`
@@ -272,7 +272,7 @@ transition: { duration: 0.8 } // Slower = higher value
 
 ---
 
-## 🎯 Future Enhancements
+## Future Enhancements
 
 ### Potential Additions
 - [ ] Skill level percentage input

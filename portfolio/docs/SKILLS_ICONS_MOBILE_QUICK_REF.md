@@ -1,6 +1,6 @@
 # Skills Icons Mobile Update - Quick Reference
 
-## What Changed? 🎯
+## What Changed?
 
 ### Icons are NOW VISIBLE on mobile with enhanced animations!
 
@@ -10,17 +10,17 @@
 
 ### Before
 ```
-❌ Icons: Simple fade-in (opacity only)
-❌ No movement or depth
-❌ Boring entrance
+Icons: Simple fade-in (opacity only)
+No movement or depth
+Boring entrance
 ```
 
 ### After  
 ```
-✅ Icons: Slide in from LEFT (-20px)
-✅ With slight scale (0.8 → 1.0)
-✅ Bouncy spring animation
-✅ Cascading reveal effect
+Icons: Slide in from LEFT (-20px)
+With slight scale (0.8 → 1.0)
+Bouncy spring animation
+Cascading reveal effect
 ```
 
 ---
@@ -28,7 +28,7 @@
 ## Visual Flow
 
 ```
-[📱 Mobile Screen]
+[Mobile Screen]
 
 Before:
 Icon 1: *poof* appears
@@ -116,21 +116,21 @@ Active:  background: rgba(255, 255, 255, 0.15) ← White highlight
 
 ## Performance
 
-✅ **GPU Accelerated**: Uses `transform` and `opacity`  
-✅ **Short Duration**: 0.4s feels instant  
-✅ **Lightweight**: No heavy calculations  
-✅ **Smooth**: 60 FPS on most devices  
+**GPU Accelerated**: Uses `transform` and `opacity`  
+**Short Duration**: 0.4s feels instant  
+**Lightweight**: No heavy calculations  
+**Smooth**: 60 FPS on most devices  
 
 ---
 
 ## Key Features
 
-### ✨ Slide-In Animation
+### Slide-In Animation
 - Icons enter from the left side
 - Creates sense of motion and depth
 - More engaging than simple fade
 
-### 🎯 Staggered Timing
+### Staggered Timing
 - Each icon delayed by 0.08s
 - Creates waterfall effect
 - Guides eye across screen
@@ -164,11 +164,11 @@ Each icon slides in from left with a slight bounce!
 
 ## Browser Support
 
-✅ iOS Safari 12+  
-✅ Chrome Mobile  
-✅ Firefox Mobile  
-✅ Samsung Internet  
-✅ Edge Mobile  
+iOS Safari 12+  
+Chrome Mobile  
+Firefox Mobile  
+Samsung Internet  
+Edge Mobile  
 
 ---
 
@@ -188,7 +188,7 @@ Each icon slides in from left with a slight bounce!
 
 ## Testing
 
-### ✅ Verified On
+### Verified On
 - [x] iPhone (Safari)
 - [x] Android (Chrome)
 - [x] Tablet (768px+)
@@ -214,7 +214,7 @@ Each icon slides in from left with a slight bounce!
 
 🎨 **More engaging and professional**  
 ⚡ **Fast and performant**  
-📱 **Optimized for mobile touch**  
+**Optimized for mobile touch**  
 ✨ **Clean and minimalistic**
 
 ---
@@ -227,4 +227,4 @@ Each icon slides in from left with a slight bounce!
 4. Watch icons **slide in from left** with bounce
 5. Tap an icon - see it **shrink slightly** for feedback
 
-You should see a smooth, professional animation! 🎉
+You should see a smooth, professional animation!

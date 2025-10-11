@@ -24,7 +24,7 @@ A modern, fully-featured navigation bar built with React, TypeScript, Framer Mot
   - Staggered fade-in for menu items
   - Backdrop blur overlay
 
-### 📱 Responsive Design
+### Responsive Design
 - **Desktop (lg+)**:
   - Full horizontal navigation with all links visible
   - Theme toggle on the right
@@ -37,7 +37,7 @@ A modern, fully-featured navigation bar built with React, TypeScript, Framer Mot
   - Social links at the bottom
   - Theme toggle in header
 
-### ♿ Accessibility
+### Accessibility
 - **Keyboard Navigation**: All interactive elements are keyboard accessible
 - **ARIA Labels**: Proper labels for screen readers
   - `aria-label` on buttons and links
@@ -46,7 +46,7 @@ A modern, fully-featured navigation bar built with React, TypeScript, Framer Mot
 - **Focus Management**: Visible focus states on all interactive elements
 - **Semantic HTML**: Proper use of `nav`, `header`, and landmark roles
 
-### ⚡ Performance Optimizations
+### Performance Optimizations
 - **Throttled Scroll**: Scroll event handler throttled to once every 100ms
 - **Passive Event Listeners**: Used for scroll events to improve scroll performance
 - **Conditional Rendering**: Mobile menu only rendered when open

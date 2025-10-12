@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import type { Project } from '../../types';
 
 interface ProjectCardProps {
@@ -7,8 +7,27 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    // Always navigate to detail page for all screen sizes
+    navigate(`/projects/${project.id}`);
+  };
+
   return (
-    <div className="group relative bg-white dark:bg-dark-card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full">
+    <div 
+      className="group relative bg-white dark:bg-dark-card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full cursor-pointer"
+      onClick={handleCardClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleCardClick();
+        }
+      }}
+      aria-label={`View details for ${project.title}`}
+    >
       {/* Image Container */}
       <div className="relative h-64 overflow-hidden bg-gray-200 dark:bg-gray-800">
         <img
@@ -31,32 +50,11 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           transition={{ duration: 0.3 }}
           className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col justify-end p-6"
         >
-          {/* Tech Stack - Show up to 5 technologies */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.technologies.slice(0, 5).map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full border border-white/30"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* Action Button - GitHub Only */}
-          <div className="flex gap-3">
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-lg transition-colors duration-200 text-sm font-medium border border-white/30"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Github size={16} />
-                View Code
-              </a>
-            )}
+          {/* Read More Button */}
+          <div className="flex justify-center">
+            <div className="px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-lg transition-colors duration-200 font-medium border border-white/30 text-center">
+              Read More About Project
+            </div>
           </div>
         </motion.div>
 

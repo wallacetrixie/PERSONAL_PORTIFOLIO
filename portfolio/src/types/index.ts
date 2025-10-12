@@ -11,6 +11,37 @@ export interface Project {
   demoUrl?: string;
   featured: boolean;
   date?: string;
+  // Detailed project information
+  problemSolved?: string;
+  detailedTechStack?: {
+    technology: string;
+    purpose: string;
+    reason: string;
+  }[];
+  challenges?: {
+    challenge: string;
+    solution: string;
+  }[];
+  tradeOffs?: {
+    decision: string;
+    reasoning: string;
+  }[];
+  architecture?: {
+    description: string;
+    diagram?: string;
+    components: string[];
+  };
+  testing?: {
+    approach: string;
+    frameworks: string[];
+    coverage?: string;
+  };
+  scalingConsiderations?: string[];
+  features?: string[];
+  metrics?: {
+    label: string;
+    value: string;
+  }[];
 }
 
 export type ProjectCategory = 'frontend' | 'backend' | 'fullstack' | 'web' | 'mobile' | 'design' | 'other';

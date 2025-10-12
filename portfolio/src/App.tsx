@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
+import { ProjectDetail } from './pages/ProjectDetail';
 import { AuthProvider } from './contexts/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import AdminLogin from './pages/AdminLogin';
@@ -16,6 +17,7 @@ function App() {
           {/* Public Routes */}
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path="projects/:id" element={<ProjectDetail />} />
           </Route>
 
           {/* Admin Routes */}

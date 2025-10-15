@@ -1,53 +1,81 @@
 -- ========================================
 -- PORTFOLIO ADMIN AUTHENTICATION SETUP
+-- PostgreSQL Version (Compatible with Supabase)
 -- ========================================
 -- This script creates the necessary tables for admin authentication
 -- Run this script to set up the admin system for your portfolio
 
--- Use the portfolio database
-USE portfolio_db;
+-- Enable UUID extension (if not already enabled)
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE IF NOT EXISTS admin_users (
   -- Primary Key
-  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'Unique identifier for admin user',
+  id SERIAL PRIMARY KEY,
   
   -- Authentication Credentials
-  email VARCHAR(255) NOT NULL UNIQUE COMMENT 'Admin email address for login (unique)',
-  password_hash VARCHAR(255) NOT NULL COMMENT 'Bcrypt hashed password (never store plain text)',
-  username VARCHAR(50) NOT NULL UNIQUE COMMENT 'Admin username (unique)',
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  username VARCHAR(50) NOT NULL UNIQUE,
   
   -- Profile Information
-  full_name VARCHAR(100) NOT NULL COMMENT 'Admin full name for display',
-  role ENUM('super_admin', 'admin', 'moderator') DEFAULT 'admin' COMMENT 'Admin role level - super_admin has full access',
+  full_name VARCHAR(100) NOT NULL,
+  role VARCHAR(20) DEFAULT 'admin' CHECK (role IN ('super_admin', 'admin', 'moderator')),
   
   -- Security & Session Management
-  last_login_at TIMESTAMP NULL DEFAULT NULL COMMENT 'Timestamp of last successful login',
-  last_login_ip VARCHAR(45) DEFAULT NULL COMMENT 'IP address of last login (supports IPv4 and IPv6)',
-  failed_login_attempts INT DEFAULT 0 COMMENT 'Counter for failed login attempts (reset on successful login)',
-  account_locked_until TIMESTAMP NULL DEFAULT NULL COMMENT 'Account lock expiration time (after too many failed attempts)',
+  last_login_at TIMESTAMP DEFAULT NULL,
+  last_login_ip VARCHAR(45) DEFAULT NULL,
+  failed_login_attempts INTEGER DEFAULT 0,
+  account_locked_until TIMESTAMP DEFAULT NULL,
   
   -- Password Reset
-  password_reset_token VARCHAR(255) DEFAULT NULL COMMENT 'Token for password reset functionality',
-  password_reset_expires TIMESTAMP NULL DEFAULT NULL COMMENT 'Password reset token expiration timestamp',
+  password_reset_token VARCHAR(255) DEFAULT NULL,
+  password_reset_expires TIMESTAMP DEFAULT NULL,
   
   -- Account Status
-  is_active BOOLEAN DEFAULT TRUE COMMENT 'Whether the account is active (can be used to disable accounts)',
-  email_verified BOOLEAN DEFAULT FALSE COMMENT 'Whether email is verified (for enhanced security)',
+  is_active BOOLEAN DEFAULT TRUE,
+  email_verified BOOLEAN DEFAULT FALSE,
   
   -- Timestamps
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'When the admin account was created',
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'When the record was last modified',
-  
-  -- Indexes for Performance
-  INDEX idx_email (email) COMMENT 'Fast lookup by email for login',
-  INDEX idx_username (username) COMMENT 'Fast lookup by username',
-  INDEX idx_active (is_active) COMMENT 'Filter active accounts',
-  INDEX idx_role (role) COMMENT 'Filter by role level'
-  
-) ENGINE=InnoDB 
-  DEFAULT CHARSET=utf8mb4 
-  COLLATE=utf8mb4_unicode_ci 
-  COMMENT='Admin users with authentication, security features, and role-based access control';
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create indexes for admin_users table
+CREATE INDEX IF NOT EXISTS idx_admin_users_email ON admin_users(email);
+CREATE INDEX IF NOT EXISTS idx_admin_users_username ON admin_users(username);
+CREATE INDEX IF NOT EXISTS idx_admin_users_active ON admin_users(is_active);
+CREATE INDEX IF NOT EXISTS idx_admin_users_role ON admin_users(role);
+
+-- Create trigger to update updated_at timestamp
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+CREATE TRIGGER update_admin_users_updated_at BEFORE UPDATE ON admin_users
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- Comments for admin_users table
+COMMENT ON TABLE admin_users IS 'Admin users with authentication, security features, and role-based access control';
+COMMENT ON COLUMN admin_users.id IS 'Unique identifier for admin user';
+COMMENT ON COLUMN admin_users.email IS 'Admin email address for login (unique)';
+COMMENT ON COLUMN admin_users.password_hash IS 'Bcrypt hashed password (never store plain text)';
+COMMENT ON COLUMN admin_users.username IS 'Admin username (unique)';
+COMMENT ON COLUMN admin_users.full_name IS 'Admin full name for display';
+COMMENT ON COLUMN admin_users.role IS 'Admin role level - super_admin has full access';
+COMMENT ON COLUMN admin_users.last_login_at IS 'Timestamp of last successful login';
+COMMENT ON COLUMN admin_users.last_login_ip IS 'IP address of last login (supports IPv4 and IPv6)';
+COMMENT ON COLUMN admin_users.failed_login_attempts IS 'Counter for failed login attempts (reset on successful login)';
+COMMENT ON COLUMN admin_users.account_locked_until IS 'Account lock expiration time (after too many failed attempts)';
+COMMENT ON COLUMN admin_users.password_reset_token IS 'Token for password reset functionality';
+COMMENT ON COLUMN admin_users.password_reset_expires IS 'Password reset token expiration timestamp';
+COMMENT ON COLUMN admin_users.is_active IS 'Whether the account is active (can be used to disable accounts)';
+COMMENT ON COLUMN admin_users.email_verified IS 'Whether email is verified (for enhanced security)';
+COMMENT ON COLUMN admin_users.created_at IS 'When the admin account was created';
+COMMENT ON COLUMN admin_users.updated_at IS 'When the record was last modified';
 
 
 -- ========================================
@@ -57,36 +85,53 @@ CREATE TABLE IF NOT EXISTS admin_users (
 
 CREATE TABLE IF NOT EXISTS admin_sessions (
   -- Primary Key
-  session_id VARCHAR(255) PRIMARY KEY COMMENT 'Unique session identifier (UUID)',
+  session_id VARCHAR(255) PRIMARY KEY,
   
   -- Foreign Key to Admin User
-  admin_id INT UNSIGNED NOT NULL COMMENT 'Reference to admin user who owns this session',
+  admin_id INTEGER NOT NULL REFERENCES admin_users(id) ON DELETE CASCADE,
   
   -- Session Data
-  session_data TEXT COMMENT 'Serialized session data (JSON)',
-  token_hash VARCHAR(255) NOT NULL COMMENT 'Hashed JWT token for validation',
+  session_data TEXT,
+  token_hash VARCHAR(255) NOT NULL,
   
   -- Security Information
-  ip_address VARCHAR(45) DEFAULT NULL COMMENT 'IP address of the session',
-  user_agent TEXT DEFAULT NULL COMMENT 'Browser/device information',
+  ip_address VARCHAR(45) DEFAULT NULL,
+  user_agent TEXT DEFAULT NULL,
   
   -- Timestamps
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'When session was created',
-  expires_at TIMESTAMP NOT NULL COMMENT 'When session expires (for automatic cleanup)',
-  last_activity_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last activity timestamp',
-  
-  -- Foreign Key Constraint
-  FOREIGN KEY (admin_id) REFERENCES admin_users(id) ON DELETE CASCADE,
-  
-  -- Indexes for Performance
-  INDEX idx_admin_id (admin_id) COMMENT 'Fast lookup by admin user',
-  INDEX idx_expires_at (expires_at) COMMENT 'Fast cleanup of expired sessions',
-  INDEX idx_token_hash (token_hash) COMMENT 'Fast token validation'
-  
-) ENGINE=InnoDB 
-  DEFAULT CHARSET=utf8mb4 
-  COLLATE=utf8mb4_unicode_ci 
-  COMMENT='Admin session management for JWT authentication and logout tracking';
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  expires_at TIMESTAMP NOT NULL,
+  last_activity_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create indexes for admin_sessions table
+CREATE INDEX IF NOT EXISTS idx_admin_sessions_admin_id ON admin_sessions(admin_id);
+CREATE INDEX IF NOT EXISTS idx_admin_sessions_expires_at ON admin_sessions(expires_at);
+CREATE INDEX IF NOT EXISTS idx_admin_sessions_token_hash ON admin_sessions(token_hash);
+
+-- Create trigger to update last_activity_at timestamp
+CREATE OR REPLACE FUNCTION update_last_activity_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.last_activity_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+CREATE TRIGGER update_admin_sessions_last_activity BEFORE UPDATE ON admin_sessions
+    FOR EACH ROW EXECUTE FUNCTION update_last_activity_at_column();
+
+-- Comments for admin_sessions table
+COMMENT ON TABLE admin_sessions IS 'Admin session management for JWT authentication and logout tracking';
+COMMENT ON COLUMN admin_sessions.session_id IS 'Unique session identifier (UUID)';
+COMMENT ON COLUMN admin_sessions.admin_id IS 'Reference to admin user who owns this session';
+COMMENT ON COLUMN admin_sessions.session_data IS 'Serialized session data (JSON)';
+COMMENT ON COLUMN admin_sessions.token_hash IS 'Hashed JWT token for validation';
+COMMENT ON COLUMN admin_sessions.ip_address IS 'IP address of the session';
+COMMENT ON COLUMN admin_sessions.user_agent IS 'Browser/device information';
+COMMENT ON COLUMN admin_sessions.created_at IS 'When session was created';
+COMMENT ON COLUMN admin_sessions.expires_at IS 'When session expires (for automatic cleanup)';
+COMMENT ON COLUMN admin_sessions.last_activity_at IS 'Last activity timestamp';
 
 
 -- ========================================
@@ -96,51 +141,41 @@ CREATE TABLE IF NOT EXISTS admin_sessions (
 
 CREATE TABLE IF NOT EXISTS admin_activity_log (
   -- Primary Key
-  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'Unique identifier for log entry',
+  id SERIAL PRIMARY KEY,
   
   -- Foreign Key to Admin User
-  admin_id INT UNSIGNED NOT NULL COMMENT 'Admin user who performed the action',
+  admin_id INTEGER NOT NULL REFERENCES admin_users(id) ON DELETE CASCADE,
   
   -- Activity Information
-  action VARCHAR(100) NOT NULL COMMENT 'Action performed (e.g., "login", "logout", "update_contact", "delete_message")',
-  resource_type VARCHAR(50) DEFAULT NULL COMMENT 'Type of resource affected (e.g., "contact", "admin_user")',
-  resource_id INT UNSIGNED DEFAULT NULL COMMENT 'ID of the affected resource',
-  details TEXT DEFAULT NULL COMMENT 'Additional details about the action (JSON format)',
+  action VARCHAR(100) NOT NULL,
+  resource_type VARCHAR(50) DEFAULT NULL,
+  resource_id INTEGER DEFAULT NULL,
+  details TEXT DEFAULT NULL,
   
   -- Request Information
-  ip_address VARCHAR(45) DEFAULT NULL COMMENT 'IP address from which action was performed',
-  user_agent TEXT DEFAULT NULL COMMENT 'Browser/device information',
+  ip_address VARCHAR(45) DEFAULT NULL,
+  user_agent TEXT DEFAULT NULL,
   
   -- Timestamp
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'When the action was performed',
-  
-  -- Foreign Key Constraint
-  FOREIGN KEY (admin_id) REFERENCES admin_users(id) ON DELETE CASCADE,
-  
-  -- Indexes for Performance
-  INDEX idx_admin_id (admin_id) COMMENT 'Fast lookup by admin user',
-  INDEX idx_action (action) COMMENT 'Filter by action type',
-  INDEX idx_created_at (created_at DESC) COMMENT 'Chronological sorting',
-  INDEX idx_resource (resource_type, resource_id) COMMENT 'Lookup by affected resource'
-  
-) ENGINE=InnoDB 
-  DEFAULT CHARSET=utf8mb4 
-  COLLATE=utf8mb4_unicode_ci 
-  COMMENT='Audit log for admin actions and security monitoring';
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create indexes for admin_activity_log table
+CREATE INDEX IF NOT EXISTS idx_admin_activity_log_admin_id ON admin_activity_log(admin_id);
+CREATE INDEX IF NOT EXISTS idx_admin_activity_log_action ON admin_activity_log(action);
+CREATE INDEX IF NOT EXISTS idx_admin_activity_log_created_at ON admin_activity_log(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_admin_activity_log_resource ON admin_activity_log(resource_type, resource_id);
+
+-- Comments for admin_activity_log table
+COMMENT ON TABLE admin_activity_log IS 'Audit log for admin actions and security monitoring';
+COMMENT ON COLUMN admin_activity_log.id IS 'Unique identifier for log entry';
+COMMENT ON COLUMN admin_activity_log.admin_id IS 'Admin user who performed the action';
+COMMENT ON COLUMN admin_activity_log.action IS 'Action performed (e.g., "login", "logout", "update_contact", "delete_message")';
+COMMENT ON COLUMN admin_activity_log.resource_type IS 'Type of resource affected (e.g., "contact", "admin_user")';
+COMMENT ON COLUMN admin_activity_log.resource_id IS 'ID of the affected resource';
+COMMENT ON COLUMN admin_activity_log.details IS 'Additional details about the action (JSON format)';
+COMMENT ON COLUMN admin_activity_log.ip_address IS 'IP address from which action was performed';
+COMMENT ON COLUMN admin_activity_log.user_agent IS 'Browser/device information';
+COMMENT ON COLUMN admin_activity_log.created_at IS 'When the action was performed';
 
 
--- ========================================
--- VERIFICATION & SAMPLE QUERIES
--- ========================================
-
--- Verify tables were created
-SHOW TABLES LIKE 'admin%';
-
--- Show admin_users table structure
-DESCRIBE admin_users;
-
--- Show admin_sessions table structure
-DESCRIBE admin_sessions;
-
--- Show admin_activity_log table structure
-DESCRIBE admin_activity_log;

@@ -3,7 +3,6 @@ const cors = require('cors');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
-
 const { testConnection } = require('./config/database');
 const { verifyEmailConfig } = require('./services/emailService');
 const contactRoutes = require('./routes/contact');
@@ -102,20 +101,20 @@ const validateEnv = () => {
   const missing = required.filter(key => !process.env[key]);
   
   if (missing.length > 0) {
-    console.error('❌ Missing required environment variables:', missing.join(', '));
-    console.log('💡 Please check your .env file');
+    console.error('Missing required environment variables:', missing.join(', '));
+    console.log('Please check your .env file');
     process.exit(1);
   }
 
   // Validate JWT_SECRET strength
   if (process.env.JWT_SECRET && process.env.JWT_SECRET.length < 32) {
-    console.error('❌ JWT_SECRET is too weak. Must be at least 32 characters.');
+    console.error('JWT_SECRET is too weak. Must be at least 32 characters.');
     process.exit(1);
   }
 
   // Warn about development mode in production
   if (process.env.NODE_ENV === 'production' && process.env.FRONTEND_URL?.includes('localhost')) {
-    console.warn('⚠️  WARNING: FRONTEND_URL contains localhost in production environment');
+    console.warn(' WARNING: FRONTEND_URL contains localhost in production environment');
   }
 };
 
@@ -127,7 +126,7 @@ const startServer = async () => {
     const dbConnected = await testConnection();
     
     if (!dbConnected) {
-      console.error('⚠️  Database connection failed. Please check your configuration.');
+      console.error(' Database connection failed. Please check your configuration.');
       console.log('💡 Run "npm run init-db" to initialize the database first.');
       process.exit(1);
     }

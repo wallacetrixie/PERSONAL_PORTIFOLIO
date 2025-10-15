@@ -7,13 +7,17 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "init-db": "node config/init-database.js",
-    "create-admin": "node config/create-admin.js"
+    "create-admin": "node config/create-admin.js",
+    "test-email": "node test-email.js",
+    "setup-production": "node setup-production.js",
+    "troubleshoot": "node troubleshoot-deployment.js"
   },
   "keywords": [
     "express",
-    "mysql",
+    "postgresql",
     "portfolio",
-    "contact-form"
+    "contact-form",
+    "supabase"
   ],
   "author": "Wallace Wambulwa",
   "license": "MIT",
@@ -28,7 +32,7 @@
     "express-validator": "^7.0.1",
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.6.5",
+    "pg": "^8.11.3",
     "nodemailer": "^7.0.9",
     "uuid": "^13.0.0",
     "xss": "^1.0.14"

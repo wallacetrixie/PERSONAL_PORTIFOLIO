@@ -1,4 +1,4 @@
-const { promisePool } = require('../config/database');
+const { pool } = require('../config/database');
 const bcrypt = require('bcryptjs');
 
 class Admin {
@@ -9,11 +9,11 @@ class Admin {
    */
   static async findByEmail(email) {
     try {
-      const [rows] = await promisePool.execute(
-        'SELECT * FROM admin_users WHERE email = ? AND is_active = TRUE',
+      const result = await pool.query(
+        'SELECT * FROM admin_users WHERE email = $1 AND is_active = TRUE',
         [email]
       );
-      return rows.length > 0 ? rows[0] : null;
+      return result.rows.length > 0 ? result.rows[0] : null;
     } catch (error) {
       console.error('Error finding admin by email:', error);
       throw error;
@@ -27,11 +27,11 @@ class Admin {
    */
   static async findById(id) {
     try {
-      const [rows] = await promisePool.execute(
-        'SELECT id, email, username, full_name, role, last_login_at, is_active, email_verified, created_at FROM admin_users WHERE id = ? AND is_active = TRUE',
+      const result = await pool.query(
+        'SELECT id, email, username, full_name, role, last_login_at, is_active, email_verified, created_at FROM admin_users WHERE id = $1 AND is_active = TRUE',
         [id]
       );
-      return rows.length > 0 ? rows[0] : null;
+      return result.rows.length > 0 ? result.rows[0] : null;
     } catch (error) {
       console.error('Error finding admin by ID:', error);
       throw error;
@@ -75,8 +75,8 @@ class Admin {
    */
   static async updateLastLogin(adminId, ipAddress) {
     try {
-      await promisePool.execute(
-        'UPDATE admin_users SET last_login_at = NOW(), last_login_ip = ?, failed_login_attempts = 0 WHERE id = ?',
+      await pool.query(
+        'UPDATE admin_users SET last_login_at = CURRENT_TIMESTAMP, last_login_ip = $1, failed_login_attempts = 0 WHERE id = $2',
         [ipAddress, adminId]
       );
     } catch (error) {
@@ -93,24 +93,24 @@ class Admin {
   static async incrementFailedAttempts(email) {
     try {
       // Increment failed attempts
-      await promisePool.execute(
-        'UPDATE admin_users SET failed_login_attempts = failed_login_attempts + 1 WHERE email = ?',
+      await pool.query(
+        'UPDATE admin_users SET failed_login_attempts = failed_login_attempts + 1 WHERE email = $1',
         [email]
       );
 
       // Get current count
-      const [rows] = await promisePool.execute(
-        'SELECT failed_login_attempts FROM admin_users WHERE email = ?',
+      const result = await pool.query(
+        'SELECT failed_login_attempts FROM admin_users WHERE email = $1',
         [email]
       );
 
-      const attempts = rows.length > 0 ? rows[0].failed_login_attempts : 0;
+      const attempts = result.rows.length > 0 ? result.rows[0].failed_login_attempts : 0;
 
       // Lock account if too many attempts (5 or more)
       if (attempts >= 5) {
         const lockDuration = 15; // 15 minutes
-        await promisePool.execute(
-          'UPDATE admin_users SET account_locked_until = DATE_ADD(NOW(), INTERVAL ? MINUTE) WHERE email = ?',
+        await pool.query(
+          'UPDATE admin_users SET account_locked_until = CURRENT_TIMESTAMP + INTERVAL \'$1 minutes\' WHERE email = $2',
           [lockDuration, email]
         );
       }
@@ -144,12 +144,12 @@ class Admin {
       const { email, password, username, full_name, role = 'admin' } = adminData;
       const hashedPassword = await this.hashPassword(password);
 
-      const [result] = await promisePool.execute(
-        'INSERT INTO admin_users (email, password_hash, username, full_name, role) VALUES (?, ?, ?, ?, ?)',
+      const result = await pool.query(
+        'INSERT INTO admin_users (email, password_hash, username, full_name, role) VALUES ($1, $2, $3, $4, $5) RETURNING id',
         [email, hashedPassword, username, full_name, role]
       );
 
-      return result.insertId;
+      return result.rows[0].id;
     } catch (error) {
       console.error('Error creating admin user:', error);
       throw error;
@@ -168,10 +168,10 @@ class Admin {
    */
   static async createSession(sessionId, adminId, tokenHash, ipAddress, userAgent, expiresInHours = 24) {
     try {
-      await promisePool.execute(
+      await pool.query(
         `INSERT INTO admin_sessions (session_id, admin_id, token_hash, ip_address, user_agent, expires_at) 
-         VALUES (?, ?, ?, ?, ?, DATE_ADD(NOW(), INTERVAL ? HOUR))`,
-        [sessionId, adminId, tokenHash, ipAddress, userAgent, expiresInHours]
+         VALUES ($1, $2, $3, $4, $5, CURRENT_TIMESTAMP + INTERVAL '${expiresInHours} hours')`,
+        [sessionId, adminId, tokenHash, ipAddress, userAgent]
       );
     } catch (error) {
       console.error('Error creating session:', error);
@@ -187,11 +187,11 @@ class Admin {
    */
   static async verifySession(sessionId, adminId) {
     try {
-      const [rows] = await promisePool.execute(
-        'SELECT * FROM admin_sessions WHERE session_id = ? AND admin_id = ? AND expires_at > NOW()',
+      const result = await pool.query(
+        'SELECT * FROM admin_sessions WHERE session_id = $1 AND admin_id = $2 AND expires_at > CURRENT_TIMESTAMP',
         [sessionId, adminId]
       );
-      return rows.length > 0;
+      return result.rows.length > 0;
     } catch (error) {
       console.error('Error verifying session:', error);
       throw error;
@@ -205,8 +205,8 @@ class Admin {
    */
   static async deleteSession(sessionId) {
     try {
-      await promisePool.execute(
-        'DELETE FROM admin_sessions WHERE session_id = ?',
+      await pool.query(
+        'DELETE FROM admin_sessions WHERE session_id = $1',
         [sessionId]
       );
     } catch (error) {
@@ -221,8 +221,8 @@ class Admin {
    */
   static async cleanupExpiredSessions() {
     try {
-      await promisePool.execute(
-        'DELETE FROM admin_sessions WHERE expires_at < NOW()'
+      await pool.query(
+        'DELETE FROM admin_sessions WHERE expires_at < CURRENT_TIMESTAMP'
       );
     } catch (error) {
       console.error('Error cleaning up expired sessions:', error);

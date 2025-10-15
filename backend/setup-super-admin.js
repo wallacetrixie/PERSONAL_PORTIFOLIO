@@ -18,7 +18,7 @@
 
 const readline = require('readline');
 const Admin = require('./models/Admin');
-const { promisePool } = require('./config/database');
+const { pool } = require('./config/database');
 
 // Colors for terminal output
 const colors = {
@@ -70,10 +70,11 @@ function isStrongPassword(password) {
  */
 async function checkExistingSuperAdmin() {
   try {
-    const [rows] = await promisePool.execute(
-      'SELECT COUNT(*) as count FROM admin_users WHERE role = "super_admin"'
+    const result = await pool.query(
+      'SELECT COUNT(*) as count FROM admin_users WHERE role = $1',
+      ['super_admin']
     );
-    return rows[0].count > 0;
+    return result.rows[0].count > 0;
   } catch (error) {
     console.error('Error checking existing super admin:', error);
     throw error;
@@ -173,12 +174,12 @@ async function setupSuperAdmin() {
 
       // Check if username exists
       try {
-        const [rows] = await promisePool.execute(
-          'SELECT id FROM admin_users WHERE username = ?',
+        const result = await pool.query(
+          'SELECT id FROM admin_users WHERE username = $1',
           [username]
         );
         
-        if (rows.length > 0) {
+        if (result.rows.length > 0) {
           console.log(`${colors.red}❌ Username already exists. Please choose another.${colors.reset}`);
           continue;
         }
@@ -216,8 +217,8 @@ async function setupSuperAdmin() {
     });
 
     // Mark email as verified for super admin
-    await promisePool.execute(
-      'UPDATE admin_users SET email_verified = TRUE WHERE id = ?',
+    await pool.query(
+      'UPDATE admin_users SET email_verified = TRUE WHERE id = $1',
       [adminId]
     );
 
@@ -251,7 +252,7 @@ async function setupSuperAdmin() {
 // Test database connection first
 async function testConnection() {
   try {
-    await promisePool.execute('SELECT 1');
+    await pool.query('SELECT 1');
     console.log(`${colors.green}✅ Database connection successful${colors.reset}`);
     return true;
   } catch (error) {

@@ -402,7 +402,9 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                 Don't see what you're looking for? Let's discuss your custom requirements!
               </p>
               <motion.a
-                href="/#contact"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=wallacewambulwa@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-purple text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}

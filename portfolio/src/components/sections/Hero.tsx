@@ -158,8 +158,10 @@ export const Hero = () => {
 
               {/* Secondary Button */}
               <motion.a
-                href="#contact"
-                aria-label="Contact me to discuss your project"
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${PERSONAL_INFO.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Send email to ${PERSONAL_INFO.email}`}
                 className="group px-8 py-4 bg-white dark:bg-white/5 backdrop-blur-sm border-2 border-light-accent1/50 dark:border-primary-500/50 text-light-accent1 dark:text-primary-400 font-semibold rounded-lg hover:bg-light-bg-secondary dark:hover:bg-primary-500/10 hover:border-light-accent1 dark:hover:border-primary-500 transition-all duration-300 flex items-center justify-center gap-2 shadow-soft dark:shadow-none"
                 whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
                 whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
@@ -198,8 +200,10 @@ export const Hero = () => {
               transition={{ delay: 0.8 }}
             >
               <a
-                href="#contact"
-                aria-label="I am currently available for freelance work - click to contact"
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${PERSONAL_INFO.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`I am currently available for freelance work - click to send email to ${PERSONAL_INFO.email}`}
                 className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full hover:bg-green-500/20 transition-colors group"
               >
                 <motion.div

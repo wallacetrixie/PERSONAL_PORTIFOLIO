@@ -20,7 +20,7 @@ export const SERVICES: Service[] = [
   {
     id: 'web-development',
     title: 'Website Development',
-    description: 'Custom, responsive websites built with modern technologies. From landing pages to complex web applications, I create digital experiences that engage users and drive results.',
+    description: 'I offer website development services, creating custom, responsive sites and web applications that are fast, modern, and focused on real business results.',
     icon: 'Code2',
     features: [
       'Responsive Design',
@@ -35,7 +35,7 @@ export const SERVICES: Service[] = [
   {
     id: 'software-development',
     title: 'Software Development & Maintenance',
-    description: 'End-to-end software solutions tailored to your business needs. From concept to deployment and ongoing maintenance, I ensure your software remains reliable and up-to-date.',
+    description: 'I offer end-to-end software development and maintenance, keeping your systems reliable, secure, and aligned with your business goals over time.',
     icon: 'Palette',
     features: [
       'Custom Software Solutions',
@@ -50,7 +50,7 @@ export const SERVICES: Service[] = [
   {
     id: 'database-design',
     title: 'Database Design & Optimization',
-    description: 'Efficient database architecture and optimization for maximum performance. I design scalable database solutions that handle your data securely and efficiently.',
+    description: 'I design and optimize databases so your applications can store, query, and protect data efficiently as they grow.',
     icon: 'Server',
     features: [
       'Schema Design',
@@ -65,7 +65,7 @@ export const SERVICES: Service[] = [
   {
     id: 'mobile-development',
     title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile applications that deliver exceptional user experiences. Build once, deploy everywhere with modern mobile technologies.',
+    description: 'I build mobile applications that feel fast, intuitive, and consistent across platforms, tailored to your product and users.',
     icon: 'Smartphone',
     features: [
       'iOS & Android Apps',
@@ -80,7 +80,7 @@ export const SERVICES: Service[] = [
   {
     id: 'devops-cloud',
     title: 'DevOps & Cloud Services',
-    description: 'Streamline your development workflow with modern DevOps practices and cloud infrastructure. Deploy faster, scale effortlessly, and maintain high availability.',
+    description: 'I set up and manage cloud and DevOps workflows so your applications deploy safely, scale smoothly, and stay observable in production.',
     icon: 'Cloud',
     features: [
       'CI/CD Pipelines',
@@ -95,7 +95,7 @@ export const SERVICES: Service[] = [
   {
     id: 'api-integration',
     title: 'System Integration & API Development',
-    description: 'Seamless integration of third-party services and custom API development. Connect your systems, automate workflows, and enhance functionality.',
+    description: 'I design and integrate APIs that connect your systems cleanly, automate key workflows, and extend your platform with third-party services.',
     icon: 'Zap',
     features: [
       'RESTful APIs',

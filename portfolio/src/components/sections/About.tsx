@@ -27,12 +27,12 @@ interface Skill {
 
 
 const SKILLS: Skill[] = [
-  { icon: Code2, label: 'Clean Code', color: 'text-primary-600 dark:text-primary-400' },
-  { icon: Server, label: 'Backend', color: 'text-green-600 dark:text-green-400' },
-  { icon: Palette, label: 'UI/UX', color: 'text-purple-600 dark:text-purple-400' },
-  { icon: Zap, label: 'Performance', color: 'text-yellow-600 dark:text-yellow-400' },
-  { icon: Award, label: 'Quality', color: 'text-pink-600 dark:text-pink-400' },
-  { icon: Users, label: 'Collaboration', color: 'text-indigo-600 dark:text-indigo-400' },
+  { icon: Code2, label: 'Clean Code', color: 'text-light-accent1 dark:text-primary-400' },
+  { icon: Server, label: 'Backend', color: 'text-light-accent1 dark:text-primary-400' },
+  { icon: Palette, label: 'UI/UX', color: 'text-light-accent1 dark:text-primary-400' },
+  { icon: Zap, label: 'Performance', color: 'text-light-accent1 dark:text-primary-400' },
+  { icon: Award, label: 'Quality', color: 'text-light-accent1 dark:text-primary-400' },
+  { icon: Users, label: 'Collaboration', color: 'text-light-accent1 dark:text-primary-400' },
 ];
 
 
@@ -219,13 +219,13 @@ export const About = () => {
             className="space-y-8"
           >
             {/* Section Title */}
-            <motion.div variants={itemVariants}>
-              <span className="inline-block text-sm font-semibold tracking-widest uppercase text-light-accent1 dark:text-primary-400 mb-3">
+            <motion.div variants={itemVariants} className="space-y-2">
+              <span className="inline-block text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-light-accent1 dark:text-primary-400">
                 {ABOUT_INFO.tagline}
               </span>
               <h2 
                 id="about-heading"
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins text-light-text dark:text-white"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-light-text dark:text-white"
               >
                 {ABOUT_INFO.title.split(' ')[0]}{' '}
                 <span className="bg-gradient-to-r from-light-accent1 via-blue-600 to-light-accent2 dark:from-primary-400 dark:via-primary-500 dark:to-purple-500 text-transparent bg-clip-text">{ABOUT_INFO.title.split(' ')[1]}</span>
@@ -261,7 +261,7 @@ export const About = () => {
                 value={projectsCompleted}
                 suffix="+"
                 label="Projects Done"
-                color="text-light-accent2 dark:text-purple-400"
+                color="text-light-accent1 dark:text-primary-400"
                 isInView={isInView}
                 hasBorder="both"
               />
@@ -269,7 +269,7 @@ export const About = () => {
                 value={clientsSatisfied}
                 suffix="+"
                 label="Happy Clients"
-                color="text-green-600 dark:text-green-400"
+                color="text-light-accent1 dark:text-primary-400"
                 isInView={isInView}
                 hasBorder="none"
               />

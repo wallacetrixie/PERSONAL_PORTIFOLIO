@@ -68,15 +68,15 @@ export const Skills = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - Instant appearance */}
+        {/* Header - unified section heading style */}
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-16"
           initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
         >
           <motion.h1 
             id="skills-heading"
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight bg-gradient-to-r from-light-accent1 via-light-accent2 to-pink-500 dark:from-cyan-400 dark:via-purple-500 dark:to-pink-500 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 tracking-tight bg-gradient-to-r from-light-accent1 via-light-accent2 to-pink-500 dark:from-cyan-400 dark:via-purple-500 dark:to-pink-500 bg-clip-text text-transparent"
             style={{
               textShadow: '0 0 40px rgba(37, 99, 235, 0.2)'
             }}
@@ -84,7 +84,7 @@ export const Skills = () => {
             SKILLS
           </motion.h1>
           <motion.p 
-            className="text-xl sm:text-2xl md:text-3xl font-semibold text-light-text dark:text-white/90"
+            className="text-base sm:text-lg md:text-xl font-semibold text-light-text-secondary dark:text-white/90"
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
           >

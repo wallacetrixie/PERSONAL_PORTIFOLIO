@@ -143,7 +143,7 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-6 text-gray-900 dark:text-white"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-4 text-gray-900 dark:text-white"
           >
             My <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-purple">Services</span>
           </motion.h2>
@@ -153,7 +153,7 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
             Comprehensive solutions tailored to your business needs. From concept to deployment, I've got you covered.
           </motion.p>
@@ -188,7 +188,7 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                     relative h-full overflow-hidden
                     bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl
                     border-2 ${colors.border}
-                    rounded-2xl p-8
+                    rounded-2xl p-6 md:p-7 lg:p-8
                     shadow-lg hover:shadow-2xl
                     transition-all duration-300
                     ${isHovered ? colors.shadow : ''}
@@ -297,60 +297,7 @@ export const ServicesSection = ({ services }: ServicesSectionProps) => {
                       ))}
                     </ul>
 
-                    {/* Technologies with glassmorphism */}
-                    {service.technologies && (
-                      <motion.div 
-                        className="flex flex-wrap gap-2"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 + 0.3 }}
-                      >
-                        {service.technologies.slice(0, 4).map((tech, idx) => (
-                          <motion.span 
-                            key={idx}
-                            className={`
-                              text-xs px-3 py-1.5 rounded-full
-                              bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm
-                              ${colors.text}
-                              border ${colors.border}
-                              shadow-sm hover:shadow-md
-                              transition-all duration-200
-                            `}
-                            initial={isMobile ? { 
-                              opacity: 0, 
-                              x: -20 
-                            } : { 
-                              scale: 0, 
-                              rotate: -180 
-                            }}
-                            whileInView={isMobile ? { 
-                              opacity: 1, 
-                              x: 0 
-                            } : { 
-                              scale: 1, 
-                              rotate: 0 
-                            }}
-                            viewport={{ once: true }}
-                            transition={isMobile ? {
-                              delay: idx * 0.08,
-                              duration: 0.4,
-                              ease: "easeOut"
-                            } : { 
-                              delay: index * 0.1 + idx * 0.05,
-                              type: "spring",
-                              stiffness: 200
-                            }}
-                            whileHover={!isMobile ? { 
-                              scale: 1.1,
-                              y: -2
-                            } : {}}
-                          >
-                            {tech}
-                          </motion.span>
-                        ))}
-                      </motion.div>
-                    )}
+                    {/* Technologies badges removed for a cleaner card bottom */}
                   </div>
 
                   {/* Decorative Corner Element with enhanced effect - desktop only */}

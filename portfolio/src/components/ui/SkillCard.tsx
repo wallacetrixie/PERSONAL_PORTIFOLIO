@@ -47,22 +47,17 @@ export const SkillCard = ({
   const desktopCardVariants: Variants = customVariants || {
     hidden: { 
       opacity: 0, 
-      scale: 0.95,
-      rotateY: -5,
-      y: 30
+      scale: 0.96,
+      y: 24
     },
     visible: {
       opacity: 1,
       scale: 1,
-      rotateY: 0,
       y: 0,
       transition: {
-        delay: index * 0.15,
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        type: 'spring' as const,
-        stiffness: 80,
-        damping: 15
+        delay: index * 0.12,
+        duration: 0.55,
+        ease: [0.22, 0.44, 0, 1]
       }
     }
   };
@@ -97,11 +92,11 @@ export const SkillCard = ({
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       whileHover={!isMobile ? { 
-        scale: 1.03, 
-        rotateY: category.rotation * 1.5,
+        scale: 1.02,
+        y: -4,
         transition: { 
-          duration: 0.5,
-          ease: [0.25, 0.46, 0.45, 0.94]
+          duration: 0.25,
+          ease: 'easeOut'
         }
       } : {}}
       className={`skill-card-futuristic skill-card-${category.color}`}
@@ -128,26 +123,20 @@ export const SkillCard = ({
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               transition={isMobile ? {
-                delay: 0.2 + idx * 0.08,
-                duration: 0.4,
-                ease: [0.34, 1.56, 0.64, 1], // Slight bounce effect
-                type: 'spring',
-                stiffness: 120,
-                damping: 10
+                delay: 0.2 + idx * 0.06,
+                duration: 0.35,
+                ease: 'easeOut'
               } : { 
-                delay: 0.4 + index * 0.15 + idx * 0.08, 
-                duration: 0.5,
-                ease: [0.25, 0.46, 0.45, 0.94],
-                type: 'spring',
-                stiffness: 100,
-                damping: 12
+                delay: 0.35 + index * 0.12 + idx * 0.06, 
+                duration: 0.45,
+                ease: [0.22, 0.44, 0, 1]
               }}
               whileHover={!isMobile ? { 
-                scale: 1.15, 
-                rotate: 360,
+                scale: 1.08,
+                y: -2,
                 transition: { 
-                  duration: 0.6,
-                  ease: [0.25, 0.46, 0.45, 0.94]
+                  duration: 0.25,
+                  ease: 'easeOut'
                 }
               } : {}}
               title={tech.name}

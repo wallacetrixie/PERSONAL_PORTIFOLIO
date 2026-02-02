@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Award, Calendar, Building2 } from 'lucide-react';
+import { Award } from 'lucide-react';
 import type { Certification } from '../../constants/skills';
 
 interface CertificationsSectionProps {
@@ -64,22 +64,22 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
       transition={{ duration: 0.5 }}
     >
       {/* Section Header */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 mb-4"
+          className="inline-flex items-center gap-2 mb-3"
         >
           <Award className="w-8 h-8 text-light-accent1 dark:text-primary-400" />
-          <h3 className="text-3xl md:text-4xl font-bold text-light-text dark:text-white">
+          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-light-text dark:text-white">
             Achievements & Certifications
           </h3>
           <Award className="w-8 h-8 text-light-accent2 dark:text-purple-400" />
         </motion.div>
         <motion.p 
-          className="text-center text-light-text-secondary dark:text-gray-400 max-w-2xl mx-auto"
+          className="text-center text-base sm:text-lg text-light-text-secondary dark:text-gray-400 max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -120,7 +120,7 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
                   bg-gradient-to-br ${colors.gradient}
                   backdrop-blur-sm
                   border-2 ${colors.border}
-                  rounded-2xl p-6
+                  rounded-2xl p-6 md:p-7 lg:p-8
                   transition-all duration-300
                   ${isHovered ? `shadow-2xl ${colors.shadow}` : 'shadow-lg'}
                 `}
@@ -144,30 +144,9 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
 
                 {/* Content */}
                 <div className="relative z-10">
-                  {/* Icon & Date Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <motion.div 
-                      className={`
-                        w-16 h-16 rounded-xl ${colors.icon}
-                        flex items-center justify-center text-3xl
-                        shadow-lg
-                      `}
-                      animate={{
-                        scale: isHovered ? 1.1 : 1,
-                        rotate: isHovered ? [0, -5, 5, 0] : 0
-                      }}
-                      transition={{ 
-                        duration: 0.5,
-                        ease: [0.25, 0.46, 0.45, 0.94]
-                      }}
-                    >
-                      {cert.icon}
-                    </motion.div>
-                    
-                    <div className="flex items-center gap-1 text-sm text-light-text-secondary dark:text-gray-400">
-                      <Calendar className="w-4 h-4" />
-                      <span>{cert.date}</span>
-                    </div>
+                  {/* Date */}
+                  <div className="mb-2 text-sm font-medium text-light-text-secondary dark:text-gray-400">
+                    {cert.date}
                   </div>
 
                   {/* Title */}
@@ -179,12 +158,9 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
                   </h4>
 
                   {/* Issuer */}
-                  <div className="flex items-center gap-2 mb-3 text-light-text dark:text-gray-300">
-                    <Building2 className="w-4 h-4 flex-shrink-0" />
-                    <p className="text-sm font-medium line-clamp-1">
-                      {cert.issuer}
-                    </p>
-                  </div>
+                  <p className="mb-3 text-sm font-medium text-light-text dark:text-gray-300 line-clamp-1">
+                    {cert.issuer}
+                  </p>
 
                   {/* Description */}
                   <motion.p 

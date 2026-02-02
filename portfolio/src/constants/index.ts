@@ -51,7 +51,7 @@ export const SOCIAL_LINKS = [
 export const PERSONAL_INFO = {
   name: 'Wallace Wambulwa',
   title: 'Software Developer & Founder',
-  company: 'Neo-Nexus Solutions',
+  company: 'Wallace W. DevWorks Solutions',
   bio: 'I specialize in crafting innovative digital solutions that drive business growth and user satisfaction',
   email: 'wallacewambulwa@gmail.com',
   location: 'Nairobi,Kenya karen',

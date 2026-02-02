@@ -110,7 +110,7 @@ export const Navbar = () => {
         variants={navbarVariants}
         initial="initial"
         animate="animate"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-light-card dark:shadow-lg py-3'
             : 'bg-white/70 dark:bg-transparent backdrop-blur-md py-5 shadow-soft dark:shadow-none'
@@ -122,39 +122,22 @@ export const Navbar = () => {
             {/* Brand Logo */}
             <Link 
               to="/" 
-              className="relative group"
+              className="relative"
               aria-label="Wallace Wambulwa - Home"
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
-                {/* Decorative orbiting accent */}
-                <motion.div
-                  className="absolute -inset-2 bg-gradient-to-r from-light-accent1 to-blue-500 dark:from-cyan-500 dark:to-blue-500 rounded-full opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"
-                  animate={{
-                    rotate: 360,
-                  }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                />
-                
-                <div className="relative flex items-center gap-2 text-2xl lg:text-3xl font-bold font-poppins">
+              <div className="relative">
+                <div className="flex items-center gap-2 text-2xl lg:text-3xl font-bold font-poppins">
                   {/* Developer Avatar Logo */}
-                  <div className="flex-shrink-0 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-br from-light-accent1 via-blue-500 to-emerald-500 dark:from-cyan-500 dark:via-blue-500 dark:to-emerald-500 flex items-center justify-center shadow-lg">
+                  <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-br from-light-accent1 via-blue-500 to-emerald-500 dark:from-cyan-500 dark:via-blue-500 dark:to-emerald-500 flex items-center justify-center shadow-lg">
                     <Code2 className="w-5 h-5 lg:w-6 lg:h-6 text-white" strokeWidth={2.5} />
                   </div>
                   
                   {/* Brand Name */}
-                  <span className="bg-gradient-to-r from-light-accent1 via-blue-500 to-emerald-500 dark:from-cyan-500 dark:via-blue-500 dark:to-emerald-500 bg-clip-text text-transparent">
-                    Neo-Nexus
+                  <span className="text-lg sm:text-xl lg:text-2xl bg-gradient-to-r from-light-accent1 via-blue-500 to-emerald-500 dark:from-cyan-500 dark:via-blue-500 dark:to-emerald-500 bg-clip-text text-transparent">
+                    Wambulwa Works
                   </span>
                 </div>
-              </motion.div>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
@@ -238,7 +221,7 @@ export const Navbar = () => {
             <div className="flex lg:hidden items-center space-x-3">
               {/* Mobile Theme Toggle */}
               <motion.button
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={toggleTheme}
                 className="p-2 rounded-full bg-light-bg-secondary dark:bg-gray-800 shadow-soft dark:shadow-none"
                 aria-label="Theme mode"
@@ -248,7 +231,7 @@ export const Navbar = () => {
 
               {/* Hamburger Button */}
               <motion.button
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 rounded-lg bg-light-bg-secondary dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors shadow-soft dark:shadow-none"
                 aria-label="Toggle mobile menu"

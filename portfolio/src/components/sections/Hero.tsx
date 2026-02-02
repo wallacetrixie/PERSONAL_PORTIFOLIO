@@ -28,17 +28,14 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-light-bg via-white to-light-bg-secondary dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient Orbs */}
+      {/* Subtle background on desktop only to keep mobile clean */}
+      <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className="absolute top-20 left-10 w-72 h-72 bg-light-accent1/10 dark:bg-primary-500/20 rounded-full blur-3xl opacity-30"
         />
         <div
           className="absolute bottom-20 right-10 w-96 h-96 bg-light-accent2/10 dark:bg-purple-500/20 rounded-full blur-3xl opacity-20"
         />
-
-        {/* Spiral SVG */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-5 dark:opacity-5"
         >
@@ -51,24 +48,20 @@ export const Hero = () => {
             />
           </svg>
         </div>
-
-        {/* Abstract Shapes */}
         <div
           className="absolute top-1/4 right-1/4 w-32 h-32 border-2 border-light-accent1/20 dark:border-primary-500/30 rounded-full"
         />
         <div
           className="absolute bottom-1/3 left-1/4 w-24 h-24 border-2 border-light-accent2/20 dark:border-purple-500/30"
         />
-
-        {/* Floating Particles - Removed for cleaner look */}
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-12 pt-28 pb-16 md:py-20">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           {/* Left Column - Text Content */}
           <motion.div
-            className="space-y-8 text-center lg:text-left order-2 lg:order-1"
+            className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1"
             initial={prefersReducedMotion ? undefined : { opacity: 0, x: -50 }}
             animate={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
             transition={prefersReducedMotion ? undefined : { duration: 0.5, delay: 0.2 }}
@@ -110,7 +103,7 @@ export const Hero = () => {
 
             {/* Tagline - Static Display */}
             <motion.p
-              className="text-xl md:text-2xl lg:text-3xl text-light-text-secondary dark:text-gray-300 font-medium"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-light-text-secondary dark:text-gray-300 font-medium"
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -141,19 +134,15 @@ export const Hero = () => {
                 href="#projects"
                 aria-label="View my portfolio projects"
                 className="group relative px-8 py-4 bg-gradient-to-r from-light-accent1 to-blue-600 dark:from-primary-500 dark:to-primary-600 text-white font-semibold rounded-lg overflow-hidden shadow-soft-shadow-light dark:shadow-lg dark:shadow-primary-500/50 hover:shadow-soft-shadow-hover-light dark:hover:shadow-xl dark:hover:shadow-primary-500/70 transition-all duration-300"
-                whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
-                whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
+                whileHover={prefersReducedMotion ? undefined : { scale: 1.03 }}
+                whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   View My Work
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-600 to-light-accent2 dark:from-primary-600 dark:to-purple-600"
-                  initial={{ x: '100%' }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
+                {/* Simplified hover for mobile: no sliding overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-light-accent2 dark:from-primary-600 dark:to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               </motion.a>
 
               {/* Secondary Button */}
@@ -163,8 +152,8 @@ export const Hero = () => {
                 rel="noopener noreferrer"
                 aria-label={`Send email to ${PERSONAL_INFO.email}`}
                 className="group px-8 py-4 bg-white dark:bg-white/5 backdrop-blur-sm border-2 border-light-accent1/50 dark:border-primary-500/50 text-light-accent1 dark:text-primary-400 font-semibold rounded-lg hover:bg-light-bg-secondary dark:hover:bg-primary-500/10 hover:border-light-accent1 dark:hover:border-primary-500 transition-all duration-300 flex items-center justify-center gap-2 shadow-soft dark:shadow-none"
-                whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
-                whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
+                whileHover={prefersReducedMotion ? undefined : { scale: 1.03 }}
+                whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
               >
                 <Mail className="w-5 h-5" />
                 Let's Talk
@@ -226,12 +215,12 @@ export const Hero = () => {
           {/* Right Column - Portrait Image */}
           <motion.div
             className="relative flex justify-center items-center order-1 lg:order-2"
-            initial={prefersReducedMotion ? undefined : { opacity: 0, scale: 0.8 }}
-            animate={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
-            transition={prefersReducedMotion ? undefined : { type: 'spring', stiffness: 100, damping: 15, delay: 0.4 }}
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={prefersReducedMotion ? undefined : { duration: 0.4, delay: 0.2 }}
           >
             {/* Decorative Rings */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="hidden sm:flex absolute inset-0 items-center justify-center">
               <div
                 className="w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] rounded-full border-2 border-light-accent1/20 dark:border-primary-500/30"
               />
@@ -270,16 +259,11 @@ export const Hero = () => {
                 </div>
 
                 {/* Decorative Dots */}
-                <motion.div
-                  className="absolute -top-4 -right-4 w-20 h-20 grid grid-cols-3 gap-2"
-                  initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0 }}
-                  animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 }}
-                >
+                <div className="absolute -top-4 -right-4 w-20 h-20 grid grid-cols-3 gap-2">
                   {[...Array(9)].map((_, i) => (
                     <div key={i} className="w-2 h-2 bg-primary-500/60 rounded-full" />
                   ))}
-                </motion.div>
+                </div>
               </div>
             </div>
           </motion.div>

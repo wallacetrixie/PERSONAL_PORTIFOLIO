@@ -221,7 +221,7 @@ export const CERTIFICATIONS: Certification[] = [
     id: 'bachelors-it',
     title: 'Bachelor of Science in Information Technology',
     issuer: 'Co-operative University of Kenya',
-    date: '2025',
+    date: '2026',
     description: 'Degree program covering computer science fundamentals, software engineering principles, database systems, networking, cybersecurity, and advanced programming concepts.',
     icon: '🎓',
     color: 'purple'

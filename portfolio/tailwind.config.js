@@ -9,8 +9,16 @@ export default {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        playfair: ['Playfair Display', 'serif'],
       },
       colors: {
+        // Azma Digital Solutions - Premium luxury theme
+        azma: {
+          bg: '#121212',           // Matte black background
+          accent: '#8B5E3C',       // Golden brown primary accent
+          text: '#F5F5F5',         // Ivory text
+          'text-secondary': '#B0B0B0', // Muted gray
+        },
         // Primary brand colors - unified across light and dark modes
         brand: {
           primary: '#0ea5e9',     // Primary blue
@@ -87,6 +95,13 @@ export default {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-20px)' },
         },
+      },
+      letterSpacing: {
+        'tight': '-0.02em',
+        'normal': '0em',
+        'wide': '0.025em',
+        'wider': '0.05em',
+        'widest': '0.1em',
       },
       // Standardized spacing scale
       spacing: {

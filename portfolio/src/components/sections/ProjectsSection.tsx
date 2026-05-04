@@ -16,7 +16,6 @@ interface ProjectsSectionProps {
 export const ProjectsSection = ({ 
   showHeader = true, 
   showFilter = true,
-  showStats = true,
   showCTA = true 
 }: ProjectsSectionProps) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -96,8 +95,16 @@ export const ProjectsSection = ({
   };
 
   return (
-    <section id="projects-section" className="py-20 bg-light-bg dark:bg-dark-bg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects-section" className="relative min-h-screen py-24 lg:py-32 bg-gradient-to-br from-[#121212] via-[#1a1a1a] to-[#3d2817] overflow-hidden">
+      {/* Film Grain Overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] mix-blend-multiply pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='400' height='400' fill='%23121212' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E")`
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {showHeader && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -111,7 +118,7 @@ export const ProjectsSection = ({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-primary-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4"
+              className="text-[#8B5E3C] font-semibold text-sm uppercase tracking-wider mb-4"
             >
               Portfolio
             </motion.p>
@@ -121,9 +128,9 @@ export const ProjectsSection = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-6 text-gray-900 dark:text-white"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold font-playfair mb-6 text-[#F5F5F5]"
             >
-              Sample <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-purple">Projects</span>
+              Sample <span className="text-[#8B5E3C]">Projects</span>
             </motion.h2>
 
             <motion.p
@@ -131,7 +138,7 @@ export const ProjectsSection = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-2"
+              className="text-lg text-[#E8E8E8] max-w-3xl mx-auto mb-2"
             >
               Explore my collection of frontend and backend projects, showcasing modern web development practices,
               clean code architecture, and innovative solutions.
@@ -142,7 +149,7 @@ export const ProjectsSection = ({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-sm text-gray-500 dark:text-gray-500"
+              className="text-sm text-[#B0B0B0]"
             >
               Dashboard & Main Pages
             </motion.p>
@@ -198,7 +205,7 @@ export const ProjectsSection = ({
               onClick={() => setShowAll(true)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-purple text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="flex items-center gap-2 px-8 py-4 bg-[#8B5E3C] text-[#121212] font-semibold rounded-lg shadow-lg transition-all duration-300"
             >
               <span>View More Projects</span>
               <ChevronDown size={20} />
@@ -223,7 +230,7 @@ export const ProjectsSection = ({
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-8 py-4 bg-white dark:bg-dark-card text-primary-500 dark:text-primary-400 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-primary-500 dark:border-primary-400"
+              className="flex items-center gap-2 px-8 py-4 bg-[#1a1a1a] text-[#8B5E3C] font-semibold rounded-lg shadow-lg transition-all duration-300 border border-[#8B5E3C]"
             >
               <span>View Less</span>
               <ChevronUp size={20} />
@@ -238,48 +245,12 @@ export const ProjectsSection = ({
             transition={{ duration: 0.4 }}
             className="text-center py-20"
           >
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <h3 className="text-2xl font-bold text-[#F5F5F5] mb-2 font-playfair">
               No Projects Found
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-[#B0B0B0]">
               Try selecting a different category.
             </p>
-          </motion.div>
-        )}
-
-        {showStats && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
-          >
-            <div className="p-6 bg-white dark:bg-dark-card rounded-xl shadow-lg">
-              <div className="text-4xl font-bold text-primary-500 dark:text-primary-400 mb-2">
-                {PROJECTS.length}
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 font-medium">
-                Total Projects
-              </div>
-            </div>
-            <div className="p-6 bg-white dark:bg-dark-card rounded-xl shadow-lg">
-              <div className="text-4xl font-bold text-blue-500 dark:text-blue-400 mb-2">
-                {PROJECTS.filter(p => p.category === 'frontend').length}
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 font-medium">
-                Frontend Projects
-              </div>
-            </div>
-            <div className="p-6 bg-white dark:bg-dark-card rounded-xl shadow-lg">
-              <div className="text-4xl font-bold text-green-500 dark:text-green-400 mb-2">
-                {PROJECTS.filter(p => p.category === 'backend').length}
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 font-medium">
-                Backend Projects
-              </div>
-            </div>
           </motion.div>
         )}
 
@@ -291,11 +262,11 @@ export const ProjectsSection = ({
             transition={{ delay: 0.4, duration: 0.6 }}
             className="mt-20 text-center"
           >
-            <div className="bg-gradient-to-r from-primary-500 to-accent-purple p-12 rounded-2xl shadow-xl">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <div className="bg-[#1a1a1a] border border-[#8B5E3C] p-12 rounded-lg shadow-xl">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#F5F5F5] font-playfair mb-4">
                 Interested in Working Together?
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-[#E8E8E8] text-lg mb-8 max-w-2xl mx-auto">
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
@@ -303,7 +274,7 @@ export const ProjectsSection = ({
                   href="/contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white text-primary-500 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="px-8 py-4 bg-[#8B5E3C] text-[#121212] font-semibold rounded-lg shadow-lg transition-all duration-300"
                 >
                   Get in Touch
                 </motion.a>
@@ -313,7 +284,7 @@ export const ProjectsSection = ({
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border-2 border-white/30 hover:bg-white/20 transition-all duration-300"
+                  className="px-8 py-4 bg-transparent text-[#8B5E3C] font-semibold rounded-lg border border-[#8B5E3C] transition-all duration-300"
                 >
                   View GitHub
                 </motion.a>

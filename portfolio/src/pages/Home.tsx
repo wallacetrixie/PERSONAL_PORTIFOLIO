@@ -1,6 +1,7 @@
 import { Hero } from '../components/sections/Hero';
 import { About } from '../components/sections/About';
 import { ProjectsSection } from '../components/sections/ProjectsSection';
+import { DevelopmentFramework } from '../components/sections/DevelopmentFramework';
 import { MapSection } from '../components/sections/MapSection';
 import { ServicesSection } from '../components/sections/ServicesSection';
 import { TestimonialsSection } from '../components/sections/TestimonialsSection';
@@ -24,6 +25,9 @@ export const Home = () => {
       </section>
       <section id="projects">
         <ProjectsSection />
+      </section>
+      <section id="development-framework">
+        <DevelopmentFramework />
       </section>
       <section id="testimonials">
         <TestimonialsSection testimonials={TESTIMONIALS} />

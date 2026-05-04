@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -25,11 +25,32 @@
 
 @layer components {
   body {
-    @apply bg-[#f9fafb] dark:bg-[#0a0a0f] text-[#1f2937] dark:text-[#f4f4f4] transition-colors duration-300;
+    @apply bg-[#121212] text-[#F5F5F5] transition-colors duration-300;
   }
 }
 
 @layer utilities {
+  /* Film grain texture */
+  .film-grain {
+    @apply relative;
+  }
+
+  .film-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="2"/></filter><rect width="100" height="100" fill="%23fff" filter="url(%23noise)" opacity="0.05"/></svg>');
+    background-size: 100px 100px;
+  }
+
+  /* Glassmorphic effect for minimalist design */
+  .glass-minimal {
+    @apply backdrop-blur-xl bg-[#1a1a1a]/40 border border-[#8B5E3C];
+  }
+
   /* Custom gradient text */
   .gradient-text {
     @apply bg-gradient-to-r from-primary-400 via-primary-500 to-purple-500 text-transparent bg-clip-text;
@@ -112,6 +133,63 @@
   /* Glow shadow effects */
   .shadow-glow-cyan {
     box-shadow: 0 0 30px rgba(0, 198, 255, 0.3), 0 10px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Development Framework - Staircase Animations */
+  @keyframes frameworkLineGlow {
+    0%,
+    100% {
+      opacity: 0.7;
+      filter: drop-shadow(0 0 0 rgba(245, 245, 245, 0));
+    }
+    50% {
+      opacity: 1;
+      filter: drop-shadow(0 0 6px rgba(139, 94, 60, 0.9));
+    }
+  }
+
+  @keyframes frameworkMobileArrowPulse {
+    0%,
+    100% {
+      opacity: 0.82;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(2px);
+    }
+  }
+
+  .framework-stair-line {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(139, 94, 60, 0.4), rgba(139, 94, 60, 0.8), rgba(139, 94, 60, 0.4));
+    opacity: 0.85;
+  }
+
+  .framework-stair-line.is-active {
+    animation: frameworkLineGlow 2.1s ease-in-out infinite;
+  }
+
+  .framework-step-reveal {
+    opacity: 0;
+    transform: translateY(30px) scale(0.985);
+    transition: opacity 760ms cubic-bezier(0.16, 1, 0.3, 1), transform 760ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 280ms ease, border-color 280ms ease;
+    will-change: transform, opacity;
+  }
+
+  .framework-step-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .framework-step-reveal:hover {
+    transform: translateY(-4px);
+    border-color: rgb(212, 175, 140 / 0.7);
+    box-shadow: 0 16px 35px rgba(139, 94, 60, 0.15);
+  }
+
+  .framework-mobile-next {
+    animation: frameworkMobileArrowPulse 2.2s ease-in-out infinite;
   }
 }
 

@@ -1,8 +1,10 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { useRef, useMemo } from 'react';
+import { FileText } from 'lucide-react';
 import { ABOUT_INFO } from '../../constants';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import portraitImage from '../../assets/images/Potrait.jpg';
+import resumePDF from '../../assets/My Resume.pdf';
 
 export const About = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -97,6 +99,23 @@ export const About = () => {
 
             {/* Divider */}
             <div className="h-px bg-[#8B5E3C]/30" />
+
+            {/* Resume CTA Button */}
+            <motion.div
+              initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <a
+                href={resumePDF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-[#8B5E3C] text-[#F5F5F5] font-inter font-semibold tracking-wide hover:bg-[#A67C52] transition-all duration-300 group shadow-lg hover:shadow-xl"
+              >
+                <span>View Resume</span>
+                <FileText className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+              </a>
+            </motion.div>
           </motion.div>
 
           {/* Right Column - Stats & Highlights */}

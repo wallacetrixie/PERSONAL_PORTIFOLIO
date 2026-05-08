@@ -232,6 +232,21 @@ export const Navbar = () => {
               aria-label="Mobile navigation menu"
             >
               <div className="flex flex-col h-full pt-24 px-6">
+                {/* Close Button in Menu Header */}
+                <motion.button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="absolute top-6 right-6 p-2 text-[#F5F5F5] hover:text-[#8B5E3C] transition-colors duration-300"
+                  aria-label="Close mobile menu"
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div
+                    initial={{ rotate: 0, opacity: 1 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="w-6 h-6" />
+                  </motion.div>
+                </motion.button>
 
                 {/* Navigation Links */}
                 <nav className="flex-1" aria-label="Mobile navigation">

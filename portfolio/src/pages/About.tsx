@@ -1,6 +1,15 @@
 import { Section } from '../components/ui/Section';
+import { useSEO } from '../hooks/useSEO';
 
 export const About = () => {
+  useSEO({
+    title: 'About | Wallace Wambulwa - Full Stack Developer',
+    description: 'Learn about Wallace Wambulwa, a passionate full-stack developer from Kenya with expertise in React, TypeScript, Node.js, and modern web technologies. Discover my background, experience, and approach to software development.',
+    keywords: 'About, Wallace Wambulwa, Developer Bio, Software Engineer, Full Stack, Kenya, Experience',
+    canonical: 'https://wallacewambulwa-gilt.vercel.app/about',
+    ogType: 'profile',
+  });
+
   return (
     <Section id="about">
       <div className="max-w-4xl mx-auto">

@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
 import { ProjectDetail } from './pages/ProjectDetail';
@@ -11,8 +12,9 @@ import AdminProjects from './pages/admin/AdminProjects';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
+    <HelmetProvider>
+      <AuthProvider>
+        <Router>
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Layout />}>
@@ -31,8 +33,9 @@ function App() {
             <Route path="settings" element={<AdminSettings />} />
           </Route>
         </Routes>
-      </Router>
-    </AuthProvider>
+        </Router>
+      </AuthProvider>
+    </HelmetProvider>
   );
 }
 

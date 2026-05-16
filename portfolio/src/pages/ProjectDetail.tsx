@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Github, CheckCircle, AlertCircle, TrendingUp, Code, Zap } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import type { Project } from '../types';
+import { useSEO } from '../hooks/useSEO';
 
 export const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,7 +16,51 @@ export const ProjectDetail = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // SEO Meta Tags - CRITICAL FIX
+  if (project) {
+    const projectUrl = `https://wallacewambulwa-gilt.vercel.app/projects/${id}`;
+    const techStack = project.detailedTechStack 
+      ? project.detailedTechStack.map(t => t.technology).join(', ')
+      : (project.technologies?.join(', ') || '');
+    
+    const structuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      'name': project.title,
+      'description': project.description,
+      'url': projectUrl,
+      'image': project.image,
+      'author': {
+        '@type': 'Person',
+        'name': 'Wallace Wambulwa',
+        'url': 'https://wallacewambulwa-gilt.vercel.app'
+      },
+      'dateCreated': project.date ? project.date : new Date().toISOString(),
+      'applicationCategory': project.category === 'frontend' ? 'Web Application' : 'Backend Service',
+      'keywords': techStack,
+      'screenshot': project.image,
+    };
+
+    useSEO({
+      title: `${project.title} | Wallace Wambulwa's Portfolio`,
+      description: project.description || `Explore ${project.title} - a ${project.category} project by Wallace Wambulwa showcasing modern web development practices and technical expertise.`,
+      keywords: `${project.title}, ${techStack}, ${project.category}, Wallace Wambulwa, portfolio project`,
+      canonical: projectUrl,
+      ogImage: project.image,
+      ogType: 'website',
+      author: 'Wallace Wambulwa',
+      structuredData,
+    });
+  }
+
   if (!project) {
+    // SEO for 404 page
+    useSEO({
+      title: 'Project Not Found | Wallace Wambulwa Portfolio',
+      description: 'The project you are looking for could not be found. Please visit the projects page to explore all available projects.',
+      canonical: 'https://wallacewambulwa-gilt.vercel.app/#projects',
+    });
+
     return (
       <div className="min-h-screen bg-light-bg dark:bg-dark-bg flex items-center justify-center p-4">
         <div className="text-center">

@@ -7,8 +7,17 @@ import { ServicesSection } from '../components/sections/ServicesSection';
 import { TestimonialsSection } from '../components/sections/TestimonialsSection';
 import { Skills } from './Skills';
 import { SERVICES, TESTIMONIALS } from '../constants/services';
+import { useSEO } from '../hooks/useSEO';
 
 export const Home = () => {
+  useSEO({
+    title: 'Wallace Wambulwa | Full Stack Developer & Software Engineer Portfolio',
+    description: 'Wallace Wambulwa - Professional Full Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies. Explore my portfolio of 50+ completed projects, services, and technical expertise in software development.',
+    keywords: 'Wallace Wambulwa, Full Stack Developer, Software Engineer, Web Developer, React Developer, TypeScript, JavaScript, Node.js, Python, Portfolio',
+    canonical: 'https://wallacewambulwa-gilt.vercel.app',
+    ogType: 'website',
+  });
+
   return (
     <>
       <section id="hero">
